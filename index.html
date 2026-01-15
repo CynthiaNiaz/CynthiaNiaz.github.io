@@ -715,6 +715,81 @@
             margin-top: 0.25rem;
         }
 
+        /* Campus Roles Section */
+        .campus-roles {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .campus-roles strong {
+            color: var(--wine);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .campus-role-item {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(125, 30, 62, 0.03);
+            border-radius: 4px;
+            border-left: 3px solid var(--wine);
+            transition: all 0.3s ease;
+        }
+
+        .campus-role-item:hover {
+            background: rgba(125, 30, 62, 0.06);
+            transform: translateX(5px);
+        }
+
+        .campus-role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .campus-role-title {
+            font-weight: 600;
+            color: var(--wine);
+            font-size: 1rem;
+        }
+
+        .campus-role-date {
+            font-size: 0.85rem;
+            color: var(--wine);
+            font-weight: 500;
+        }
+
+        .campus-role-subtitle {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .campus-role-description {
+            font-size: 0.875rem;
+            color: var(--charcoal);
+        }
+
+        .campus-role-description ul {
+            margin-top: 0.5rem;
+            padding-left: 1.25rem;
+        }
+
+        .campus-role-description li {
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+        }
+
+        /* Early Experience Section */
+        #early-experience h2 {
+            font-size: 1.6rem;
+            opacity: 0.9;
+        }
+
         .toggle-coursework {
             background: none;
             border: none;
@@ -1050,6 +1125,38 @@
                 font-size: 0.825rem;
             }
 
+            .campus-roles {
+                margin-top: 1.25rem;
+                padding-top: 1.25rem;
+            }
+
+            .campus-role-item {
+                padding: 0.875rem;
+                margin-top: 0.875rem;
+            }
+
+            .campus-role-header {
+                flex-direction: column;
+                gap: 0.25rem;
+                align-items: flex-start;
+            }
+
+            .campus-role-title {
+                font-size: 0.95rem;
+            }
+
+            .campus-role-date {
+                font-size: 0.8rem;
+            }
+
+            .campus-role-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .campus-role-description {
+                font-size: 0.825rem;
+            }
+
             footer {
                 font-size: 0.85rem;
                 padding: 2rem 0;
@@ -1272,19 +1379,40 @@
                                         </div>
                                     </div>
 
-                                    <!-- Focus Mentor -->
-                                    <div class="activity-item">
-                                        <div class="activity-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-                                            </svg>
-                                        </div>
-                                        <div class="activity-content">
-                                            <div class="activity-title">FOCUS Mentor</div>
-                                            <div class="activity-description">Mentored and tutored underrepresented STEM students in introductory physics, classical mechanics, and electricity & magnetism, strengthening conceptual understanding and quantitative problem-solving.</div>
-                                        </div>
-                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="campus-roles">
+                                <p><strong>Campus Employment:</strong></p>
+                                
+                                <div class="campus-role-item">
+                                    <div class="campus-role-header">
+                                        <div class="campus-role-title">Makerspace Manager</div>
+                                        <div class="campus-role-date">September 2025 – Present</div>
+                                    </div>
+                                    <div class="campus-role-subtitle">Carleton College Makerspace</div>
+                                    <div class="campus-role-description">
+                                        <ul>
+                                            <li>Guided students through the design and fabrication of prototypes using 3D printers, laser cutters, microcontrollers, and electronics tools.</li>
+                                            <li>Maintained and troubleshot equipment while providing technical support on CAD, soldering, and rapid-prototyping workflows.</li>
+                                            <li>Led workshops on digital fabrication, electronics, and maker technologies.</li>
+                                            <li>Supported interdisciplinary engineering, design, and creative-tech projects from concept to functional prototype.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="campus-role-item">
+                                    <div class="campus-role-header">
+                                        <div class="campus-role-title">FOCUS Mentor</div>
+                                        <div class="campus-role-date">January 2026 – Present</div>
+                                    </div>
+                                    <div class="campus-role-subtitle">Carleton College</div>
+                                    <div class="campus-role-description">
+                                        <ul>
+                                            <li>Mentored and tutored underrepresented STEM students in introductory physics, classical mechanics, and electricity & magnetism, strengthening conceptual understanding and quantitative problem-solving.</li>
+                                            <li>Provided regular one-on-one and small-group academic support, adapting explanations to different backgrounds and levels of preparation.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1311,26 +1439,6 @@
                                 <li>Designed and implemented a weighted market attractiveness scoring framework with interactive controls, enabling stakeholders to explore tradeoffs across multiple market factors.</li>
                                 <li>Developed data pipelines to acquire, clean, and normalize large external datasets (including programmatic web data collection and public APIs) for downstream analytics.</li>
                                 <li>Translated ambiguous business questions into structured analytical models and documented, reusable analytics artifacts for stakeholder review.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="company-logo">
-                        <img src="carleton-makerspace-logo.jpeg" alt="Carleton College Makerspace"> 
-                    </div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <h3 class="card-title">Carleton College Makerspace</h3>
-                            <span class="card-date">September 2025 – Present</span>
-                        </div>
-                        <p class="card-subtitle">Makerspace Manager • Northfield, MN</p>
-                        <div class="card-description">
-                            <ul>
-                                <li>Guided students through the design and fabrication of prototypes using 3D printers, laser cutters, microcontrollers, and electronics tools.</li>
-                                <li>Maintained and troubleshot equipment while providing technical support on CAD, soldering, and rapid-prototyping workflows.</li>
-                                <li>Led workshops on digital fabrication, electronics, and maker technologies.</li>
-                                <li>Supported interdisciplinary engineering, design, and creative-tech projects from concept to functional prototype.</li>
                             </ul>
                         </div>
                     </div>
@@ -1374,7 +1482,12 @@
                     </div>
                     </div>
                 </div>
-                                <div class="card">
+            </section>
+
+            <section id="early-experience">
+                <h2>Early Experience</h2>
+                
+                <div class="card">
                     <div class="company-logo">
                         <img src="wells-fargo-logo.png" alt="Wells Fargo"> 
                     </div>
@@ -1392,25 +1505,6 @@
                         </div>
                     </div>
                 </div>
-                 <div class="card">
-                    <div class="company-logo">
-                        <img src="carleton-logo.png" alt="Carleton">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <h3 class="card-title">Carleton College ITS </h3>
-                            <span class="card-date">September 2023 – June 2024</span>
-                        </div>
-                        <p class="card-subtitle">Student Staff Member • Northfield, MN</p>
-                        <div class="card-description">
-                            <ul>
-                                <li>Told professors to turn their laptops off and on again when they called for help.</li>
-                                <li>Diagnosed Wi-Fi issues that mysteriously fixed themselves.</li>
-                                <li>Provided patient tech support for everything from projectors to printers.</li>
-                            </ul>
-                        </div>
-                    </div>
-                  </div>
                  <div class="card">
                     <div class="company-logo">
                         <img src="target-logo.png" alt="Target"> 
