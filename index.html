@@ -1,11 +1,729 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cynthia Niaz - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #7d1e3e;
+            --wine-light: #9d3a5a;
+            --wine-dark: #5a1529;
+            --cream: #faf8f5;
+            --charcoal: #2a2a2a;
+            --gray: #6a6a6a;
+            --light-gray: #e8e6e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #f5f2ed 100%);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 0;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-left {
+            order: 1;
+        }
+
+        .hero-right {
+            order: 2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-photo {
+            width: 350px;
+            height: 350px;
+            border-radius: 2px;
+            object-fit: cover;
+            border: 3px solid var(--wine);
+            box-shadow: 20px 20px 0 rgba(125, 30, 62, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .profile-photo:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 25px 25px 0 rgba(125, 30, 62, 0.15);
+        }
+
+        /* Placeholder for photo */
+        .photo-placeholder {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, var(--wine-light) 0%, var(--wine) 100%);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+            border: 3px solid var(--wine);
+            box-shadow: 20px 20px 0 rgba(125, 30, 62, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .photo-placeholder:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 25px 25px 0 rgba(125, 30, 62, 0.15);
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--wine);
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .summary {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-links a {
+            color: var(--wine);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--wine);
+            transition: width 0.3s ease;
+        }
+
+        .contact-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Content sections */
+        .content-section {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* Section Styling */
+        section {
+            margin: 4rem 0;
+        }
+        
+        #education, #experience {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        #education {
+            animation-delay: 0.2s;
+        }
+
+        #experience {
+            animation-delay: 0.4s;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--wine);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--wine);
+        }
+
+        /* Card Styling */
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--light-gray);
+            border-radius: 2px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--wine);
+            transition: height 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateX(8px);
+            box-shadow: -8px 8px 24px rgba(125, 30, 62, 0.1);
+        }
+
+        .card:hover::before {
+            height: 100%;
+        }
+
+        /* Company Logo */
+        .company-logo {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            padding: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .company-logo:hover {
+            box-shadow: 0 4px 12px rgba(125, 30, 62, 0.12);
+            border-color: rgba(125, 30, 62, 0.15);
+        }
+
+        .company-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(1) contrast(1);
+        }
+
+        .card-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--wine);
+            font-weight: 600;
+        }
+
+        .card-date {
+            color: var(--wine);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .card-subtitle {
+            color: var(--charcoal);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .card-description {
+            color: var(--charcoal);
+            font-size: 0.95rem;
+        }
+
+        .card-description ul {
+            margin-top: 0.75rem;
+            padding-left: 1.25rem;
+        }
+
+        .card-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Coursework Section */
+        .coursework {
+            margin-top: 1rem;
+        }
+
+        .coursework strong {
+            color: var(--wine);
+            font-weight: 500;
+        }
+
+        .coursework-list {
+            margin-top: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .coursework-hidden {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, margin-top 0.3s ease;
+        }
+
+        .coursework-hidden.expanded {
+            max-height: 500px;
+            margin-top: 0.5rem;
+        }
+
+        .toggle-coursework {
+            background: none;
+            border: none;
+            color: var(--wine);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            padding: 0.5rem 0;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-coursework:hover {
+            color: var(--wine-dark);
+            text-decoration-style: solid;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--light-gray);
+            margin-top: 5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-left {
+                order: 2;
+                text-align: center;
+            }
+
+            .hero-right {
+                order: 1;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+
+            .profile-photo, .photo-placeholder {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 3rem 0;
+            }
+
+            .summary {
+                text-align: left;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+                flex-direction: column;
+            }
+
+            .company-logo {
+                width: 60px;
+                height: 60px;
+                align-self: flex-start;
+            }
+
+            .card:hover {
+                transform: translateX(0);
+            }
+
+            .profile-photo, .photo-placeholder {
+                width: 250px;
+                height: 250px;
+                box-shadow: 15px 15px 0 rgba(125, 30, 62, 0.1);
+            }
+
+            .profile-photo:hover, .photo-placeholder:hover {
+                box-shadow: 18px 18px 0 rgba(125, 30, 62, 0.15);
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Hello world!</h1>
-  <p>My website is working.</p>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1>Cynthia A. Niaz</h1>
+                    <p class="subtitle">Minneapolis, Minnesota</p>
+                    <p class="summary">
+                        I’m a junior physics major with a background in computer science and economics. I’ve worked across a range of settings, including data analytics at Oracle, a judicial internship with the U.S. District Court, and an R&D externship at 3M, as well as earlier roles in retail and banking.
+                    </p>
+                    <p class="summary">
+                        Outside of academics and work, I enjoy reading nonfiction and distance running. I compete for my school’s varsity track and cross-country teams and completed Grandma’s Marathon in Duluth in 2024.
+                    </p>
+                    <div class="contact-links">
+                        
+                        <a href="#" id="email-link" aria-label="Email Cynthia">Email</a>
+                        <noscript>Enable JavaScript to see email</noscript>
+                        <a href="https://github.com/CynthiaNiaz" target="_blank">GitHub</a>
+                        <a href="www.linkedin.com/in/cynthia-niaz" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <!-- Replace this div with an img tag when you have your photo -->
+                    <!-- <img src="your-photo.jpg" alt="Your Name" class="profile-photo"> -->
+                    <div class="photo-placeholder">
+                        Replace with your photo
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Sections -->
+        <div class="content-section">
+            <section id="education">
+                <h2>Education</h2>
+                <div class="card">
+                    <div class="company-logo">
+                        <img src="carleton-logo.png" alt="Carleton College"> 
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Bachelor of Arts in Physics</h3>
+                            <span class="card-date">2023 - 2027</span>
+                        </div>
+                        <p class="card-subtitle">Carleton College, Northfield, MN</p>
+                        <div class="card-description">
+                            <div class="coursework">
+                                <p><strong>Relevant Coursework:</strong></p>
+                                <p class="coursework-list">
+                                  Electricity and Magnetism, Analytical and Computational Mechanics, Atomic and Nuclear Physics
+
+                                </p>
+                                <div class="coursework-hidden" id="additionalCourses">
+                                    <p class="coursework-list">
+                                        Thermodynamics, Linear Algebra, Ordinary Differential Equations, Electronics, Data Structures, Software Design, Mathematical Structures, Money and Banking
+                                    </p>
+                                </div>
+                                <button class="toggle-coursework" onclick="toggleCoursework()">
+                                    Show more courses
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience">
+                <h2>Professional Experience</h2>
+                
+                <div class="card">
+                    <div class="company-logo">
+                      <img src="oracle-logo.png" alt="Oracle">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Oracle</h3>
+                            <span class="card-date">December 2025 – Present</span>
+                        </div>
+                        <p class="card-subtitle">Data and Analytics Extern • Cambridge, MA (Remote)</p>
+                        <div class="card-description">
+                            <ul>
+                                <li>Built market intelligence dashboards, integrating store-level data with public demographic and competitive indicators to support location and expansion analysis.</li>
+                                <li>Designed and implemented a weighted market attractiveness scoring framework with interactive controls, enabling stakeholders to explore tradeoffs across multiple market factors.</li>
+                                <li>Developed data pipelines to acquire, clean, and normalize large external datasets (including programmatic web data collection and public APIs) for downstream analytics.</li>
+                                <li>Translated ambiguous business questions into structured analytical models and documented, reusable analytics artifacts for stakeholder review.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="company-logo">
+                        <img src="carleton-makerspace-logo.jpeg" alt="Carleton College Makerspace"> 
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Carleton College Makerspace</h3>
+                            <span class="card-date">September 2025 – Present</span>
+                        </div>
+                        <p class="card-subtitle">Makerspace Manager • Northfield, MN</p>
+                        <div class="card-description">
+                            <ul>
+                                <li>Guided students through the design and fabrication of prototypes using 3D printers, laser cutters, microcontrollers, and electronics tools.</li>
+                                <li>Maintained and troubleshot equipment while providing technical support on CAD, soldering, and rapid-prototyping workflows.</li>
+                                <li>Led workshops on digital fabrication, electronics, and maker technologies.</li>
+                                <li>Supported interdisciplinary engineering, design, and creative-tech projects from concept to functional prototype.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="company-logo">
+                        <img src="district-court-mn-logo.jpeg" alt="U.S. District Court">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">U.S. District Court, District of Minnesota</h3>
+                            <span class="card-date">June 2025 - September 2025</span>
+                        </div>
+                        <p class="card-subtitle">Judicial Intern • Minneapolis, MN</p>
+                        <div class="card-description">
+                            <ul>
+                                <li>Served in the chambers of Bankruptcy Judge William J. Fisher, assisting staff with organizing case materials and supporting daily operational workflows.</li>
+                                <li>Observed federal bankruptcy hearings and proceedings, gaining insight into courtroom procedures and judicial decision-making.</li>
+                                <li>Contributed to community engagement initiatives, including Court Camp and The Supreme Court and Your Hometown program.</li>
+                                <li>Coordinated administrative and logistical tasks to help ensure smooth courtroom and chambers operations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="company-logo">
+                        <img src="3M-logo.png" alt="3M">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">3M</h3>
+                            <span class="card-date">December 2024</span>
+                        </div>
+                        <p class="card-subtitle">Extern • Maplewood, MN</p>
+                        <div class="card-description">
+                            <ul>
+                                <li>Engaged with R&D teams to understand 3M’s innovation and product development processes from early concept through commercialization.</li>
+                            <li>Delivered a product analysis presentation on a Solventum offering, evaluating design decisions, market context, and potential applications.</li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+                                <div class="card">
+                    <div class="company-logo">
+                        <img src="wells-fargo-logo.png" alt="Wells Fargo"> 
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Wells Fargo</h3>
+                            <span class="card-date">June 2024 – September 2025</span>
+                        </div>
+                        <p class="card-subtitle">Bank Teller • Wayzata, MN</p>
+                        <div class="card-description">
+                            <ul>
+                                <li>Processed high-volume financial transactions with accuracy and strict adherence to compliance and security procedures.</li>
+                                <li>Delivered customer service support including account assistance, fraud prevention, and customer verification.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                 <div class="card">
+                    <div class="company-logo">
+                        <img src="carleton-logo.png" alt="Carleton">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Carleton College ITS </h3>
+                            <span class="card-date">September 2023 – June 2024</span>
+                        </div>
+                        <p class="card-subtitle">Student Staff Member • Northfield, MN</p>
+                        <div class="card-description">
+                            <ul>
+                                <li>Told professors to turn their laptops off and on again when they called for help.</li>
+                                <li>Diagnosed Wi-Fi issues that mysteriously fixed themselves.</li>
+                                <li>Provided patient tech support for everything from projectors to printers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+                 <div class="card">
+                    <div class="company-logo">
+                        <img src="target-logo.png" alt="Target"> 
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Target</h3>
+                            <span class="card-date">June 2023 – September 2023</span>
+                        </div>
+                        <p class="card-subtitle">Team Member • Waconia, MN</p>
+                        <div class="card-description">
+                            <ul>
+                                <li>Stacked bananas.</li>
+                                <li>Managed the produce order.</li>
+                                <li>Waited for customers to ask me where things were.</li>
+                                <li>Used store walkie-talkies and learned retail radio etiquette.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                 <div class="card">
+                    <div class="company-logo">
+                        <img src="chipotle-logo.png" alt="Chipotle"> 
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Chipotle</h3>
+                            <span class="card-date">June 2022 – September 2022</span>
+                        </div>
+                        <p class="card-subtitle">Crew Member • Chanhassen, MN</p>
+                        <div class="card-description">
+                            <ul>
+                                <li>Best job I ever had.</li>
+                                <li>Ate ~$40 worth of Chipotle for lunch every day.</li>
+                                <li>Greeted customers on the line and started their orders.</li>
+                                <li>Had strong opinions about guac.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <p>© 2026 Cynthia Anna Niaz</p>
+            </footer>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleCoursework() {
+            const additionalCourses = document.getElementById('additionalCourses');
+            const button = document.querySelector('.toggle-coursework');
+            
+            if (additionalCourses.classList.contains('expanded')) {
+                additionalCourses.classList.remove('expanded');
+                button.textContent = 'Show more courses';
+            } else {
+                additionalCourses.classList.add('expanded');
+                button.textContent = 'Show fewer courses';
+            }
+        }
+    </script>
+    <script>
+  const user = "cynthia.niaz.dev";
+  const domain = "gmail.com";
+  const link = document.getElementById("email-link");
+
+  link.href = "mailto:" + user + "@" + domain;
+</script>
+
 </body>
 </html>
