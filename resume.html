@@ -1075,6 +1075,26 @@
             });
         }, 1000);
 
+        // Section Progress Indicator
+        const sections = document.querySelectorAll('section[id]');
+        let currentSection = '';
+
+        window.addEventListener('scroll', () => {
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    if (currentSection !== section.id) {
+                        currentSection = section.id;
+                        // Add subtle animation to section when in view
+                        section.style.transition = 'all 0.3s ease';
+                    }
+                }
+            });
+        });
+
         // Toggle Coursework
         function toggleCoursework() {
             const additionalCourses = document.getElementById('additionalCourses');
