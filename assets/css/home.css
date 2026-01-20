@@ -185,7 +185,7 @@
 
 @media (max-width: 768px) {
     .hero {
-        padding: 5rem 0 3rem;
+        padding: 8rem 0 3rem; /* Increased from 5rem to 8rem for taller mobile nav */
         min-height: auto;
     }
 
