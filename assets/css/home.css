@@ -108,38 +108,88 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 2rem;
 }
 
+/* Decorative background elements */
 .hero-right::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle, rgba(125, 30, 62, 0.05), transparent 70%);
-    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    width: 110%;
+    height: 110%;
+    background: linear-gradient(135deg, rgba(125, 30, 62, 0.08), rgba(125, 30, 62, 0.02));
+    border-radius: 20px;
     z-index: 0;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(5deg);
+    width: 105%;
+    height: 105%;
+    border: 2px solid rgba(125, 30, 62, 0.15);
+    border-radius: 20px;
+    z-index: 0;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-right:hover::before {
+    transform: translate(-50%, -50%) rotate(-8deg) scale(1.02);
+}
+
+.hero-right:hover::after {
+    transform: translate(-50%, -50%) rotate(8deg) scale(1.02);
 }
 
 .profile-photo {
     width: 100%;
-    max-width: 350px;
+    max-width: 380px;
     height: auto;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12),
-                0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
     position: relative;
     z-index: 1;
+    
+    /* Enhanced shadow system */
+    box-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.05),
+        0 4px 8px rgba(125, 30, 62, 0.08),
+        0 12px 24px rgba(125, 30, 62, 0.12),
+        0 24px 48px rgba(125, 30, 62, 0.08);
+    
+    /* Sophisticated border treatment */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    outline: 1px solid rgba(125, 30, 62, 0.1);
+    outline-offset: -1px;
+    
+    /* Smooth transitions */
+    transition: 
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.3s ease;
+    
+    /* Subtle image enhancement */
+    filter: contrast(1.02) saturate(1.05);
 }
 
 .profile-photo:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(125, 30, 62, 0.15),
-                0 8px 20px rgba(125, 30, 62, 0.1);
+    transform: translateY(-12px) scale(1.02);
+    
+    /* Elevated shadow on hover */
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.06),
+        0 8px 16px rgba(125, 30, 62, 0.12),
+        0 20px 40px rgba(125, 30, 62, 0.16),
+        0 32px 64px rgba(125, 30, 62, 0.12);
+    
+    border-color: rgba(255, 255, 255, 1);
+    filter: contrast(1.03) saturate(1.08);
 }
 
 /* Scroll Down Indicator */
