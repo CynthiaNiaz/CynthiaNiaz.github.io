@@ -87,6 +87,7 @@ nav {
     border-bottom: 1px solid var(--light-gray);
     z-index: 1000;
     padding: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .nav-content {
@@ -105,10 +106,12 @@ nav {
     color: var(--wine);
     text-decoration: none;
     transition: all 0.3s ease;
+    letter-spacing: -0.3px;
 }
 
 .nav-logo:hover {
     color: var(--wine-dark);
+    transform: translateY(-1px);
 }
 
 .nav-links {
@@ -123,17 +126,18 @@ nav {
     font-weight: 400;
     transition: all 0.3s ease;
     position: relative;
+    padding: 0.25rem 0;
 }
 
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
     background: var(--wine);
-    transition: width 0.3s ease;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links a:hover::after,
@@ -162,6 +166,7 @@ nav {
     background: linear-gradient(90deg, var(--wine), var(--wine-light));
     z-index: 9999;
     transition: width 0.1s ease;
+    box-shadow: 0 1px 3px rgba(125, 30, 62, 0.3);
 }
 
 /* ============================================
@@ -185,7 +190,7 @@ nav {
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(125, 30, 62, 0.3);
 }
@@ -200,6 +205,10 @@ nav {
     background: var(--wine-dark);
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(125, 30, 62, 0.4);
+}
+
+.back-to-top:active {
+    transform: translateY(-1px);
 }
 
 /* ============================================
@@ -243,6 +252,7 @@ nav {
     font-size: 1.2rem;
     color: var(--wine);
     letter-spacing: 2px;
+    font-weight: 500;
 }
 
 @keyframes spin {
@@ -270,6 +280,17 @@ footer {
     from {
         opacity: 0;
         transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInCard {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -313,5 +334,15 @@ footer {
         width: 45px;
         height: 45px;
         font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .nav-content {
+        padding: 0.5rem 1rem;
     }
 }

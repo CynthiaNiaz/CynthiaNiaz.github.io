@@ -15,6 +15,7 @@
     color: var(--wine);
     font-weight: 600;
     margin-bottom: 1rem;
+    letter-spacing: -0.5px;
 }
 
 .page-header p {
@@ -25,22 +26,27 @@
     line-height: 1.8;
 }
 
-/* Projects Section */
+/* Sections */
 section {
-    padding: 3rem 0;
+    padding: 4rem 0;
+}
+
+section:first-of-type {
+    padding-top: 2rem;
 }
 
 h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
+    font-size: 2.25rem;
     color: var(--wine);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     font-weight: 600;
     position: relative;
-    padding-bottom: 0.75rem;
+    padding-bottom: 1rem;
     opacity: 0;
     transform: translateY(-20px);
     transition: all 0.6s ease;
+    letter-spacing: -0.5px;
 }
 
 h2.visible {
@@ -53,22 +59,25 @@ h2::after {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 50px;
-    height: 2px;
-    background: var(--wine);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--wine) 0%, rgba(125, 30, 62, 0.3) 100%);
+    border-radius: 2px;
 }
 
 /* Project Cards */
 .project-card {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid var(--light-gray);
-    border-radius: 2px;
-    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(125, 30, 62, 0.08);
+    border-radius: 8px;
+    padding: 2.5rem;
     margin-bottom: 2rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     opacity: 0;
     transform: translateY(30px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04),
+                0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .project-card.visible {
@@ -81,16 +90,18 @@ h2::after {
     position: absolute;
     top: 0;
     left: 0;
-    width: 3px;
+    width: 4px;
     height: 0;
-    background: var(--wine);
-    transition: height 0.3s ease;
+    background: linear-gradient(180deg, var(--wine) 0%, rgba(125, 30, 62, 0.5) 100%);
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px 0 0 8px;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(125, 30, 62, 0.15);
-    border-color: var(--wine);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(125, 30, 62, 0.12),
+                0 6px 16px rgba(125, 30, 62, 0.08);
+    border-color: rgba(125, 30, 62, 0.15);
 }
 
 .project-card:hover::before {
@@ -104,7 +115,7 @@ h2::after {
     align-items: baseline;
     margin-bottom: 0.75rem;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .project-title {
@@ -113,12 +124,16 @@ h2::after {
     color: var(--wine);
     font-weight: 600;
     margin: 0;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
 }
 
 .project-date {
     color: var(--wine);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 500;
+    opacity: 0.85;
+    white-space: nowrap;
 }
 
 /* Project Type */
@@ -128,6 +143,7 @@ h2::after {
     margin-bottom: 1rem;
     font-weight: 500;
     font-style: italic;
+    opacity: 0.9;
 }
 
 /* Project Description */
@@ -138,13 +154,18 @@ h2::after {
     margin-bottom: 1.5rem;
 }
 
+.project-description p {
+    margin-bottom: 0.75rem;
+}
+
 /* Project Highlights */
 .project-highlights {
     margin: 1.5rem 0;
-    padding: 1.25rem;
-    background: rgba(125, 30, 62, 0.03);
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(125, 30, 62, 0.03) 0%, rgba(125, 30, 62, 0.01) 100%);
     border-left: 3px solid var(--wine);
-    border-radius: 4px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .project-highlights strong {
@@ -152,17 +173,29 @@ h2::after {
     font-weight: 600;
     display: block;
     margin-bottom: 0.75rem;
+    font-size: 1.05rem;
 }
 
 .project-highlights ul {
     margin: 0;
     padding-left: 1.5rem;
+    list-style-type: none;
 }
 
 .project-highlights li {
     color: var(--charcoal);
     margin-bottom: 0.75rem;
     line-height: 1.7;
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+.project-highlights li::before {
+    content: '•';
+    position: absolute;
+    left: -1rem;
+    color: var(--wine);
+    font-weight: bold;
 }
 
 .project-highlights li:last-child {
@@ -173,27 +206,29 @@ h2::after {
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.75rem;
     margin: 1.5rem 0;
 }
 
 .tag {
     display: inline-block;
-    padding: 0.4rem 0.9rem;
+    padding: 0.5rem 1rem;
     background: rgba(125, 30, 62, 0.08);
     color: var(--wine-dark);
-    border-radius: 4px;
-    font-size: 0.85rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
     font-weight: 500;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(125, 30, 62, 0.12);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .tag:hover {
     background: var(--wine);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(125, 30, 62, 0.2);
+    box-shadow: 0 4px 8px rgba(125, 30, 62, 0.25);
+    border-color: var(--wine);
 }
 
 /* Project Links */
@@ -208,15 +243,16 @@ h2::after {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 1.5rem;
     background: var(--wine);
     color: white;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 6px;
     font-weight: 500;
     font-size: 0.95rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--wine);
+    box-shadow: 0 2px 4px rgba(125, 30, 62, 0.2);
 }
 
 .project-link:hover {
@@ -225,9 +261,18 @@ h2::after {
     box-shadow: 0 4px 12px rgba(125, 30, 62, 0.3);
 }
 
+.project-link:active {
+    transform: translateY(0);
+}
+
 .project-link svg {
     width: 16px;
     height: 16px;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover svg {
+    transform: scale(1.1);
 }
 
 .project-link.secondary {
@@ -240,10 +285,12 @@ h2::after {
     background: rgba(125, 30, 62, 0.05);
 }
 
-/* Responsive Design */
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
 @media (max-width: 768px) {
     .page-header {
-        padding: 9rem 0 3rem; /* Increased from 6rem to 9rem for taller mobile nav */
+        padding: 9rem 0 3rem;
     }
 
     .page-header h1 {
@@ -252,10 +299,20 @@ h2::after {
 
     .page-header p {
         font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
     }
 
     .project-card {
-        padding: 1.5rem;
+        padding: 2rem;
     }
 
     .project-title {
@@ -269,7 +326,7 @@ h2::after {
     }
 
     .project-highlights {
-        padding: 1rem;
+        padding: 1.25rem;
     }
 
     .project-links {
@@ -280,8 +337,34 @@ h2::after {
         width: 100%;
         justify-content: center;
     }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 8rem 0 2.5rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .page-header p {
+        font-size: 1rem;
+    }
 
     h2 {
         font-size: 1.75rem;
+    }
+
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .project-title {
+        font-size: 1.35rem;
+    }
+
+    .project-highlights {
+        padding: 1rem;
     }
 }
