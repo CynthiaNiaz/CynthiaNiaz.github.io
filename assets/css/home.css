@@ -57,6 +57,72 @@
     line-height: 1.8;
 }
 
+/* Quote Section */
+.quote-container {
+    margin: 2.5rem 0 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(125, 30, 62, 0.03), rgba(125, 30, 62, 0.01));
+    border-left: 3px solid var(--wine);
+    border-radius: 8px;
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.quote-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.quote-item {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+.quote-item.active {
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+}
+
+.quote-mark-open {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--wine);
+    opacity: 0.3;
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    line-height: 1;
+}
+
+.quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+}
+
+.quote-author {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--wine);
+    font-weight: 500;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.quote-author::before {
+    content: '— ';
+}
+
 /* Contact Links */
 .contact-links {
     display: flex;
@@ -277,6 +343,20 @@
     .contact-links {
         justify-content: center;
     }
+
+    .quote-container {
+        padding: 1.5rem;
+        min-height: 100px;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+    }
+
+    .quote-author {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -316,6 +396,16 @@
     .scroll-indicator {
         display: none;
     }
+
+    .quote-container {
+        margin: 2rem 0 1.5rem;
+        padding: 1.25rem;
+        min-height: 90px;
+    }
+
+    .quote-text {
+        font-size: 1.05rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -338,5 +428,25 @@
     .contact-links a {
         padding: 0.65rem 1.25rem;
         font-size: 0.95rem;
+    }
+
+    .quote-container {
+        padding: 1rem;
+        min-height: 80px;
+    }
+
+    .quote-text {
+        font-size: 1rem;
+        padding-left: 0.75rem;
+    }
+
+    .quote-mark-open {
+        font-size: 2.5rem;
+        top: -0.25rem;
+        left: -0.25rem;
+    }
+
+    .quote-author {
+        font-size: 0.85rem;
     }
 }
