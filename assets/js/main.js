@@ -1,3 +1,9 @@
+console.log("main.js loaded on", window.location.pathname);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key.length === 1) console.log("keydown:", e.key);
+});
+
 /* ============================================
    MAIN JAVASCRIPT - SHARED ACROSS ALL PAGES
    ============================================ */
