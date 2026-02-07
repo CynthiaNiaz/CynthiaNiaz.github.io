@@ -23,7 +23,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/main.css">
@@ -56,360 +56,220 @@
 
     <!-- Page Content -->
     <div class="container">
-        <div class="page-header">
+        <div class="page-intro">
             <h1>Resume</h1>
-            <p>Education, professional experience, and campus involvement</p>
-            <a href="assets/documents/Cynthia_Niaz_Resume.pdf" class="download-resume-btn" download>
+        </div>
+
+        <!-- Education -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="entry">
+                <div class="entry-logo">
+                    <img src="assets/images/logos/carleton-logo.png" alt="Carleton College"> 
+                </div>
+                <div class="entry-content">
+                    <div class="entry-header">
+                        <h3 class="entry-title">Carleton College</h3>
+                        <div class="entry-meta">
+                            <span class="entry-date">2023 – 2027</span>
+                        </div>
+                    </div>
+                    <div class="entry-subrow">
+                        <span class="entry-subtitle">Bachelor of Arts in Physics</span>
+                        <span class="entry-location">Northfield, MN</span>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4 class="detail-label">Relevant Coursework</h4>
+                        <p class="detail-text">
+                            Electricity and Magnetism, Analytical and Computational Mechanics, Atomic and Nuclear Physics, Thermodynamics, Ordinary Differential Equations, Linear Algebra, Electronics, Data Structures, Software Design, Mathematical Structures, Money and Banking
+                        </p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4 class="detail-label">Activities</h4>
+                        <p class="detail-text">Varsity Cross Country & Track and Field · Society of Physics Students</p>
+                    </div>
+
+                    <div class="detail-section">
+                        <h4 class="detail-label">Campus Employment</h4>
+
+                        <div class="sub-entry">
+                            <div class="sub-entry-header">
+                                <h5 class="sub-entry-title">Makerspace Manager</h5>
+                                <span class="sub-entry-date">September 2025 – Present</span>
+                            </div>
+                            <p class="sub-entry-text">Guide students through prototyping with 3D printers, laser cutters, and electronics. Provide technical support on CAD, soldering, and rapid-prototyping workflows.</p>
+                        </div>
+
+                        <div class="sub-entry">
+                            <div class="sub-entry-header">
+                                <h5 class="sub-entry-title">FOCUS Mentor</h5>
+                                <span class="sub-entry-date">January 2026 – Present</span>
+                            </div>
+                            <p class="sub-entry-text">Mentor underrepresented STEM students in introductory physics, classical mechanics, and electricity & magnetism through one-on-one and small-group sessions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+            <h2>Experience</h2>
+
+            <div class="entry">
+                <div class="entry-logo">
+                    <img src="assets/images/logos/oracle-logo.png" alt="Oracle">
+                </div>
+                <div class="entry-content">
+                    <div class="entry-header">
+                        <h3 class="entry-title">Oracle</h3>
+                        <div class="entry-meta">
+                            <span class="entry-date">December 2025 – Present</span>
+                        </div>
+                    </div>
+                    <div class="entry-subrow">
+                        <span class="entry-subtitle">Data and Analytics Extern</span>
+                    </div>
+                    <p class="entry-description">Built market intelligence dashboards integrating store-level data with demographic and competitive indicators. Designed a weighted scoring framework for market attractiveness with interactive controls. Developed data pipelines to acquire, clean, and normalize large external datasets for downstream analytics.</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-logo">
+                    <img src="assets/images/logos/district-court-mn-logo.jpeg" alt="U.S. District Court">
+                </div>
+                <div class="entry-content">
+                    <div class="entry-header">
+                        <h3 class="entry-title">U.S. District Court, District of Minnesota</h3>
+                        <div class="entry-meta">
+                            <span class="entry-date">June 2025 – September 2025</span>
+                        </div>
+                    </div>
+                    <div class="entry-subrow">
+                        <span class="entry-subtitle">Judicial Intern</span>
+                        <span class="entry-location">Minneapolis, MN</span>
+                    </div>
+                    <p class="entry-description">Served in the chambers of Bankruptcy Judge William J. Fisher, organizing case materials and supporting daily operations. Observed federal bankruptcy hearings and contributed to community engagement initiatives including Court Camp.</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-logo">
+                    <img src="assets/images/logos/3M-logo.png" alt="3M">
+                </div>
+                <div class="entry-content">
+                    <div class="entry-header">
+                        <h3 class="entry-title">3M</h3>
+                        <div class="entry-meta">
+                            <span class="entry-date">December 2024</span>
+                        </div>
+                    </div>
+                    <div class="entry-subrow">
+                        <span class="entry-subtitle">Extern</span>
+                        <span class="entry-location">Maplewood, MN</span>
+                    </div>
+                    <p class="entry-description">Engaged with R&D teams to understand innovation processes from concept through commercialization. Delivered a product analysis presentation evaluating design decisions, market context, and potential applications.</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-logo">
+                    <img src="assets/images/logos/wells-fargo-logo.png" alt="Wells Fargo"> 
+                </div>
+                <div class="entry-content">
+                    <div class="entry-header">
+                        <h3 class="entry-title">Wells Fargo</h3>
+                        <div class="entry-meta">
+                            <span class="entry-date">June 2024 – September 2025</span>
+                        </div>
+                    </div>
+                    <div class="entry-subrow">
+                        <span class="entry-subtitle">Bank Teller</span>
+                        <span class="entry-location">Wayzata, MN</span>
+                    </div>
+                    <p class="entry-description">Processed high-volume financial transactions with strict adherence to compliance and security procedures. Provided customer service support including account assistance and fraud prevention.</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-logo">
+                    <img src="assets/images/logos/target-logo.png" alt="Target"> 
+                </div>
+                <div class="entry-content">
+                    <div class="entry-header">
+                        <h3 class="entry-title">Target</h3>
+                        <div class="entry-meta">
+                            <span class="entry-date">June 2023 – September 2023</span>
+                        </div>
+                    </div>
+                    <div class="entry-subrow">
+                        <span class="entry-subtitle">Team Member</span>
+                        <span class="entry-location">Waconia, MN</span>
+                    </div>
+                    <p class="entry-description">Managed inventory and merchandising for the produce section, including order fulfillment and stock rotation.</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-logo">
+                    <img src="assets/images/logos/chipotle-logo.png" alt="Chipotle"> 
+                </div>
+                <div class="entry-content">
+                    <div class="entry-header">
+                        <h3 class="entry-title">Chipotle</h3>
+                        <div class="entry-meta">
+                            <span class="entry-date">June 2022 – September 2022</span>
+                        </div>
+                    </div>
+                    <div class="entry-subrow">
+                        <span class="entry-subtitle">Crew Member</span>
+                        <span class="entry-location">Chanhassen, MN</span>
+                    </div>
+                    <p class="entry-description">Handled customer-facing service during peak hours, managing order accuracy and efficiency in a fast-paced environment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <div class="skill-row">
+                    <span class="skill-label">Programming</span>
+                    <span class="skill-items">Python, Java, C, SQL, HTML/CSS, JavaScript</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Tools</span>
+                    <span class="skill-items">Git, Tableau, Power BI, Excel, LaTeX, MATLAB</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Data & Analytics</span>
+                    <span class="skill-items">Statistical Modeling, Data Visualization, Machine Learning</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Scientific</span>
+                    <span class="skill-items">Computational Physics, Electronics Design, CAD, 3D Printing, Laser Cutting</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Languages</span>
+                    <span class="skill-items">English (Native), Persian (Proficient), French (Proficient)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download -->
+        <div class="download-section">
+            <a href="assets/documents/Cynthia_Niaz_Resume.pdf" class="download-btn" download>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
                 </svg>
-                Download Resume
+                Download PDF
             </a>
         </div>
-
-        <section id="education">
-            <h2>Education</h2>
-            <div class="card">
-                <div class="company-logo">
-                    <img src="assets/images/logos/carleton-logo.png" alt="Carleton College"> 
-                </div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3 class="card-title">Bachelor of Arts in Physics</h3>
-                        <span class="card-date">2023 - 2027</span>
-                    </div>
-                    <p class="card-subtitle">Carleton College, Northfield, MN</p>
-                    <div class="card-description">
-                        <div class="coursework">
-                            <p><strong>Relevant Coursework:</strong></p>
-                            <p class="coursework-list">
-                              Electricity and Magnetism, Analytical and Computational Mechanics, Atomic and Nuclear Physics
-
-                            </p>
-                            <div class="coursework-hidden" id="additionalCourses">
-                                <p class="coursework-list">
-                                    Thermodynamics, Linear Algebra, Ordinary Differential Equations, Electronics, Data Structures, Software Design, Mathematical Structures, Money and Banking
-                                </p>
-                            </div>
-                            <button class="toggle-coursework" onclick="toggleCoursework()">
-                                Show more courses
-                            </button>
-                        </div>
-
-                        <div class="activities">
-                            <p><strong>Activities & Involvement:</strong></p>
-                            <div class="activities-list">
-
-                                <!-- Track & Field -->
-                                <div class="activity-item">
-                                    <div class="activity-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <!-- head -->
-                                        <circle cx="13" cy="4" r="2"/>
-
-                                        <!-- high ponytail (left) -->
-                                        <path d="M11 3c-1.5.4-2.8 1.4-3.4 2.8 1-.3 2-.2 2.8.2.3-1 .5-1.9.6-3z"/>
-
-                                        <!-- body -->
-                                        <path d="M14 7c-.6-.6-1.4-1-2.3-1h-1c-.8 0-1.5.3-2 .8L6 9.5V13h2v-2.3l1.5-1.2-1.3 5.7-3.2 4.6 1.7 1.2 3.7-5.3 2 2.1V22h2v-5.5l-2.1-2.3.7-3 2.4 2.1c.8.7 1.9 1.1 3 1.1v-2c-.6 0-1.1-.2-1.5-.6L14 7z"/>
-                                        </svg>
-
-                                    </div>
-                                    <div class="activity-content">
-                                        <div class="activity-title">Varsity Cross Country & Track and Field</div>
-                                        <div class="activity-description">Compete at the collegiate level in distance events.</div>
-                                    </div>
-                                </div>
-
-                                <!-- Physics -->
-                                <div class="activity-item">
-                                    <div class="activity-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="12" r="1.8"/>
-
-                                        <ellipse cx="12" cy="12" rx="9" ry="4"
-                                                fill="none" stroke="currentColor" stroke-width="1.6"/>
-
-                                        <ellipse cx="12" cy="12" rx="9" ry="4"
-                                                fill="none" stroke="currentColor" stroke-width="1.6"
-                                                transform="rotate(60 12 12)"/>
-
-                                        <ellipse cx="12" cy="12" rx="9" ry="4"
-                                                fill="none" stroke="currentColor" stroke-width="1.6"
-                                                transform="rotate(120 12 12)"/>
-                                        </svg>
-
-                                    </div>
-                                    <div class="activity-content">
-                                        <div class="activity-title">Society of Physics Students</div>
-                                        <div class="activity-description">Active member of the physics community.</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="campus-roles">
-                            <p><strong>Campus Employment:</strong></p>
-                            
-                            <div class="campus-role-item">
-                                <div class="campus-role-header">
-                                    <div class="campus-role-title">Makerspace Manager</div>
-                                    <div class="campus-role-date">September 2025 – Present</div>
-                                </div>
-                                <div class="campus-role-subtitle">Makerspace</div>
-                                <div class="campus-role-description">
-                                    <p>Guided students through design and fabrication of prototypes using 3D printers, laser cutters, and electronics. Maintained equipment and provided technical support on CAD, soldering, and rapid-prototyping workflows.</p>
-                                </div>
-                            </div>
-
-                            <div class="campus-role-item">
-                                <div class="campus-role-header">
-                                    <div class="campus-role-title">FOCUS Mentor</div>
-                                    <div class="campus-role-date">January 2026 – Present</div>
-                                </div>
-                                <div class="campus-role-subtitle">FOCUS Program</div>
-                                <div class="campus-role-description">
-                                    <p>Mentored underrepresented STEM students in introductory physics, classical mechanics, and electricity & magnetism. Provided one-on-one and small-group academic support, adapting explanations to different learning styles.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Professional Experience</h2>
-            
-            <div class="card">
-                <div class="company-logo">
-                  <img src="assets/images/logos/oracle-logo.png" alt="Oracle">
-                </div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3 class="card-title">Oracle</h3>
-                        <span class="card-date">December 2025 – Present</span>
-                    </div>
-                    <p class="card-subtitle">Data and Analytics Extern </p>
-                    <div class="card-description">
-                        <p>Built market intelligence dashboards, integrating store-level data with public demographic and competitive indicators to support location and expansion analysis. Designed and implemented a weighted market attractiveness scoring framework with interactive controls, enabling stakeholders to explore tradeoffs across multiple market factors. Developed data pipelines to acquire, clean, and normalize large external datasets (including programmatic web data collection and public APIs) for downstream analytics. Translated ambiguous business questions into structured analytical models and documented, reusable analytics artifacts for stakeholder review.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="company-logo">
-                    <img src="assets/images/logos/district-court-mn-logo.jpeg" alt="U.S. District Court">
-                </div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3 class="card-title">U.S. District Court, District of Minnesota</h3>
-                        <span class="card-date">June 2025 - September 2025</span>
-                    </div>
-                    <p class="card-subtitle">Judicial Intern • Minneapolis, MN</p>
-                    <div class="card-description">
-                        <p>Served in the chambers of Bankruptcy Judge William J. Fisher, assisting staff with organizing case materials and supporting daily operational workflows. Observed federal bankruptcy hearings and proceedings, gaining insight into courtroom procedures and judicial decision-making. Contributed to community engagement initiatives, including Court Camp and The Supreme Court and Your Hometown program. Coordinated administrative and logistical tasks to help ensure smooth courtroom and chambers operations.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="company-logo">
-                    <img src="assets/images/logos/3M-logo.png" alt="3M">
-                </div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3 class="card-title">3M</h3>
-                        <span class="card-date">December 2024</span>
-                    </div>
-                    <p class="card-subtitle">Extern • Maplewood, MN</p>
-                    <div class="card-description">
-                        <p>Engaged with R&D teams to understand 3M's innovation and product development processes from early concept through commercialization. Delivered a product analysis presentation on a Solventum offering, evaluating design decisions, market context, and potential applications.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="early-experience">
-            <h2>Early Experience</h2>
-            
-            <div class="card">
-                <div class="company-logo">
-                    <img src="assets/images/logos/wells-fargo-logo.png" alt="Wells Fargo"> 
-                </div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3 class="card-title">Wells Fargo</h3>
-                        <span class="card-date">June 2024 – September 2025</span>
-                    </div>
-                    <p class="card-subtitle">Bank Teller • Wayzata, MN</p>
-                    <div class="card-description">
-                        <p>Processed high-volume financial transactions with accuracy and strict adherence to compliance and security procedures. Delivered customer service support including account assistance, fraud prevention, and customer verification.</p>
-                    </div>
-                </div>
-            </div>
-             <div class="card">
-                <div class="company-logo">
-                    <img src="assets/images/logos/target-logo.png" alt="Target"> 
-                </div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3 class="card-title">Target</h3>
-                        <span class="card-date">June 2023 – September 2023</span>
-                    </div>
-                    <p class="card-subtitle">Team Member • Waconia, MN</p>
-                    <div class="card-description">
-                        <p>Managed inventory and merchandising for the produce section, including order fulfillment and stock rotation. Provided customer assistance throughout the store and learned retail operations and communication protocols.</p>
-                    </div>
-                </div>
-            </div>
-             <div class="card">
-                <div class="company-logo">
-                    <img src="assets/images/logos/chipotle-logo.png" alt="Chipotle"> 
-                </div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <h3 class="card-title">Chipotle</h3>
-                        <span class="card-date">June 2022 – September 2022</span>
-                    </div>
-                    <p class="card-subtitle">Crew Member • Chanhassen, MN</p>
-                    <div class="card-description">
-                        <p>Handled customer-facing service during peak hours, managing order accuracy and efficiency in a fast-paced food service environment while maintaining quality and safety standards.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>Skills & Expertise</h2>
-            
-            <div class="skills-grid">
-                <!-- Programming Languages -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="16 18 22 12 16 6"></polyline>
-                                <polyline points="8 6 2 12 8 18"></polyline>
-                            </svg>
-                        </div>
-                        <h3>Programming Languages</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                    </div>
-                </div>
-
-                <!-- Tools & Technologies -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                            </svg>
-                        </div>
-                        <h3>Tools & Technologies</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Excel</span>
-                        <span class="skill-tag">LaTeX</span>
-                        <span class="skill-tag">MATLAB</span>
-                    </div>
-                </div>
-
-                <!-- Data & Analytics -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="18" y1="20" x2="18" y2="10"></line>
-                                <line x1="12" y1="20" x2="12" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
-                            </svg>
-                        </div>
-                        <h3>Data & Analytics</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Data Analysis</span>
-                        <span class="skill-tag">Statistical Modeling</span>
-                        <span class="skill-tag">Data Visualization</span>
-                        <span class="skill-tag">Machine Learning</span>
-                    </div>
-                </div>
-
-                <!-- Scientific & Technical -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 2v6m0 0L6 5m3 3 3-3M9 22v-6m0 0-3 3m3-3 3 3m6-18v6m0 0-3-3m3 3 3-3m-3 18v-6m0 0-3 3m3-3 3 3"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                        </div>
-                        <h3>Scientific & Technical</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Computational Physics</span>
-                        <span class="skill-tag">Electronics Design</span>
-                        <span class="skill-tag">CAD</span>
-                        <span class="skill-tag">3D Printing</span>
-                        <span class="skill-tag">Laser Cutting</span>
-                    </div>
-                </div>
-
-                <!-- Professional Skills -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                        </div>
-                        <h3>Professional Skills</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Project Management</span>
-                        <span class="skill-tag">Technical Communication</span>
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Collaboration</span>
-                    </div>
-                </div>
-
-                <!-- Languages -->
-                <div class="skill-category">
-                    <div class="skill-category-header">
-                        <div class="skill-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                        </div>
-                        <h3>Languages</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">English (Native)</span>
-                        <span class="skill-tag">Persian (Proficient)</span>
-                        <span class="skill-tag">French (Proficient)</span>
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <footer>
             <p>© 2026 Cynthia Anna Niaz</p>
@@ -421,6 +281,5 @@
 
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/resume.js"></script>
 </body>
 </html>

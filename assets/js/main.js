@@ -640,7 +640,7 @@ const observer = new IntersectionObserver((entries) => {
 // Observe all cards and sections after page load
 setTimeout(() => {
     // Observe cards
-    document.querySelectorAll('.card, .project-card').forEach(card => {
+    document.querySelectorAll('.card, .project-card, .entry, .project').forEach(card => {
         observer.observe(card);
     });
 
