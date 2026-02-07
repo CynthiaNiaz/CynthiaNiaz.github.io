@@ -53,19 +53,19 @@
 .summary {
     font-size: 1.05rem;
     color: var(--charcoal);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     line-height: 1.8;
 }
 
 /* Quote Section */
 .quote-container {
-    margin: 2.5rem 0 2rem;
-    padding: 2rem;
+    margin: 1.5rem 0 1rem;
+    padding: 1.25rem 1.5rem;
     background: linear-gradient(135deg, rgba(125, 30, 62, 0.03), rgba(125, 30, 62, 0.01));
     border-left: 3px solid var(--wine);
     border-radius: 8px;
     position: relative;
-    min-height: 120px;
+    min-height: 80px;
     display: flex;
     align-items: center;
 }
@@ -102,21 +102,21 @@
 
 .quote-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-style: italic;
     color: var(--charcoal);
-    line-height: 1.7;
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    padding-left: 1.25rem;
 }
 
 .quote-author {
     font-family: 'Work Sans', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--wine);
     font-weight: 500;
     text-align: right;
-    padding-right: 1rem;
+    padding-right: 0.5rem;
 }
 
 .quote-author::before {
@@ -127,7 +127,7 @@
 .contact-links {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.25rem;
     flex-wrap: wrap;
 }
 
