@@ -1,370 +1,133 @@
 /* ============================================
-   PROJECTS PAGE STYLES
+   404 PAGE
    ============================================ */
 
-/* Page Header */
-.page-header {
-    padding: 8rem 0 4rem;
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    animation: fadeIn 1s ease-out;
+    padding: 2rem;
 }
 
-.page-header h1 {
+.error-content {
+    animation: fadeIn 0.8s ease-out;
+    max-width: 500px;
+}
+
+.error-code {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
+    font-size: 8rem;
+    font-weight: 600;
+    color: var(--wine);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    opacity: 0.15;
+}
+
+.error-content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
     color: var(--wine);
     font-weight: 600;
     margin-bottom: 1rem;
-    letter-spacing: -0.5px;
-}
-
-.page-header p {
-    font-size: 1.2rem;
-    color: var(--gray);
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
-
-/* Sections */
-section {
-    padding: 4rem 0;
-}
-
-section:first-of-type {
-    padding-top: 2rem;
-}
-
-h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.25rem;
-    color: var(--wine);
-    margin-bottom: 2.5rem;
-    font-weight: 600;
-    position: relative;
-    padding-bottom: 1rem;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: all 0.6s ease;
-    letter-spacing: -0.5px;
-}
-
-h2.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--wine) 0%, rgba(125, 30, 62, 0.3) 100%);
-    border-radius: 2px;
-}
-
-/* Project Cards */
-.project-card {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(125, 30, 62, 0.08);
-    border-radius: 8px;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    opacity: 0;
-    transform: translateY(30px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04),
-                0 1px 3px rgba(0, 0, 0, 0.02);
-}
-
-.project-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 0;
-    background: linear-gradient(180deg, var(--wine) 0%, rgba(125, 30, 62, 0.5) 100%);
-    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 8px 0 0 8px;
-}
-
-.project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 40px rgba(125, 30, 62, 0.12),
-                0 6px 16px rgba(125, 30, 62, 0.08);
-    border-color: rgba(125, 30, 62, 0.15);
-}
-
-.project-card:hover::before {
-    height: 100%;
-}
-
-/* Project Header */
-.project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 0.75rem;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.project-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
-    color: var(--wine);
-    font-weight: 600;
-    margin: 0;
     letter-spacing: -0.3px;
-    line-height: 1.2;
 }
 
-.project-date {
-    color: var(--wine);
-    font-size: 0.95rem;
-    font-weight: 500;
-    opacity: 0.85;
-    white-space: nowrap;
-}
-
-/* Project Type */
-.project-type {
-    color: var(--charcoal);
+.error-content p {
     font-size: 1rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
-    font-style: italic;
-    opacity: 0.9;
-}
-
-/* Project Description */
-.project-description {
-    color: var(--charcoal);
-    font-size: 1rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-}
-
-.project-description p {
-    margin-bottom: 0.75rem;
-}
-
-/* Project Highlights */
-.project-highlights {
-    margin: 1.5rem 0;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, rgba(125, 30, 62, 0.03) 0%, rgba(125, 30, 62, 0.01) 100%);
-    border-left: 3px solid var(--wine);
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-}
-
-.project-highlights strong {
-    color: var(--wine);
-    font-weight: 600;
-    display: block;
-    margin-bottom: 0.75rem;
-    font-size: 1.05rem;
-}
-
-.project-highlights ul {
-    margin: 0;
-    padding-left: 1.5rem;
-    list-style-type: none;
-}
-
-.project-highlights li {
-    color: var(--charcoal);
-    margin-bottom: 0.75rem;
+    color: var(--gray);
     line-height: 1.7;
-    position: relative;
-    padding-left: 0.5rem;
+    margin-bottom: 2rem;
 }
 
-.project-highlights li::before {
-    content: '•';
-    position: absolute;
-    left: -1rem;
-    color: var(--wine);
-    font-weight: bold;
-}
-
-.project-highlights li:last-child {
-    margin-bottom: 0;
-}
-
-/* Project Tags */
-.project-tags {
+.buttons {
     display: flex;
-    flex-wrap: wrap;
     gap: 0.75rem;
-    margin: 1.5rem 0;
-}
-
-.tag {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: rgba(125, 30, 62, 0.08);
-    color: var(--wine-dark);
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(125, 30, 62, 0.12);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-}
-
-.tag:hover {
-    background: var(--wine);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(125, 30, 62, 0.25);
-    border-color: var(--wine);
-}
-
-/* Project Links */
-.project-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
-.project-link {
+.btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: var(--wine);
-    color: white;
+    background: white;
+    color: var(--wine);
     text-decoration: none;
     border-radius: 6px;
+    border: 1px solid var(--wine);
+    font-family: 'Work Sans', sans-serif;
     font-weight: 500;
     font-size: 0.95rem;
+    cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid var(--wine);
-    box-shadow: 0 2px 4px rgba(125, 30, 62, 0.2);
+    box-shadow: 0 2px 4px rgba(125, 30, 62, 0.1);
 }
 
-.project-link:hover {
-    background: var(--wine-dark);
+.btn:hover {
+    background: var(--wine);
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(125, 30, 62, 0.3);
+    box-shadow: 0 4px 12px rgba(125, 30, 62, 0.25);
 }
 
-.project-link:active {
+.btn:active {
     transform: translateY(0);
 }
 
-.project-link svg {
+.btn svg {
     width: 16px;
     height: 16px;
-    transition: all 0.3s ease;
 }
 
-.project-link:hover svg {
-    transform: scale(1.1);
+.btn-secondary {
+    background: transparent;
+    border-color: var(--light-gray);
+    color: var(--charcoal);
+    box-shadow: none;
 }
 
-.project-link.secondary {
-    background: white;
-    color: var(--wine);
-    border: 1px solid var(--wine);
+.btn-secondary:hover {
+    background: var(--charcoal);
+    color: white;
+    border-color: var(--charcoal);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.project-link.secondary:hover {
-    background: rgba(125, 30, 62, 0.05);
+/* Hide decoration div if it exists */
+.decoration { display: none; }
+
+/* Hide footer on 404 */
+footer { display: none; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
+/* ---- Responsive ---- */
+
 @media (max-width: 768px) {
-    .page-header {
-        padding: 9rem 0 3rem;
-    }
+    .error-code { font-size: 6rem; }
+    .error-content h1 { font-size: 1.8rem; }
 
-    .page-header h1 {
-        font-size: 2.5rem;
-    }
-
-    .page-header p {
-        font-size: 1.1rem;
-        padding: 0 1rem;
-    }
-
-    section {
-        padding: 3rem 0;
-    }
-
-    h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    .project-card {
-        padding: 2rem;
-    }
-
-    .project-title {
-        font-size: 1.5rem;
-    }
-
-    .project-header {
+    .buttons {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
+        align-items: center;
     }
 
-    .project-highlights {
-        padding: 1.25rem;
-    }
-
-    .project-links {
-        flex-direction: column;
-    }
-
-    .project-link {
+    .btn {
         width: 100%;
+        max-width: 250px;
         justify-content: center;
     }
 }
 
 @media (max-width: 480px) {
-    .page-header {
-        padding: 8rem 0 2.5rem;
-    }
-
-    .page-header h1 {
-        font-size: 2rem;
-    }
-
-    .page-header p {
-        font-size: 1rem;
-    }
-
-    h2 {
-        font-size: 1.75rem;
-    }
-
-    .project-card {
-        padding: 1.5rem;
-    }
-
-    .project-title {
-        font-size: 1.35rem;
-    }
-
-    .project-highlights {
-        padding: 1rem;
-    }
+    .error-code { font-size: 5rem; }
+    .error-content h1 { font-size: 1.5rem; }
 }
