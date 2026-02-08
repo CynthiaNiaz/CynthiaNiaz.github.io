@@ -110,7 +110,7 @@ h2.visible {
 
 .entry-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     color: var(--wine);
     font-weight: 600;
     line-height: 1.3;
@@ -138,7 +138,7 @@ h2.visible {
 }
 
 .entry-subtitle {
-    font-size: 0.98rem;
+    font-size: 1rem;
     color: var(--charcoal);
     line-height: 1.4;
 }
@@ -154,9 +154,9 @@ h2.visible {
 }
 
 .entry-description {
-    font-size: 0.98rem;
+    font-size: 1rem;
     color: var(--charcoal);
-    line-height: 1.75;
+    line-height: 1.8;
 }
 
 /* ---- Detail sections (inside education card) ---- */
@@ -169,7 +169,7 @@ h2.visible {
 
 h4.detail-label {
     font-family: 'Work Sans', sans-serif;
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     font-weight: 600;
     color: var(--wine);
     margin: 0 0 0.3rem;
@@ -178,9 +178,9 @@ h4.detail-label {
 }
 
 .detail-text {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--charcoal);
-    line-height: 1.65;
+    line-height: 1.75;
     margin: 0;
 }
 
@@ -202,7 +202,7 @@ h4.detail-label {
 
 h5.sub-entry-title {
     font-family: 'Work Sans', sans-serif;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: var(--charcoal);
     margin: 0;
@@ -217,7 +217,7 @@ h5.sub-entry-title {
 }
 
 .sub-entry-text {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: var(--charcoal);
     line-height: 1.65;
     margin: 0;
@@ -252,15 +252,15 @@ h5.sub-entry-title {
 .skill-label {
     flex-shrink: 0;
     width: 125px;
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     font-weight: 500;
     color: var(--wine);
 }
 
 .skill-items {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--charcoal);
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 /* ---- Download button (bottom) ---- */
