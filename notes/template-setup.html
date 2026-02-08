@@ -101,30 +101,30 @@
 
                 <p>Here's how the template is organized:</p>
 
-                <pre><code>&#9500;&#9472;&#9472; index.html              &#8592; Home page
-&#9500;&#9472;&#9472; resume.html             &#8592; Resume page
-&#9500;&#9472;&#9472; projects.html           &#8592; Projects page
-&#9500;&#9472;&#9472; notes.html              &#8592; Notes index
-&#9500;&#9472;&#9472; notes/                  &#8592; Individual note pages
-&#9474;   &#9492;&#9472;&#9472; example-note.html
-&#9500;&#9472;&#9472; 404.html                &#8592; Error page
-&#9492;&#9472;&#9472; assets/
-    &#9500;&#9472;&#9472; css/
-    &#9474;   &#9500;&#9472;&#9472; main.css        &#8592; Shared styles (nav, footer, variables)
-    &#9474;   &#9500;&#9472;&#9472; home.css        &#8592; Home page only
-    &#9474;   &#9500;&#9472;&#9472; resume.css      &#8592; Resume page only
-    &#9474;   &#9500;&#9472;&#9472; projects.css    &#8592; Projects page only
-    &#9474;   &#9500;&#9472;&#9472; notes.css       &#8592; Notes index only
-    &#9474;   &#9500;&#9472;&#9472; note-page.css   &#8592; Individual note layout
-    &#9474;   &#9492;&#9472;&#9472; 404.css         &#8592; Error page only
-    &#9500;&#9472;&#9472; js/
-    &#9474;   &#9500;&#9472;&#9472; main.js         &#8592; Shared (scroll, nav, animations)
-    &#9474;   &#9500;&#9472;&#9472; home.js         &#8592; Email obfuscation, parallax
-    &#9474;   &#9492;&#9472;&#9472; quotes.js       &#8592; Quote rotation
-    &#9500;&#9472;&#9472; documents/              &#8592; PDFs (resume, papers)
-    &#9492;&#9472;&#9472; images/
-        &#9500;&#9472;&#9472; logos/              &#8592; Company logos
-        &#9492;&#9472;&#9472; personal/           &#8592; Profile photo</code></pre>
+                <pre><code>├── index.html              ← Home page
+├── resume.html             ← Resume page
+├── projects.html           ← Projects page
+├── notes.html              ← Notes index
+├── notes/                  ← Individual note pages
+│   └── example-note.html
+├── 404.html                ← Error page
+└── assets/
+    ├── css/
+    │   ├── main.css        ← Shared styles (nav, footer, variables)
+    │   ├── home.css        ← Home page only
+    │   ├── resume.css      ← Resume page only
+    │   ├── projects.css    ← Projects page only
+    │   ├── notes.css       ← Notes index only
+    │   ├── note-page.css   ← Individual note layout
+    │   └── 404.css         ← Error page only
+    ├── js/
+    │   ├── main.js         ← Shared (scroll, nav, animations)
+    │   ├── home.js         ← Email obfuscation, parallax
+    │   └── quotes.js       ← Quote rotation
+    ├── documents/              ← PDFs (resume, papers)
+    └── images/
+        ├── logos/              ← Company logos
+        └── personal/           ← Profile photo</code></pre>
 
                 <p>
                     Each page has its own CSS file. <code>main.css</code> handles everything shared &mdash; the nav bar, footer, colors, and base typography. If you want to change the look of just the resume page, you only touch <code>resume.css</code>.
