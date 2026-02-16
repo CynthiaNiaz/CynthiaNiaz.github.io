@@ -33,6 +33,8 @@ body {
     overflow-x: hidden;
     position: relative;
     cursor: default;
+    /* Add padding to account for fixed nav */
+    padding-top: 80px;
 }
 
 a, button {
@@ -302,6 +304,11 @@ footer {
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 768px) {
+    /* Increase padding for taller mobile nav */
+    body {
+        padding-top: 110px;
+    }
+
     nav {
         padding: 0.75rem 0;
     }
@@ -338,6 +345,11 @@ footer {
 }
 
 @media (max-width: 480px) {
+    /* Even more padding for very small screens */
+    body {
+        padding-top: 120px;
+    }
+
     .container {
         padding: 0 1rem;
     }
