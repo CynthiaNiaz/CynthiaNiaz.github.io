@@ -302,9 +302,9 @@ footer {
    RESPONSIVE DESIGN
    ============================================ */
 @media (max-width: 768px) {
-    /* Add padding to body only on mobile to account for taller stacked nav */
+    /* Smaller padding for mobile - just enough to clear the nav */
     body {
-        padding-top: 110px;
+        padding-top: 90px;
     }
 
     nav {
@@ -343,9 +343,9 @@ footer {
 }
 
 @media (max-width: 480px) {
-    /* Even more padding for very small screens where nav is tallest */
+    /* Slightly more padding for very small screens */
     body {
-        padding-top: 120px;
+        padding-top: 95px;
     }
 
     .container {
