@@ -319,7 +319,11 @@ h5.sub-entry-title {
     }
 
     .entry-logo { width: 48px; height: 48px; }
-    .entry-title { font-size: 1.25rem; }
+    .entry-title { font-size: 1.3rem; }
+    .entry-subtitle { font-size: 1rem; }
+    .entry-description { font-size: 1rem; }
+    .detail-text { font-size: 1rem; }
+    .sub-entry-text { font-size: 1rem; }
 
     .entry-header,
     .sub-entry-header {
@@ -352,7 +356,11 @@ h5.sub-entry-title {
     .page-intro h1 { font-size: 1.9rem; }
     .entry { padding: 1rem; }
     .entry-logo { width: 42px; height: 42px; }
-    .entry-title { font-size: 1.15rem; }
+    .entry-title { font-size: 1.2rem; }
+    .entry-subtitle { font-size: 0.95rem; }
+    .entry-description { font-size: 0.95rem; }
+    .detail-text { font-size: 0.95rem; }
+    .sub-entry-text { font-size: 0.95rem; }
 
     .download-btn {
         width: 100%;

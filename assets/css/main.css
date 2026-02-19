@@ -304,7 +304,7 @@ footer {
 @media (max-width: 768px) {
     /* Smaller padding for mobile - just enough to clear the nav */
     body {
-        padding-top: 90px;
+        padding-top: 75px;
     }
 
     nav {
@@ -345,7 +345,7 @@ footer {
 @media (max-width: 480px) {
     /* Slightly more padding for very small screens */
     body {
-        padding-top: 95px;
+        padding-top: 80px;
     }
 
     .container {
