@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/assets/icons/letter-c.png" type="image/png">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKLL2XEDKL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YKLL2XEDKL');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading List | Cynthia Niaz</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16x16.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/note-page.css">
+
+    <style>
+        .book-entry {
+            padding: 1.75rem 0;
+            border-bottom: 1px solid rgba(125, 30, 62, 0.08);
+        }
+
+        .book-entry:last-child {
+            border-bottom: none;
+        }
+
+        .book-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--wine);
+            line-height: 1.3;
+            margin-bottom: 0.2rem;
+        }
+
+        .book-author {
+            font-size: 0.88rem;
+            color: var(--gray);
+            margin-bottom: 0.85rem;
+        }
+
+        .book-note {
+            font-size: 1.02rem;
+            color: var(--charcoal);
+            line-height: 1.85;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Loading</div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="../index.html" class="nav-logo">Cynthia Niaz</a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../resume.html">Resume</a>
+                <a href="../projects.html">Projects</a>
+                <a href="../notes.html" class="active">Notes</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <div class="container">
+        <article>
+            <header class="note-header">
+                <a href="../notes.html" class="back-link">&larr; Notes</a>
+                <div class="note-meta">
+                    <span class="note-tag">Reading</span>
+                    <span class="note-date">Updated February 2026</span>
+                </div>
+                <h1>Reading List</h1>
+            </header>
+
+            <div class="note-body">
+
+                <p>Books I've read and kept thinking about. I'll add to this as I go.</p>
+
+                <div class="book-entry">
+                    <div class="book-title">The Genius of Athletes: What World-Class Competitors Know That Can Change Your Life</div>
+                    <div class="book-author">Noel Brick</div>
+                    <p class="book-note">Brick's argument is that elite athletic performance is more about mental strategy than physical capacity — pacing, self-talk, where you direct your attention. Good for thinking about how to handle pressure in general, not just in sport.</p>
+                </div>
+
+                <div class="book-entry">
+                    <div class="book-title">Pedigree: How Elite Students Get Elite Jobs</div>
+                    <div class="book-author">Lauren A. Rivera</div>
+                    <p class="book-note">Rivera spent years inside hiring processes at top consulting, banking, and law firms and found that what passes for "merit" is often just cultural familiarity — interviewers selecting people who remind them of themselves. Grades matter less than how you present yourself, especially once you already have the baseline competence to be in the room.</p>
+                </div>
+
+                <div class="book-entry">
+                    <div class="book-title">Where You Go Is Not Who You'll Be</div>
+                    <div class="book-author">Frank Bruni</div>
+                    <p class="book-note">A pushback against the college admissions obsession. Bruni's argument is that the name on your diploma matters far less than what you do with your time — reassuring and a little demanding depending on how you read it. I think location matters more than rankings when picking a school, and people tend to self-select anyway.</p>
+                </div>
+
+                <div class="book-entry">
+                    <div class="book-title">Careless People</div>
+                    <div class="book-author">Sarah Wynn-Williams</div>
+                    <p class="book-note">A former Facebook policy director's account of what it actually looked like inside. Lots of out-of-pocket moments. The author describing a 26-year-old Dartmouth grad as a "baby" is a good preview of the tone (26 is not young!)</p>
+                </div>
+
+                <div class="book-entry">
+                    <div class="book-title">Lady Justice: Women, the Law, and the Battle to Save America</div>
+                    <div class="book-author">Dahlia Lithwick</div>
+                    <p class="book-note">Profiles of the women lawyers who showed up at pivotal legal moments during a particularly chaotic stretch of American politics. Less about legal theory, more about what it looks like to act on principle when it costs something. The emotional labor that goes into civil rights law is not something I'd thought much about before.</p>
+                </div>
+
+            </div>
+        </article>
+
+        <footer>
+            <p>&copy; 2026 Cynthia Anna Niaz</p>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
