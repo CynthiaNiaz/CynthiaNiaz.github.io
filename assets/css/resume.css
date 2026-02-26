@@ -189,7 +189,7 @@ h4.detail-label {
 .sub-entry {
     padding: 0.4rem 0 0.4rem 0.85rem;
     border-left: 2px solid rgba(125, 30, 62, 0.1);
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
 }
 
 .sub-entry-header {
@@ -384,4 +384,11 @@ h5.sub-entry-title {
         width: 100%;
         justify-content: center;
     }
+}
+.resume-updated {
+    font-size: 0.82rem;
+    color: var(--gray);
+    opacity: 0.7;
+    margin-top: 0.25rem;
+    text-align: right;
 }
