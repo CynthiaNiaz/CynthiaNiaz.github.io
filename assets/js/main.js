@@ -15,6 +15,11 @@ document.addEventListener("keydown", (e) => {
     const secretWord = 'matrix';
     let rainInterval;
 
+    // Auto-activate if it was active on a previous page
+    if (sessionStorage.getItem('easterEgg') === 'matrix') {
+        document.addEventListener('DOMContentLoaded', () => activateMatrixMode());
+    }
+
     document.addEventListener('keydown', (e) => {
         // Only track letter keys
         if (e.key.length === 1 && e.key.match(/[a-z]/i)) {
@@ -84,41 +89,44 @@ document.addEventListener("keydown", (e) => {
     function activateMatrixMode() {
         if (matrixActive) return;
         matrixActive = true;
+        const isFirstActivation = !sessionStorage.getItem('easterEgg');
+        sessionStorage.setItem('easterEgg', 'matrix');
 
         // Create binary rain
         const canvas = createBinaryRain();
 
-        // Create creepy but polished notification
+        // Only show notification on the page where it was first triggered
         const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background: linear-gradient(135deg, rgba(0, 40, 20, 0.95), rgba(0, 20, 10, 0.95));
-            color: #00ff41;
-            padding: 1.2rem 1.8rem;
-            border: 2px solid #00ff41;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            z-index: 99999;
-            box-shadow: 
-                0 0 30px rgba(0, 255, 65, 0.4),
-                inset 0 0 20px rgba(0, 255, 65, 0.1);
-            animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1), pulse 2s ease-in-out infinite;
-            backdrop-filter: blur(10px);
-        `;
-        notification.innerHTML = `
-            <div style="font-size: 1rem; margin-bottom: 0.5rem; font-weight: bold;">⚠️ SYSTEM BREACH DETECTED</div>
-            <div style="opacity: 0.8; font-size: 0.8rem;">Press ESC to restore system</div>
-        `;
-        document.body.appendChild(notification);
+        if (isFirstActivation) {
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: linear-gradient(135deg, rgba(0, 40, 20, 0.95), rgba(0, 20, 10, 0.95));
+                color: #00ff41;
+                padding: 1.2rem 1.8rem;
+                border: 2px solid #00ff41;
+                border-radius: 8px;
+                font-family: 'Courier New', monospace;
+                font-size: 0.9rem;
+                z-index: 99999;
+                box-shadow: 
+                    0 0 30px rgba(0, 255, 65, 0.4),
+                    inset 0 0 20px rgba(0, 255, 65, 0.1);
+                animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1), pulse 2s ease-in-out infinite;
+                backdrop-filter: blur(10px);
+            `;
+            notification.innerHTML = `
+                <div style="font-size: 1rem; margin-bottom: 0.5rem; font-weight: bold;">⚠️ SYSTEM BREACH DETECTED</div>
+                <div style="opacity: 0.8; font-size: 0.8rem;">Press ESC to restore system</div>
+            `;
+            document.body.appendChild(notification);
 
-        // Remove notification after 5 seconds
-        setTimeout(() => {
-            notification.style.animation = 'slideOutRight 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-            setTimeout(() => notification.remove(), 600);
-        }, 5000);
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                setTimeout(() => notification.remove(), 600);
+            }, 5000);
+        }
 
         // Store original colors for restoration
         const originalStyles = new Map();
@@ -147,7 +155,7 @@ document.addEventListener("keydown", (e) => {
                 
                 // Dark backgrounds with glass effect
                 const bgColor = window.getComputedStyle(el).backgroundColor;
-                if (bgColor !== 'rgba(0, 0, 0, 0)') {
+                if (bgColor !== 'rgba(0, 0, 0, 0)' && el.tagName !== 'NAV' && !el.closest('nav')) {
                     el.style.backgroundColor = 'rgba(0, 26, 13, 0.6)';
                     el.style.backdropFilter = 'blur(10px)';
                 }
@@ -208,6 +216,12 @@ document.addEventListener("keydown", (e) => {
                 }
             }
             
+            /* Note cards use linear-gradient so need explicit override */
+            .note-card {
+                background: rgba(0, 26, 13, 0.6) !important;
+                border-color: #00ff41 !important;
+            }
+
             /* Subtle scanline effect */
             body::after {
                 content: '';
@@ -308,7 +322,7 @@ document.addEventListener("keydown", (e) => {
             if (e.key === 'Escape') {
                 clearInterval(rainInterval);
                 canvas.remove();
-                notification.remove();
+                if (notification && notification.parentNode) notification.remove();
                 
                 const styleEl = document.getElementById('matrix-style');
                 if (styleEl) styleEl.remove();
@@ -316,6 +330,11 @@ document.addEventListener("keydown", (e) => {
                 document.body.style.background = '';
                 document.body.style.color = '';
                 document.body.style.animation = '';
+                
+                // Re-apply dark mode background if needed
+                if (document.body.classList.contains('dark-mode')) {
+                    document.body.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #111111 100%)';
+                }
                 
                 // Restore original styles smoothly
                 allElements.forEach(el => {
@@ -330,16 +349,18 @@ document.addEventListener("keydown", (e) => {
                     }
                 });
 
-                // Restore CSS variables
-                document.documentElement.style.setProperty('--wine', '#7d1e3e');
-                document.documentElement.style.setProperty('--wine-light', '#9d3a5a');
-                document.documentElement.style.setProperty('--wine-dark', '#5a1529');
-                document.documentElement.style.setProperty('--cream', '#faf8f5');
-                document.documentElement.style.setProperty('--charcoal', '#2a2a2a');
-                document.documentElement.style.setProperty('--gray', '#6a6a6a');
-                document.documentElement.style.setProperty('--light-gray', '#e8e6e3');
+                // Restore CSS variables — respect dark mode if active
+                const isDark = document.body.classList.contains('dark-mode');
+                document.documentElement.style.setProperty('--wine', isDark ? '#b8324f' : '#7d1e3e');
+                document.documentElement.style.setProperty('--wine-light', isDark ? '#cc4a63' : '#9d3a5a');
+                document.documentElement.style.setProperty('--wine-dark', isDark ? '#9a2340' : '#5a1529');
+                document.documentElement.style.setProperty('--cream', isDark ? '#1a1a1a' : '#faf8f5');
+                document.documentElement.style.setProperty('--charcoal', isDark ? '#e8e6e3' : '#2a2a2a');
+                document.documentElement.style.setProperty('--gray', isDark ? '#a0a0a0' : '#6a6a6a');
+                document.documentElement.style.setProperty('--light-gray', isDark ? '#2e2e2e' : '#e8e6e3');
                 
                 matrixActive = false;
+                sessionStorage.removeItem('easterEgg');
                 document.removeEventListener('keydown', exitHandler);
             }
         };
@@ -365,6 +386,11 @@ document.addEventListener("keydown", (e) => {
         setTimeout(() => {
             activateBirthdayMode(true);
         }, 1500);
+    }
+
+    // Auto-activate if it was active on a previous page
+    if (sessionStorage.getItem('easterEgg') === 'birthday') {
+        document.addEventListener('DOMContentLoaded', () => activateBirthdayMode(false));
     }
 
     document.addEventListener('keydown', (e) => {
@@ -467,6 +493,7 @@ document.addEventListener("keydown", (e) => {
     function activateBirthdayMode(isAutomatic) {
         if (birthdayActive) return;
         birthdayActive = true;
+        sessionStorage.setItem('easterEgg', 'birthday');
 
         // Create elegant confetti
         const canvas = createConfetti();
@@ -548,12 +575,14 @@ document.addEventListener("keydown", (e) => {
                     }
                 });
 
-                // Restore CSS variables
-                document.documentElement.style.setProperty('--wine', '#7d1e3e');
-                document.documentElement.style.setProperty('--wine-light', '#9d3a5a');
-                document.documentElement.style.setProperty('--wine-dark', '#5a1529');
+                // Restore CSS variables — respect dark mode if active
+                const isDark = document.body.classList.contains('dark-mode');
+                document.documentElement.style.setProperty('--wine', isDark ? '#b8324f' : '#7d1e3e');
+                document.documentElement.style.setProperty('--wine-light', isDark ? '#cc4a63' : '#9d3a5a');
+                document.documentElement.style.setProperty('--wine-dark', isDark ? '#9a2340' : '#5a1529');
                 
                 birthdayActive = false;
+                sessionStorage.removeItem('easterEgg');
                 document.removeEventListener('keydown', exitHandler);
             }
         };

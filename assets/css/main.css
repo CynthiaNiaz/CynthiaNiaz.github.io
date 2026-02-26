@@ -356,3 +356,192 @@ footer {
         padding: 0.5rem 1rem;
     }
 }
+/* ============================================
+   DARK MODE — append to bottom of main.css
+   ============================================ */
+
+body.dark-mode {
+    --wine: #b8324f;
+    --wine-light: #cc4a63;
+    --wine-dark: #9a2340;
+    --cream: #1a1a1a;
+    --charcoal: #e8e6e3;
+    --gray: #a0a0a0;
+    --light-gray: #2e2e2e;
+
+    background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%);
+    color: #e8e6e3;
+}
+
+body.dark-mode nav {
+    background: rgba(20, 20, 20, 0.95);
+    border-bottom-color: #2e2e2e;
+}
+
+body.dark-mode .page-loader {
+    background: #1a1a1a;
+}
+
+body.dark-mode .entry,
+body.dark-mode .note-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(184, 50, 79, 0.1);
+}
+
+body.dark-mode .note-card:hover,
+body.dark-mode .entry:hover {
+    box-shadow: 0 4px 20px rgba(184, 50, 79, 0.08);
+    border-color: rgba(184, 50, 79, 0.2);
+}
+
+body.dark-mode .note-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(184,50,79,0.02));
+}
+
+body.dark-mode .entry-logo {
+    background: #222;
+    border-color: #2e2e2e;
+}
+
+body.dark-mode .skills-list {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(184, 50, 79, 0.1);
+}
+
+body.dark-mode .skill-row {
+    border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .quote-container {
+    background: linear-gradient(135deg, rgba(184, 50, 79, 0.06), rgba(184, 50, 79, 0.02));
+}
+
+body.dark-mode .contact-links a,
+body.dark-mode .entry-link,
+body.dark-mode .download-btn {
+    background: transparent;
+    color: var(--wine);
+    border-color: var(--wine);
+    box-shadow: none;
+}
+
+body.dark-mode .contact-links a:hover,
+body.dark-mode .entry-link:hover,
+body.dark-mode .download-btn:hover {
+    background: var(--wine);
+    color: #1a1a1a;
+}
+
+body.dark-mode .btn {
+    background: transparent;
+    color: var(--wine);
+    border-color: var(--wine);
+}
+body.dark-mode .btn:hover {
+    background: var(--wine);
+    color: #1a1a1a;
+}
+body.dark-mode .btn-secondary {
+    border-color: #2e2e2e;
+    color: var(--charcoal);
+}
+body.dark-mode .btn-secondary:hover {
+    background: var(--charcoal);
+    color: #1a1a1a;
+    border-color: var(--charcoal);
+}
+
+body.dark-mode .detail-section {
+    border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .sub-entry {
+    border-left-color: rgba(184, 50, 79, 0.2);
+}
+
+body.dark-mode .note-body code {
+    background: rgba(184, 50, 79, 0.1);
+}
+
+body.dark-mode .note-body pre {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.06);
+    border-left-color: rgba(184, 50, 79, 0.25);
+}
+
+body.dark-mode footer {
+    border-top-color: #2e2e2e;
+}
+
+body.dark-mode .profile-photo {
+    filter: contrast(0.98) saturate(0.95) brightness(0.92);
+}
+
+body.dark-mode .tag {
+    background: rgba(184, 50, 79, 0.1);
+}
+body.dark-mode .tag:hover {
+    background: rgba(184, 50, 79, 0.18);
+}
+
+body.dark-mode .back-to-top {
+    background: var(--wine);
+}
+
+/* ============================================
+   DARK MODE TOGGLE BUTTON — fixed bottom right
+   ============================================ */
+
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 5.5rem; /* sits just above the back-to-top button */
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: white;
+    color: var(--wine);
+    border: 1px solid var(--light-gray);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark-mode-toggle:hover {
+    background: var(--wine);
+    color: white;
+    border-color: var(--wine);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(125, 30, 62, 0.3);
+}
+
+.dark-mode-toggle svg {
+    pointer-events: none;
+}
+
+body.dark-mode .dark-mode-toggle {
+    background: #2a2a2a;
+    color: var(--wine);
+    border-color: #3a3a3a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background: var(--wine);
+    color: white;
+    border-color: var(--wine);
+}
+
+@media (max-width: 768px) {
+    .dark-mode-toggle {
+        bottom: 4.5rem;
+        right: 1.5rem;
+        width: 45px;
+        height: 45px;
+    }
+}
