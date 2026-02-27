@@ -143,6 +143,12 @@ h2.visible {
     line-height: 1.4;
 }
 
+.entry-subtitle--muted {
+    font-size: 0.85rem;
+    color: var(--gray);
+    opacity: 0.8;
+}
+
 .entry-location {
     font-size: 0.85rem;
     color: var(--gray);
