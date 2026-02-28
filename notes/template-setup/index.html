@@ -108,13 +108,18 @@
 
                 <p>Here's how the template is organized:</p>
 
-                <pre><code>├── index.html              ← Home page
-├── resume.html             ← Resume page
-├── projects.html           ← Projects page
-├── notes.html              ← Notes index
-├── notes/                  ← Individual note pages
-│   └── example-note.html
+                <pre><code>├── index.html              ← Home page (stays at root)
 ├── 404.html                ← Error page
+├── resume/
+│   └── index.html          ← cynthianiaz.github.io/resume
+├── projects/
+│   └── index.html          ← cynthianiaz.github.io/projects
+├── notes/
+│   ├── index.html          ← cynthianiaz.github.io/notes
+│   ├── example-note/
+│   │   └── index.html      ← cynthianiaz.github.io/notes/example-note
+│   └── another-note/
+│       └── index.html
 └── assets/
     ├── css/
     │   ├── main.css        ← Shared styles (nav, footer, variables)
@@ -128,13 +133,21 @@
     │   ├── main.js         ← Shared (scroll, nav, animations)
     │   ├── home.js         ← Email obfuscation, parallax
     │   └── quotes.js       ← Quote rotation
-    ├── documents/              ← PDFs (resume, papers)
+    ├── documents/          ← PDFs (resume, papers)
     └── images/
-        ├── logos/              ← Company logos
-        └── personal/           ← Profile photo</code></pre>
+        ├── logos/          ← Company logos
+        └── personal/       ← Profile photo</code></pre>
+
+                <p>
+                    Each page lives in its own folder as <code>index.html</code>. This is what gives you clean URLs like <code>/resume</code> instead of <code>/resume.html</code> — GitHub Pages serves a folder's <code>index.html</code> automatically. The home page is the one exception: <code>index.html</code> at the root already gets a clean URL, so it stays there.
+                </p>
 
                 <p>
                     Each page has its own CSS file. <code>main.css</code> handles everything shared &mdash; the nav bar, footer, colors, and base typography. If you want to change the look of just the resume page, you only touch <code>resume.css</code>.
+                </p>
+
+                <p>
+                    Because pages are nested in folders, asset paths use <code>../</code> or <code>../../</code> prefixes depending on depth. A page at <code>resume/index.html</code> references assets as <code>../assets/css/main.css</code>. A note at <code>notes/example-note/index.html</code> uses <code>../../assets/css/main.css</code>. Nav links use absolute paths like <code>/resume</code> and <code>/notes</code> so they work correctly from any depth.
                 </p>
 
                 <h2>Customization</h2>
@@ -168,7 +181,7 @@
                 <h3>Content</h3>
 
                 <p>
-                    Everything is in the HTML files &mdash; there's no CMS or markdown processing. To update the resume, open <code>resume.html</code> and edit the entries directly. Same for projects. Each entry follows a consistent structure with classes like <code>.entry</code>, <code>.entry-title</code>, <code>.entry-subtitle</code>, so adding new ones is just copying an existing block and changing the text.
+                    Everything is in the HTML files &mdash; there's no CMS or markdown processing. To update the resume, open <code>resume/index.html</code> and edit the entries directly. Same for projects. Each entry follows a consistent structure with classes like <code>.entry</code>, <code>.entry-title</code>, <code>.entry-subtitle</code>, so adding new ones is just copying an existing block and changing the text.
                 </p>
 
                 <h3>Profile photo</h3>
@@ -192,11 +205,11 @@
                 <h2>Adding a note</h2>
 
                 <p>
-                    To add a new note, copy <code>notes/example-note.html</code>, rename it, and replace the content. The file uses <code>../</code> relative paths for assets since it's in a subfolder.
+                    To add a new note, create a new folder inside <code>notes/</code> and add an <code>index.html</code> inside it. For example, <code>notes/my-new-note/index.html</code> will be live at <code>/notes/my-new-note</code>. Copy an existing note file as your starting point — it already has the right asset paths (<code>../../assets/</code>) and nav links set up.
                 </p>
 
                 <p>
-                    Then add a card for it on <code>notes.html</code>. Each card is an <code>&lt;a&gt;</code> tag with class <code>note-card</code> inside the <code>.notes-grid</code>. The first card can use the <code>featured</code> class to span two columns. Regular cards are square.
+                    Then add a card for it on <code>notes/index.html</code>. Each card is an <code>&lt;a&gt;</code> tag with class <code>note-card</code> inside the <code>.notes-grid</code>, with the <code>href</code> set to <code>/notes/my-new-note</code>. The first card can use the <code>featured</code> class to span two columns. Regular cards are square.
                 </p>
 
                 <h2>Deploying</h2>
@@ -213,6 +226,10 @@
 
                 <p>
                     There's no build step. You edit the files and push &mdash; that's the whole workflow. No npm, no bundlers, no compilers. You should be able to come back to this six months later and still understand how everything works.
+                </p>
+
+                <p>
+                    To test locally, don't just open the HTML files directly in your browser &mdash; clicking links won't work because clean URLs require a server to resolve them. Instead, run <code>python3 -m http.server 8000</code> from your repo root and open <code>http://localhost:8000</code>. Everything will work exactly as it does on GitHub Pages.
                 </p>
 
                 <p>
