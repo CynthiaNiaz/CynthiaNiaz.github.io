@@ -36,6 +36,19 @@
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/resume.css">
     <link rel="stylesheet" href="../assets/css/resume-print.css" media="print">
+    <style>
+        /* Coursework easter egg — looks like plain label, reveals on hover */
+        .coursework-easter-egg {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dashed transparent;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+        .coursework-easter-egg:hover {
+            color: var(--wine);
+            border-bottom-color: var(--wine);
+        }
+    </style>
 </head>
 <body>
 
@@ -89,7 +102,7 @@
                     </div>
 
                     <div class="detail-section">
-                        <h4 class="detail-label">Relevant Coursework</h4>
+                        <h4 class="detail-label"><a href="/coursework" class="coursework-easter-egg" title="View full coursework map">Relevant Coursework</a></h4>
                         <p class="detail-text">
                             Thermodynamics, Atomic and Nuclear Physics, Electricity and Magnetism, Analytical and Computational Mechanics, Electronics, Ordinary Differential Equations, Linear Algebra, Mathematical Structures, Data Structures, Software Design, Principles of Chemistry, Money and Banking
                         </p>
