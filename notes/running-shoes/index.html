@@ -81,11 +81,77 @@
         .viz-donut-label { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:600; color:var(--charcoal); }
         .viz-donut-desc { font-size:0.76rem; color:var(--gray); line-height:1.55; }
 
-        /* Foot */
-        .viz-foot-wrap { display:flex; flex-direction:column; align-items:center; gap:1.25rem; }
-        .viz-heat-legend { display:flex; align-items:center; gap:0.5rem; font-size:0.74rem; color:var(--gray); }
+        /* Foot heat zones */
+        .viz-foot-wrap { display:flex; flex-direction:column; gap:1.25rem; }
+        .viz-zones { display:grid; grid-template-columns:repeat(4, 1fr); gap:0.6rem; }
+        .viz-zone-card {
+            border-radius:6px;
+            padding:1rem 0.75rem;
+            text-align:center;
+            position:relative;
+            overflow:hidden;
+            transition: background-color 0.5s ease, box-shadow 0.5s ease;
+            border: 1px solid rgba(125,30,62,0.06);
+        }
+        .viz-zone-card::before {
+            content:'';
+            position:absolute;
+            inset:0;
+            opacity:0;
+            transition: opacity 0.5s ease;
+            border-radius:6px;
+        }
+        .viz-zone-name {
+            font-size:0.7rem;
+            letter-spacing:0.1em;
+            text-transform:uppercase;
+            color:var(--gray);
+            margin-bottom:0.5rem;
+            font-weight:500;
+            position:relative;
+            z-index:1;
+            transition: color 0.4s;
+        }
+        .viz-zone-temp {
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.8rem;
+            font-weight:600;
+            line-height:1;
+            margin-bottom:0.35rem;
+            position:relative;
+            z-index:1;
+            transition: color 0.4s;
+        }
+        .viz-zone-delta {
+            font-size:0.72rem;
+            font-weight:500;
+            position:relative;
+            z-index:1;
+            transition: color 0.4s;
+        }
+        .viz-zone-bar-track {
+            height:4px;
+            background:rgba(0,0,0,0.06);
+            border-radius:2px;
+            margin-top:0.65rem;
+            overflow:hidden;
+            position:relative;
+            z-index:1;
+        }
+        .viz-zone-bar-fill {
+            height:100%;
+            border-radius:2px;
+            transition: width 0.5s cubic-bezier(.4,0,.2,1), background-color 0.5s ease;
+        }
+        body.dark-mode .viz-zone-card { border-color:rgba(184,50,79,0.1); background:rgba(255,255,255,0.03); }
+        body.dark-mode .viz-zone-bar-track { background:rgba(255,255,255,0.08); }
+        .viz-heat-legend { display:flex; align-items:center; gap:0.5rem; font-size:0.74rem; color:var(--gray); justify-content:center; }
         .viz-heat-bar { width:90px; height:7px; border-radius:4px; background:linear-gradient(to right,#fef3c7,#f97316,#991b1b); }
-        .viz-pace-note { font-size:0.8rem; color:var(--gray); text-align:center; max-width:300px; line-height:1.55; min-height:2.5em; }
+        .viz-pace-note { font-size:0.8rem; color:var(--gray); text-align:center; line-height:1.55; min-height:2.5em; }
+
+        @media (max-width:480px) {
+            .viz-zones { grid-template-columns:repeat(2, 1fr); }
+        }
 
         /* Plate */
         .viz-plate-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
@@ -262,87 +328,32 @@
                     <span class="viz-slider-val" id="paceVal">8 km/h</span>
                 </div>
                 <div class="viz-foot-wrap">
-                    <svg width="160" height="300" viewBox="0 0 160 300" id="footSvg">
-                        <defs>
-                            <clipPath id="footClip">
-                                <!-- Right foot, plantar view, big toe on left -->
-                                <path d="
-                                    M 52,272
-                                    C 34,268 22,252 20,234
-                                    C 18,216 24,196 26,176
-                                    C 20,160 18,140 22,120
-                                    C 26,100 34,86  38,72
-                                    C 32,58  34,44  42,36
-                                    C 50,28  62,26  70,30
-                                    C 78,34  82,44  80,56
-                                    C 88,48  98,44  106,48
-                                    C 114,52 116,62 112,70
-                                    C 120,64 130,64 136,70
-                                    C 142,76 140,88 134,94
-                                    C 140,90 148,94 150,102
-                                    C 152,110 148,120 140,124
-                                    C 144,122 150,128 150,136
-                                    C 150,144 144,152 136,154
-                                    C 132,156 128,154 126,150
-                                    C 128,164 126,180 120,192
-                                    C 114,210 106,228 102,246
-                                    C 98,260 96,272 86,278
-                                    C 76,284 62,278 52,272
-                                    Z
-                                "/>
-                            </clipPath>
-                        </defs>
-
-                        <!-- Heat zone fills — clipped to foot shape -->
-                        <g clip-path="url(#footClip)">
-                            <!-- Heel zone -->
-                            <ellipse id="zoneHeel" cx="72" cy="252" rx="38" ry="32" opacity="0.95"/>
-                            <!-- Arch zone -->
-                            <ellipse id="zoneArch" cx="60" cy="185" rx="28" ry="38" opacity="0.8"/>
-                            <!-- Ball zone -->
-                            <ellipse id="zoneBall" cx="90" cy="138" rx="44" ry="28" opacity="0.9"/>
-                            <!-- Toes zone -->
-                            <ellipse id="zoneToes" cx="96" cy="82"  rx="50" ry="42" opacity="0.9"/>
-                        </g>
-
-                        <!-- Foot outline on top -->
-                        <path d="
-                            M 52,272
-                            C 34,268 22,252 20,234
-                            C 18,216 24,196 26,176
-                            C 20,160 18,140 22,120
-                            C 26,100 34,86  38,72
-                            C 32,58  34,44  42,36
-                            C 50,28  62,26  70,30
-                            C 78,34  82,44  80,56
-                            C 88,48  98,44  106,48
-                            C 114,52 116,62 112,70
-                            C 120,64 130,64 136,70
-                            C 142,76 140,88 134,94
-                            C 140,90 148,94 150,102
-                            C 152,110 148,120 140,124
-                            C 144,122 150,128 150,136
-                            C 150,144 144,152 136,154
-                            C 132,156 128,154 126,150
-                            C 128,164 126,180 120,192
-                            C 114,210 106,228 102,246
-                            C 98,260 96,272 86,278
-                            C 76,284 62,278 52,272
-                            Z
-                        " fill="none" stroke="#b0aaa4" stroke-width="1.5"/>
-
-                        <!-- Toe divider lines (subtle) -->
-                        <line x1="80" y1="56" x2="84" y2="100" stroke="#c8c4be" stroke-width="0.8" opacity="0.6"/>
-                        <line x1="112" y1="70" x2="108" y2="108" stroke="#c8c4be" stroke-width="0.8" opacity="0.6"/>
-                        <line x1="134" y1="94" x2="124" y2="120" stroke="#c8c4be" stroke-width="0.8" opacity="0.6"/>
-                        <line x1="136" y1="128" x2="128" y2="140" stroke="#c8c4be" stroke-width="0.8" opacity="0.5"/>
-
-                        <!-- Zone labels -->
-                        <text x="72"  y="256" text-anchor="middle" font-size="8" fill="#5a5a5a" font-family="Work Sans,sans-serif" font-weight="400" letter-spacing="0.04em">heel</text>
-                        <text x="48"  y="188" text-anchor="middle" font-size="8" fill="#5a5a5a" font-family="Work Sans,sans-serif" font-weight="400" letter-spacing="0.04em">arch</text>
-                        <text x="100" y="142" text-anchor="middle" font-size="8" fill="#5a5a5a" font-family="Work Sans,sans-serif" font-weight="400" letter-spacing="0.04em">ball</text>
-                        <text x="72"  y="74"  text-anchor="middle" font-size="8" fill="#5a5a5a" font-family="Work Sans,sans-serif" font-weight="400" letter-spacing="0.04em">toes</text>
-                    </svg>
+                    <div class="viz-zones">
+                        <div class="viz-zone-card" id="zoneHeelCard">
+                            <p class="viz-zone-name">Heel</p>
+                            <p class="viz-zone-temp" id="zoneHeelTemp">+1.8°C</p>
+                            <p class="viz-zone-delta" id="zoneHeelDelta">primary contact</p>
+                            <div class="viz-zone-bar-track"><div class="viz-zone-bar-fill" id="zoneHeelBar"></div></div>
+                        </div>
+                        <div class="viz-zone-card" id="zoneArchCard">
+                            <p class="viz-zone-name">Arch</p>
+                            <p class="viz-zone-temp" id="zoneArchTemp">+0.8°C</p>
+                            <p class="viz-zone-delta" id="zoneArchDelta">low contact</p>
+                            <div class="viz-zone-bar-track"><div class="viz-zone-bar-fill" id="zoneArchBar"></div></div>
+                        </div>
+                        <div class="viz-zone-card" id="zoneBallCard">
+                            <p class="viz-zone-name">Ball</p>
+                            <p class="viz-zone-temp" id="zoneBallTemp">+1.4°C</p>
+                            <p class="viz-zone-delta" id="zoneBallDelta">moderate</p>
+                            <div class="viz-zone-bar-track"><div class="viz-zone-bar-fill" id="zoneBallBar"></div></div>
+                        </div>
+                        <div class="viz-zone-card" id="zoneToesCard">
+                            <p class="viz-zone-name">Toes</p>
+                            <p class="viz-zone-temp" id="zoneToesTemp">+0.6°C</p>
+                            <p class="viz-zone-delta" id="zoneToesDelta">minimal</p>
+                            <div class="viz-zone-bar-track"><div class="viz-zone-bar-fill" id="zoneToesBar"></div></div>
+                        </div>
+                    </div>
                     <div class="viz-heat-legend">
                         <span>cool</span>
                         <div class="viz-heat-bar"></div>
@@ -444,7 +455,7 @@
     tempSlider.addEventListener('input', updateStiffness);
     updateStiffness();
 
-    // Foot heat map
+    // Foot heat zones
     const paceSlider = document.getElementById('paceSlider');
     const paceVal    = document.getElementById('paceVal');
     const paceNote   = document.getElementById('paceNote');
@@ -458,14 +469,68 @@
         return `rgb(${Math.round(lerp(stops[lo][0],stops[hi][0],t))},${Math.round(lerp(stops[lo][1],stops[hi][1],t))},${Math.round(lerp(stops[lo][2],stops[hi][2],t))})`;
     }
 
+    function heatBg(intensity) {
+        const stops = [[254,249,240],[254,243,199],[253,230,180],[252,211,150],[251,191,120]];
+        const idx = intensity*(stops.length-1);
+        const lo  = Math.floor(idx), hi = Math.min(lo+1, stops.length-1), t = idx-lo;
+        return `rgb(${Math.round(lerp(stops[lo][0],stops[hi][0],t))},${Math.round(lerp(stops[lo][1],stops[hi][1],t))},${Math.round(lerp(stops[lo][2],stops[hi][2],t))})`;
+    }
+
+    function updateZone(id, intensity, tempC, label) {
+        const card = document.getElementById(id + 'Card');
+        const temp = document.getElementById(id + 'Temp');
+        const delta = document.getElementById(id + 'Delta');
+        const bar = document.getElementById(id + 'Bar');
+        const color = heatColor(intensity);
+        const isDark = document.body.classList.contains('dark-mode');
+
+        if (isDark) {
+            card.style.backgroundColor = `rgba(${Math.round(153+102*(1-intensity))},${Math.round(27+50*(1-intensity))},${Math.round(27+40*(1-intensity))},${0.06 + intensity*0.12})`;
+            card.style.borderColor = `rgba(184,50,79,${0.08 + intensity*0.25})`;
+        } else {
+            card.style.backgroundColor = heatBg(intensity);
+            card.style.borderColor = intensity > 0.5 ? `rgba(220,38,38,${0.12+intensity*0.15})` : `rgba(125,30,62,${0.06+intensity*0.08})`;
+        }
+        if (intensity > 0.6) {
+            card.style.boxShadow = `0 2px 12px rgba(220,38,38,${intensity*0.12})`;
+        } else {
+            card.style.boxShadow = 'none';
+        }
+
+        temp.textContent = '+' + tempC.toFixed(1) + '°C';
+        temp.style.color = color;
+        delta.textContent = label;
+        delta.style.color = intensity > 0.5 ? color : 'var(--gray)';
+        bar.style.width = Math.max(8, intensity * 100) + '%';
+        bar.style.backgroundColor = color;
+    }
+
     function updateFoot() {
         const pace = parseFloat(paceSlider.value);
         paceVal.textContent = pace + ' km/h';
-        const t = (pace-4)/16;
-        document.getElementById('zoneHeel').setAttribute('fill', heatColor(Math.max(0.85-t*0.72, 0.04)));
-        document.getElementById('zoneArch').setAttribute('fill', heatColor(0.15+t*0.13));
-        document.getElementById('zoneBall').setAttribute('fill', heatColor(0.25+t*0.52));
-        document.getElementById('zoneToes').setAttribute('fill', heatColor(Math.min(0.10+t*0.87, 0.97)));
+        const t = (pace - 4) / 16;
+
+        const heelTemp = lerp(2.0, 0.8, t);
+        const archTemp = lerp(0.6, 1.2, t);
+        const ballTemp = lerp(1.0, 4.5, t);
+        const toesTemp = lerp(0.4, 6.0, t);
+        const maxT = 6.0;
+
+        const heelI = heelTemp / maxT;
+        const archI = archTemp / maxT;
+        const ballI = ballTemp / maxT;
+        const toesI = toesTemp / maxT;
+
+        const heelLabel = heelI > 0.25 ? 'primary contact' : heelI > 0.15 ? 'moderate' : 'reduced';
+        const archLabel = archI > 0.3 ? 'some load' : 'low contact';
+        const ballLabel = ballI > 0.5 ? 'high load' : ballI > 0.3 ? 'moderate' : 'light';
+        const toesLabel = toesI > 0.6 ? 'peak zone' : toesI > 0.3 ? 'increasing' : 'minimal';
+
+        updateZone('zoneHeel', heelI, heelTemp, heelLabel);
+        updateZone('zoneArch', archI, archTemp, archLabel);
+        updateZone('zoneBall', ballI, ballTemp, ballLabel);
+        updateZone('zoneToes', toesI, toesTemp, toesLabel);
+
         if      (pace <= 6)  paceNote.textContent = 'Easy jog — heel strike dominant, most heat accumulates at the heel.';
         else if (pace <= 10) paceNote.textContent = 'Comfortable pace — heat beginning to shift toward the forefoot.';
         else if (pace <= 14) paceNote.textContent = 'Tempo effort — increased forefoot contact, toes warming rapidly.';
