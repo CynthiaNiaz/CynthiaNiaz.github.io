@@ -1,143 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="/assets/icons/letter-c.png" type="image/png">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKLL2XEDKL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YKLL2XEDKL');
-    </script>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="The Thermodynamics of Running Shoes | Cynthia Niaz">
-    <meta property="og:description" content="What I learned analyzing running shoes as thermodynamic systems for my thermal physics class.">
-    <meta property="og:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
-    <meta property="og:url" content="https://cynthianiaz.github.io/notes/running-shoes.html">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Thermodynamics of Running Shoes | Cynthia Niaz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <link rel="stylesheet" href="../../assets/css/note-page.css" />
+    <style>
+        .viz-block {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(125, 30, 62, 0.07);
+            border-left: 3px solid rgba(125, 30, 62, 0.2);
+            border-radius: 8px;
+            padding: 1.75rem;
+            margin: 2rem 0;
+        }
+        body.dark-mode .viz-block {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(184,50,79,0.1);
+            border-left-color: rgba(184,50,79,0.3);
+        }
+        .viz-block-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--wine);
+            margin-bottom: 0.2rem;
+        }
+        .viz-block-sub {
+            font-size: 0.82rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .equation {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--charcoal);
+            background: rgba(125, 30, 62, 0.03);
+            border-left: 3px solid rgba(125, 30, 62, 0.25);
+            padding: 0.85rem 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            letter-spacing: 0.02em;
+        }
+        body.dark-mode .equation { background: rgba(184,50,79,0.07); }
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16x16.png">
+        /* Slider */
+        .viz-slider-row { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; }
+        .viz-slider-label { font-size:0.78rem; letter-spacing:0.07em; text-transform:uppercase; color:var(--gray); min-width:88px; font-weight:500; }
+        input[type=range].viz-range { -webkit-appearance:none; flex:1; height:2px; background:var(--light-gray); outline:none; border-radius:2px; }
+        input[type=range].viz-range::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:var(--wine); cursor:pointer; box-shadow:0 1px 4px rgba(125,30,62,0.3); transition:transform 0.15s; }
+        input[type=range].viz-range::-webkit-slider-thumb:hover { transform:scale(1.15); }
+        .viz-slider-val { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; color:var(--wine); min-width:52px; text-align:right; }
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+        /* Bars */
+        .viz-bars { display:flex; flex-direction:column; gap:0.65rem; }
+        .viz-bar-row { display:flex; align-items:center; gap:0.85rem; }
+        .viz-bar-name { font-size:0.8rem; letter-spacing:0.04em; color:var(--gray); min-width:44px; font-weight:500; }
+        .viz-bar-track { flex:1; height:26px; background:rgba(125,30,62,0.04); border:1px solid rgba(125,30,62,0.06); border-radius:3px; overflow:hidden; }
+        .viz-bar-fill { height:100%; border-radius:3px; transition:width 0.45s cubic-bezier(.4,0,.2,1); display:flex; align-items:center; justify-content:flex-end; padding-right:8px; }
+        .viz-bar-fill span { font-size:0.72rem; font-weight:500; color:white; white-space:nowrap; }
+        .viz-bar-fill.eva  { background:var(--wine); }
+        .viz-bar-fill.tpu  { background:#a8405e; }
+        .viz-bar-fill.peba { background:#bf7a90; }
+        .viz-note { font-size:0.8rem; color:var(--gray); margin-top:1.1rem; margin-bottom:0; line-height:1.6; }
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="../../assets/css/main.css">
-    <link rel="stylesheet" href="../../assets/css/note-page.css">
+        /* Donuts */
+        .viz-donuts { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+        .viz-donut-card { border:1px solid rgba(125,30,62,0.06); border-radius:6px; padding:1.25rem 0.75rem; text-align:center; transition:border-color 0.2s; }
+        .viz-donut-card:hover { border-color:rgba(125,30,62,0.2); }
+        body.dark-mode .viz-donut-card { border-color:rgba(184,50,79,0.12); background:rgba(255,255,255,0.03); }
+        .viz-donut-name { font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); margin-bottom:0.75rem; font-weight:500; }
+        .viz-donut-wrap { position:relative; width:80px; height:80px; margin:0 auto 0.75rem; }
+        .viz-donut-wrap svg { transform:rotate(-90deg); }
+        .viz-donut-label { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:600; color:var(--charcoal); }
+        .viz-donut-desc { font-size:0.76rem; color:var(--gray); line-height:1.55; }
+
+        /* Foot */
+        .viz-foot-wrap { display:flex; flex-direction:column; align-items:center; gap:1.25rem; }
+        .viz-heat-legend { display:flex; align-items:center; gap:0.5rem; font-size:0.74rem; color:var(--gray); }
+        .viz-heat-bar { width:90px; height:7px; border-radius:4px; background:linear-gradient(to right,#fef3c7,#f97316,#991b1b); }
+        .viz-pace-note { font-size:0.8rem; color:var(--gray); text-align:center; max-width:300px; line-height:1.55; min-height:2.5em; }
+
+        /* Plate */
+        .viz-plate-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+        .viz-plate-card { border:1px solid rgba(125,30,62,0.07); border-radius:6px; padding:1.25rem; text-align:center; }
+        .viz-plate-card.highlight { border-color:rgba(125,30,62,0.3); }
+        body.dark-mode .viz-plate-card { border-color:rgba(184,50,79,0.12); background:rgba(255,255,255,0.03); }
+        body.dark-mode .viz-plate-card.highlight { border-color:rgba(184,50,79,0.35); }
+        .viz-plate-label { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); margin-bottom:0.85rem; font-weight:500; }
+        .viz-plate-stat { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:var(--charcoal); line-height:1; margin-bottom:0.2rem; }
+        .viz-plate-stat.wine { color:var(--wine); }
+        .viz-plate-sub { font-size:0.74rem; color:var(--gray); margin-bottom:1rem; }
+        .viz-plate-bar-track { height:5px; background:var(--light-gray); border-radius:3px; overflow:hidden; margin-bottom:0.3rem; }
+        .viz-plate-bar-fill { height:100%; border-radius:3px; }
+        .viz-plate-return { font-size:0.7rem; color:var(--gray); }
+
+        /* References */
+        .note-refs { margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--light-gray); }
+        .note-refs h3 { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; color:var(--gray); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.75rem; }
+        .note-refs p { font-size:0.84rem !important; color:var(--gray) !important; margin-bottom:0.4rem !important; line-height:1.6 !important; }
+
+        @media (max-width:600px) {
+            .viz-donuts { gap:0.5rem; }
+            .viz-donut-wrap { width:64px; height:64px; }
+            .viz-donut-label { font-size:1rem; }
+            .viz-plate-grid { grid-template-columns:1fr; }
+            .viz-block { padding:1.25rem; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Page Loader -->
-    <div class="page-loader" id="pageLoader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <div class="loader-text">Loading</div>
-        </div>
+<div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">Loading</div>
     </div>
+</div>
 
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-content">
-            <a href="/" class="nav-logo">Cynthia Niaz</a>
-            <div class="nav-links">
-                <a href="/">Home</a>
-                <a href="/resume">Resume</a>
-                <a href="/projects">Projects</a>
-                <a href="/notes" class="active">Notes</a>
+<nav>
+    <div class="nav-content">
+        <a href="/" class="nav-logo">Cynthia Niaz</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/resume">Resume</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/notes" class="active">Notes</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <article>
+        <header class="note-header">
+            <a href="/notes" class="back-link">← Notes</a>
+            <div class="note-meta">
+                <span class="note-tag">Physics</span>
+                <span class="note-date">November 2025 — updated February 2026</span>
             </div>
-        </div>
-    </nav>
+            <h1>The Thermodynamics of Running Shoes</h1>
+        </header>
 
-    <!-- Article Content -->
-    <div class="container">
-        <article>
-            <header class="note-header">
-                <a href="/notes" class="back-link">&larr; Notes</a>
-                <div class="note-meta">
-                    <span class="note-tag">Physics</span>
-                    <span class="note-date">February 2026</span>
+        <div class="note-body">
+
+            <p>For my final project in Thermodynamics, we could analyze anything thermodynamically. I chose running shoes. I run cross country and track, I'd been curious about how super shoes actually worked, and it seemed like a good excuse to find out. My usual approach to gear is whatever's on sale or the brightest color, so this was a step up.</p>
+
+            <h2>Shoes as Thermodynamic Systems</h2>
+
+            <p>Every stride involves mechanical work, friction, and heat — and the shoe has to manage all of it. The energy balance can be written as:</p>
+
+            <div class="equation">Q̇<sub>in</sub> − Q̇<sub>out</sub> + Ẇ<sub>in</sub> = dU/dt</div>
+
+            <p>Heat generated by friction must be balanced by heat dissipation and mechanical work input. The midsole foam compresses under your foot, stores some energy elastically, and releases it as you push off. The part it doesn't return gets lost as heat through internal damping. So energy return and heat generation are directly linked: a more efficient foam loses less energy as heat and gives more back to you as forward motion. Your body isn't great at this either — only about 20–25% of your metabolic energy actually goes toward moving you forward.</p>
+
+            <div class="viz-block">
+                <p class="viz-block-title">Energy Return by Midsole Material</p>
+                <p class="viz-block-sub">How much of each stride's mechanical energy is returned vs. lost as heat</p>
+                <div class="viz-donuts">
+                    <div class="viz-donut-card">
+                        <p class="viz-donut-name">EVA</p>
+                        <div class="viz-donut-wrap">
+                            <svg width="80" height="80" viewBox="0 0 80 80">
+                                <circle cx="40" cy="40" r="30" fill="none" stroke="#e8e6e3" stroke-width="9"/>
+                                <circle cx="40" cy="40" r="30" fill="none" stroke="#7d1e3e" stroke-width="9"
+                                    stroke-dasharray="188.5" stroke-dashoffset="75" stroke-linecap="round"/>
+                            </svg>
+                            <div class="viz-donut-label">60%</div>
+                        </div>
+                        <p class="viz-donut-desc">Most common foam. Loses ~40% per stride as heat.</p>
+                    </div>
+                    <div class="viz-donut-card">
+                        <p class="viz-donut-name">TPU</p>
+                        <div class="viz-donut-wrap">
+                            <svg width="80" height="80" viewBox="0 0 80 80">
+                                <circle cx="40" cy="40" r="30" fill="none" stroke="#e8e6e3" stroke-width="9"/>
+                                <circle cx="40" cy="40" r="30" fill="none" stroke="#a8405e" stroke-width="9"
+                                    stroke-dasharray="188.5" stroke-dashoffset="38" stroke-linecap="round"/>
+                            </svg>
+                            <div class="viz-donut-label">80%</div>
+                        </div>
+                        <p class="viz-donut-desc">Durable, amorphous. More thermally stable than EVA.</p>
+                    </div>
+                    <div class="viz-donut-card">
+                        <p class="viz-donut-name">PEBA</p>
+                        <div class="viz-donut-wrap">
+                            <svg width="80" height="80" viewBox="0 0 80 80">
+                                <circle cx="40" cy="40" r="30" fill="none" stroke="#e8e6e3" stroke-width="9"/>
+                                <circle cx="40" cy="40" r="30" fill="none" stroke="#bf7a90" stroke-width="9"
+                                    stroke-dasharray="188.5" stroke-dashoffset="19" stroke-linecap="round"/>
+                            </svg>
+                            <div class="viz-donut-label">90%</div>
+                        </div>
+                        <p class="viz-donut-desc">Used in Vaporfly. Soft/hard segments maximize return.</p>
+                    </div>
                 </div>
-                <h1>The Thermodynamics of Running Shoes</h1>
-            </header>
-
-            <div class="note-body">
-
-                <p>
-                    For my final project in Thermodynamics, we could analyze anything thermodynamically. I chose running shoes. I run cross country and track, I'd been curious about how super shoes actually worked, and it seemed like a good excuse to find out. My usual approach to gear is whatever's on sale or the brightest color, so this was a step up.
-                </p>
-
-                <h2>Shoes as Thermodynamic Systems</h2>
-
-                <p>
-                    Every stride involves mechanical work, friction, and heat — and the shoe has to manage all of it. The midsole foam compresses under your foot, stores some energy elastically, and releases it as you push off. The part it doesn't return gets lost as heat through internal damping. So energy return and heat generation are directly linked: a more efficient foam loses less energy as heat and gives more back to you as forward motion. Your body isn't great at this either — only about 20–25% of your metabolic energy actually goes toward moving you forward.
-                </p>
-
-                <h2>Why Your Shoes Feel Different in the Cold</h2>
-
-                <p>
-                    This one I found satisfying because it confirmed something I'd already noticed: shoes genuinely do feel harder in cold weather and softer when it's warm. Turns out there's a real physical reason for it.
-                </p>
-
-                <p>
-                    The three main foam materials — EVA, TPU, and PEBA — each have different molecular structures that determine how they respond to temperature. EVA, the most common midsole material, has a partially crystalline structure. Those ordered molecular regions restrict how freely molecules can vibrate, so in cold conditions, EVA gets significantly stiffer — up to 70% by some measurements. Less molecular motion means less cushioning. TPU and PEBA are mostly amorphous (disordered) at the molecular level, so they stay soft and responsive even when it's cold. PEBA, which Nike uses in the Vaporfly, is especially stable — its alternating soft and hard molecular segments give it both high elasticity and consistent performance across temperatures.
-                </p>
-
-                <h2>Where Heat Goes During a Run</h2>
-
-                <p>
-                    Heat moves through a shoe via conduction through the foam, airflow through the upper, and evaporation of sweat. Evaporation is surprisingly effective — sweat removes about 580 kilocalories per liter as it vaporizes. But once your socks are saturated, that drops off sharply and heat starts accumulating. Which in turn softens the foam and changes how it responds to loading. The shoe you're wearing at mile 20 is mechanically a little different from the one you started in.
-                </p>
-
-                <h2>What Actually Surprised me</h2>
-
-                <p>
-                    Researchers measured foot temperature at the heel, arch, and forefoot during running at different speeds. At slow speeds, the heel was hottest. At faster speeds, the hottest point shifted forward to the toes. That makes sense — sprinters run on their toes, so that's where the friction and ground contact are concentrated. Distance runners tend to heel strike, which is part of why heel and plantar issues are so common at longer distances. The heat distribution is basically a map of where your foot is working hardest, and it shifts with pace. I'd never thought about it that way before. But I thought it completely checked out.
-                </p>
-
-                <h2>What the Carbon Plate Actually Does</h2>
-
-                <p>
-                    The carbon plate in super shoes is often described as "giving you energy back," which is a little misleading. What it really does is reduce energy loss. It acts as a stiff spring that limits forefoot deformation, reducing the energy lost to internal damping in the foam. Less heat generated per stride means more energy returned to propulsion. A 2017 study found about a 4% improvement in running economy with carbon-plated prototypes — which sounds small, but at the marathon distance is significant.
-                </p>
-
-                <p>
-                    I got Vaporflys for track last year and they're genuinely different. I wish I'd had them for Grandma's Marathon, but they were a bit spendy and I didn't know I'd end up on a varsity team. It was still a good investment!
-                </p>
-
-                <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--gray);">
-                    Adapted from a research paper for PHYS 346: Thermodynamics and Statistical Mechanics at Carleton College. The full paper is on the <a href="/projects">Projects</a> page.
-                </p>
-
             </div>
-        </article>
 
-        <footer>
-            <p>&copy; 2026 Cynthia Anna Niaz</p>
-        </footer>
-    </div>
+            <h2>Why Your Shoes Feel Different in the Cold</h2>
 
-    <!-- Dark Mode Toggle -->
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+            <p>This one I found satisfying because it confirmed something I'd already noticed: shoes genuinely do feel harder in cold weather and softer when it's warm. Turns out there's a real physical reason for it.</p>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+            <p>The Einstein model treats each molecule in the foam as a quantum oscillator storing energy in discrete units of <em>hf</em>. At low temperatures, fewer oscillators are excited — the molecules can't vibrate as freely — so the material stiffens. The three main foam materials respond very differently depending on their molecular structure.</p>
 
-    <!-- Scripts -->
-    <script src="../../assets/js/main.js"></script>
-    <script src="../../assets/js/dark-mode.js"></script>
+            <div class="viz-block">
+                <p class="viz-block-title">Foam Stiffness vs. Temperature</p>
+                <p class="viz-block-sub">Drag to see how each material responds — EVA's crystalline structure makes it far more temperature-sensitive than TPU or PEBA</p>
+                <div class="viz-slider-row">
+                    <span class="viz-slider-label">Temperature</span>
+                    <input type="range" class="viz-range" id="tempSlider" min="-10" max="35" value="20" step="1" />
+                    <span class="viz-slider-val" id="tempVal">20°C</span>
+                </div>
+                <div class="viz-bars">
+                    <div class="viz-bar-row">
+                        <span class="viz-bar-name">EVA</span>
+                        <div class="viz-bar-track">
+                            <div class="viz-bar-fill eva" id="evaBar"><span id="evaLabel">baseline</span></div>
+                        </div>
+                    </div>
+                    <div class="viz-bar-row">
+                        <span class="viz-bar-name">TPU</span>
+                        <div class="viz-bar-track">
+                            <div class="viz-bar-fill tpu" id="tpuBar"><span id="tpuLabel">baseline</span></div>
+                        </div>
+                    </div>
+                    <div class="viz-bar-row">
+                        <span class="viz-bar-name">PEBA</span>
+                        <div class="viz-bar-track">
+                            <div class="viz-bar-fill peba" id="pebaBar"><span id="pebaLabel">baseline</span></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="viz-note">At −10°C, EVA can be up to 70% stiffer than at room temperature. PEBA's amorphous molecular network keeps it elastic across the full range.</p>
+            </div>
+
+            <p>EVA is partially crystalline — those ordered molecular regions restrict thermal motion and raise the effective activation energy needed for oscillators to become excited. Laboratory data from over 400 shoe models show it can become up to 70% stiffer in low temperatures. TPU and PEBA are mostly amorphous (disordered) at the molecular level, so they stay soft and responsive even when it's cold. PEBA, which Nike uses in the Vaporfly, is especially stable — its alternating soft and hard molecular segments give it both high elasticity and consistent performance across temperatures.</p>
+
+            <h2>Where Heat Goes During a Run</h2>
+
+            <p>Heat moves through a shoe via conduction through the foam, airflow through the upper, and evaporation of sweat. Conduction follows Fourier's law:</p>
+
+            <div class="equation">dQ/dt = −kA · (dT/dx)</div>
+
+            <p>The rate of heat transfer is proportional to the foam's thermal conductivity (<em>k</em>) and the temperature gradient across it. EVA has a conductivity of about 0.18 W/m·K; PEBA reaches around 0.35 W/m·K. These are low — the foams act as insulators — which keeps your feet warm in cold conditions but also means heat accumulates during long runs if airflow through the upper is restricted.</p>
+
+            <p>Evaporation is surprisingly effective — sweat removes about 580 kilocalories per liter as it vaporizes. But once your socks are saturated, that drops off sharply and heat starts accumulating. Which in turn softens the foam and changes how it responds to loading. The shoe you're wearing at mile 20 is mechanically a little different from the one you started in.</p>
+
+            <div class="viz-block">
+                <p class="viz-block-title">Heat Distribution Across the Foot</p>
+                <p class="viz-block-sub">Where temperature concentrates shifts as pace increases — from heel at easy paces to forefoot at speed (Rebay et al., 2007)</p>
+                <div class="viz-slider-row">
+                    <span class="viz-slider-label">Pace</span>
+                    <input type="range" class="viz-range" id="paceSlider" min="4" max="20" value="8" step="0.5" />
+                    <span class="viz-slider-val" id="paceVal">8 km/h</span>
+                </div>
+                <div class="viz-foot-wrap">
+                    <svg width="160" height="300" viewBox="0 0 160 300" id="footSvg">
+                        <defs>
+                            <clipPath id="footClip">
+                                <!-- Right foot, plantar view, big toe on left -->
+                                <path d="
+                                    M 52,272
+                                    C 34,268 22,252 20,234
+                                    C 18,216 24,196 26,176
+                                    C 20,160 18,140 22,120
+                                    C 26,100 34,86  38,72
+                                    C 32,58  34,44  42,36
+                                    C 50,28  62,26  70,30
+                                    C 78,34  82,44  80,56
+                                    C 88,48  98,44  106,48
+                                    C 114,52 116,62 112,70
+                                    C 120,64 130,64 136,70
+                                    C 142,76 140,88 134,94
+                                    C 140,90 148,94 150,102
+                                    C 152,110 148,120 140,124
+                                    C 144,122 150,128 150,136
+                                    C 150,144 144,152 136,154
+                                    C 132,156 128,154 126,150
+                                    C 128,164 126,180 120,192
+                                    C 114,210 106,228 102,246
+                                    C 98,260 96,272 86,278
+                                    C 76,284 62,278 52,272
+                                    Z
+                                "/>
+                            </clipPath>
+                        </defs>
+
+                        <!-- Heat zone fills — clipped to foot shape -->
+                        <g clip-path="url(#footClip)">
+                            <!-- Heel zone -->
+                            <ellipse id="zoneHeel" cx="72" cy="252" rx="38" ry="32" opacity="0.95"/>
+                            <!-- Arch zone -->
+                            <ellipse id="zoneArch" cx="60" cy="185" rx="28" ry="38" opacity="0.8"/>
+                            <!-- Ball zone -->
+                            <ellipse id="zoneBall" cx="90" cy="138" rx="44" ry="28" opacity="0.9"/>
+                            <!-- Toes zone -->
+                            <ellipse id="zoneToes" cx="96" cy="82"  rx="50" ry="42" opacity="0.9"/>
+                        </g>
+
+                        <!-- Foot outline on top -->
+                        <path d="
+                            M 52,272
+                            C 34,268 22,252 20,234
+                            C 18,216 24,196 26,176
+                            C 20,160 18,140 22,120
+                            C 26,100 34,86  38,72
+                            C 32,58  34,44  42,36
+                            C 50,28  62,26  70,30
+                            C 78,34  82,44  80,56
+                            C 88,48  98,44  106,48
+                            C 114,52 116,62 112,70
+                            C 120,64 130,64 136,70
+                            C 142,76 140,88 134,94
+                            C 140,90 148,94 150,102
+                            C 152,110 148,120 140,124
+                            C 144,122 150,128 150,136
+                            C 150,144 144,152 136,154
+                            C 132,156 128,154 126,150
+                            C 128,164 126,180 120,192
+                            C 114,210 106,228 102,246
+                            C 98,260 96,272 86,278
+                            C 76,284 62,278 52,272
+                            Z
+                        " fill="none" stroke="#b0aaa4" stroke-width="1.5"/>
+
+                        <!-- Toe divider lines (subtle) -->
+                        <line x1="80" y1="56" x2="84" y2="100" stroke="#c8c4be" stroke-width="0.8" opacity="0.6"/>
+                        <line x1="112" y1="70" x2="108" y2="108" stroke="#c8c4be" stroke-width="0.8" opacity="0.6"/>
+                        <line x1="134" y1="94" x2="124" y2="120" stroke="#c8c4be" stroke-width="0.8" opacity="0.6"/>
+                        <line x1="136" y1="128" x2="128" y2="140" stroke="#c8c4be" stroke-width="0.8" opacity="0.5"/>
+
+                        <!-- Zone labels -->
+                        <text x="72"  y="256" text-anchor="middle" font-size="8" fill="#5a5a5a" font-family="Work Sans,sans-serif" font-weight="400" letter-spacing="0.04em">heel</text>
+                        <text x="48"  y="188" text-anchor="middle" font-size="8" fill="#5a5a5a" font-family="Work Sans,sans-serif" font-weight="400" letter-spacing="0.04em">arch</text>
+                        <text x="100" y="142" text-anchor="middle" font-size="8" fill="#5a5a5a" font-family="Work Sans,sans-serif" font-weight="400" letter-spacing="0.04em">ball</text>
+                        <text x="72"  y="74"  text-anchor="middle" font-size="8" fill="#5a5a5a" font-family="Work Sans,sans-serif" font-weight="400" letter-spacing="0.04em">toes</text>
+                    </svg>
+                    <div class="viz-heat-legend">
+                        <span>cool</span>
+                        <div class="viz-heat-bar"></div>
+                        <span>hot</span>
+                    </div>
+                    <p class="viz-pace-note" id="paceNote"></p>
+                </div>
+            </div>
+
+            <p>Researchers measured foot temperature at the heel, arch, and forefoot during running at different speeds. At 4 km/h, the heel showed the greatest temperature increase, about 2°C. At 16 km/h, the highest temperature shifted to the toes, reaching approximately 6°C, corresponding to the forward movement of plantar pressure at higher speeds. The heat distribution is basically a map of where your foot is working hardest, and it shifts with pace. I'd never thought about it that way before. But I thought it completely checked out.</p>
+
+            <h2>What the Carbon Plate Actually Does</h2>
+
+            <p>The carbon plate in super shoes is often described as "giving you energy back," which is a little misleading. What it really does is reduce energy loss. It acts as a stiff spring that limits forefoot deformation, reducing the energy lost to internal damping in the foam. Less heat generated per stride means more energy returned to propulsion. From a thermodynamics perspective, the plate reduces entropy generation per stride.</p>
+
+            <div class="viz-block">
+                <p class="viz-block-title">The Carbon Plate Effect</p>
+                <p class="viz-block-sub">Hoogkamer et al. (2017) — elite athletes at 14–18 km/h on treadmill</p>
+                <div class="viz-plate-grid">
+                    <div class="viz-plate-card">
+                        <p class="viz-plate-label">Standard Racing Shoe</p>
+                        <p class="viz-plate-stat">~8%</p>
+                        <p class="viz-plate-sub">energy lost to foam hysteresis per stride</p>
+                        <div class="viz-plate-bar-track">
+                            <div class="viz-plate-bar-fill" style="width:80%;background:#bf7a90;"></div>
+                        </div>
+                        <p class="viz-plate-return">80% energy return</p>
+                    </div>
+                    <div class="viz-plate-card highlight">
+                        <p class="viz-plate-label">Carbon-Plated Prototype</p>
+                        <p class="viz-plate-stat wine">~4%</p>
+                        <p class="viz-plate-sub">plate limits forefoot deformation</p>
+                        <div class="viz-plate-bar-track">
+                            <div class="viz-plate-bar-fill" style="width:96%;background:var(--wine);"></div>
+                        </div>
+                        <p class="viz-plate-return">~4% better running economy</p>
+                    </div>
+                </div>
+                <p class="viz-note">4% sounds small. Over a marathon it's the difference between a 3:30 and a 3:22. Song et al. (2024) found curved plates distribute forefoot load more evenly, further reducing muscular effort at toe-off.</p>
+            </div>
+
+            <p>I got Vaporflys for track last year and they're genuinely different. I wish I'd had them for Grandma's Marathon, but they were a bit spendy and I didn't know I'd end up on a varsity team. It was still a good investment.</p>
+
+            <div class="note-refs">
+                <h3>References</h3>
+                <p>Hoogkamer et al. (2017). A comparison of the energetic cost of running in marathon racing shoes. <em>Sports Medicine</em>, 48(4), 1009–1019.</p>
+                <p>Popovici & Budescu (2011). Aspects of thermodynamics in sports footwear. <em>Annals of the University of Oradea</em>, 12(1), 145–150.</p>
+                <p>Rebay et al. (2007). Heat transfer in athletic shoes during running. <em>Proceedings of the 5th IASME/WSEAS International Conference</em>, pp. 272–277.</p>
+                <p>RunRepeat (2025). Effects of temperature on running shoes. runrepeat.com</p>
+                <p>Song et al. (2024). Curved carbon-plated shoe may further reduce forefoot loads. <em>Scientific Reports</em>, 14, 13215.</p>
+                <p style="margin-top:0.75rem;">Adapted from a research paper for PHYS 346: Thermodynamics and Statistical Mechanics at Carleton College. Full paper on the <a href="/projects">Projects</a> page.</p>
+            </div>
+
+        </div>
+    </article>
+</div>
+
+<footer>
+    <p>© 2026 Cynthia Anna Niaz</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<button class="dark-mode-toggle" id="darkToggle" aria-label="Toggle dark mode">
+    <svg id="darkIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+</button>
+
+<script src="../../assets/js/main.js"></script>
+<script>
+    // Stiffness slider
+    const tempSlider = document.getElementById('tempSlider');
+    const tempVal    = document.getElementById('tempVal');
+
+    function evaStiff(t)  { return t <= 20 ? 42 + (20-t)*1.1  : 42 - (t-20)*0.22; }
+    function tpuStiff(t)  { return t <= 20 ? 40 + (20-t)*0.28 : 40 - (t-20)*0.14; }
+    function pebaStiff(t) { return t <= 20 ? 38 + (20-t)*0.13 : 38 - (t-20)*0.09; }
+
+    function pctLabel(val, base) {
+        const p = Math.round((val/base - 1)*100);
+        if (p === 0) return 'baseline';
+        return p > 0 ? '+'+p+'% stiffer' : p+'% softer';
+    }
+
+    function updateStiffness() {
+        const t = parseInt(tempSlider.value);
+        tempVal.textContent = t + '°C';
+        const eva  = Math.min(Math.max(evaStiff(t),  8), 95);
+        const tpu  = Math.min(Math.max(tpuStiff(t),  8), 95);
+        const peba = Math.min(Math.max(pebaStiff(t), 8), 95);
+        document.getElementById('evaBar').style.width  = eva + '%';
+        document.getElementById('tpuBar').style.width  = tpu + '%';
+        document.getElementById('pebaBar').style.width = peba + '%';
+        document.getElementById('evaLabel').textContent  = pctLabel(eva,  evaStiff(20));
+        document.getElementById('tpuLabel').textContent  = pctLabel(tpu,  tpuStiff(20));
+        document.getElementById('pebaLabel').textContent = pctLabel(peba, pebaStiff(20));
+    }
+    tempSlider.addEventListener('input', updateStiffness);
+    updateStiffness();
+
+    // Foot heat map
+    const paceSlider = document.getElementById('paceSlider');
+    const paceVal    = document.getElementById('paceVal');
+    const paceNote   = document.getElementById('paceNote');
+
+    function lerp(a, b, t) { return a + (b-a)*Math.max(0,Math.min(1,t)); }
+
+    function heatColor(intensity) {
+        const stops = [[254,243,199],[251,191,36],[249,115,22],[220,38,38],[153,27,27]];
+        const idx = intensity*(stops.length-1);
+        const lo  = Math.floor(idx), hi = Math.min(lo+1, stops.length-1), t = idx-lo;
+        return `rgb(${Math.round(lerp(stops[lo][0],stops[hi][0],t))},${Math.round(lerp(stops[lo][1],stops[hi][1],t))},${Math.round(lerp(stops[lo][2],stops[hi][2],t))})`;
+    }
+
+    function updateFoot() {
+        const pace = parseFloat(paceSlider.value);
+        paceVal.textContent = pace + ' km/h';
+        const t = (pace-4)/16;
+        document.getElementById('zoneHeel').setAttribute('fill', heatColor(Math.max(0.85-t*0.72, 0.04)));
+        document.getElementById('zoneArch').setAttribute('fill', heatColor(0.15+t*0.13));
+        document.getElementById('zoneBall').setAttribute('fill', heatColor(0.25+t*0.52));
+        document.getElementById('zoneToes').setAttribute('fill', heatColor(Math.min(0.10+t*0.87, 0.97)));
+        if      (pace <= 6)  paceNote.textContent = 'Easy jog — heel strike dominant, most heat accumulates at the heel.';
+        else if (pace <= 10) paceNote.textContent = 'Comfortable pace — heat beginning to shift toward the forefoot.';
+        else if (pace <= 14) paceNote.textContent = 'Tempo effort — increased forefoot contact, toes warming rapidly.';
+        else                 paceNote.textContent = 'Fast running — toe-off dominant, forefoot is now the hottest zone.';
+    }
+    paceSlider.addEventListener('input', updateFoot);
+    updateFoot();
+
+    // Dark mode
+    const darkToggle = document.getElementById('darkToggle');
+    const darkIcon   = document.getElementById('darkIcon');
+    const sunSVG  = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const moonSVG = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
+    function applyDark(on) {
+        document.body.classList.toggle('dark-mode', on);
+        darkIcon.innerHTML = on ? sunSVG : moonSVG;
+        localStorage.setItem('darkMode', on);
+    }
+    darkToggle.addEventListener('click', () => applyDark(!document.body.classList.contains('dark-mode')));
+    if (localStorage.getItem('darkMode') === 'true') applyDark(true);
+
+    // Page loader
+    window.addEventListener('load', () => {
+        setTimeout(() => document.getElementById('pageLoader').classList.add('hidden'), 300);
+    });
+</script>
 </body>
 </html>
