@@ -373,6 +373,24 @@ body.dark-mode {
     color: #e8e6e3;
 }
 
+body.dark-mode::before {
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.015) 2px,
+            rgba(255, 255, 255, 0.015) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.015) 2px,
+            rgba(255, 255, 255, 0.015) 4px
+        );
+}
+
 body.dark-mode nav {
     background: rgba(20, 20, 20, 0.95);
     border-bottom-color: #2e2e2e;
