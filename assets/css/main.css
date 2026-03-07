@@ -402,8 +402,8 @@ body.dark-mode .page-loader {
 
 body.dark-mode .entry,
 body.dark-mode .note-card {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(184, 50, 79, 0.1);
+    background: #1e1e1e;
+    border-color: rgba(184, 50, 79, 0.15);
 }
 
 body.dark-mode .note-card:hover,
@@ -413,7 +413,7 @@ body.dark-mode .entry:hover {
 }
 
 body.dark-mode .note-card {
-    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(184,50,79,0.02));
+    background: #1e1e1e;
 }
 
 body.dark-mode .entry-logo {
@@ -422,8 +422,8 @@ body.dark-mode .entry-logo {
 }
 
 body.dark-mode .skills-list {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(184, 50, 79, 0.1);
+    background: #1e1e1e;
+    border-color: rgba(184, 50, 79, 0.15);
 }
 
 body.dark-mode .skill-row {

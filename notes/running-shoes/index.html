@@ -19,9 +19,9 @@
             margin: 2rem 0;
         }
         body.dark-mode .viz-block {
-            background: rgba(255,255,255,0.04);
-            border-color: rgba(184,50,79,0.1);
-            border-left-color: rgba(184,50,79,0.3);
+            background: #1e1e1e;
+            border-color: rgba(184,50,79,0.15);
+            border-left-color: rgba(184,50,79,0.4);
         }
         .viz-block-title {
             font-family: 'Cormorant Garamond', serif;
@@ -71,7 +71,7 @@
         .viz-donuts { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
         .viz-donut-card { border:1px solid rgba(125,30,62,0.06); border-radius:6px; padding:1.25rem 0.75rem; text-align:center; transition:border-color 0.2s; }
         .viz-donut-card:hover { border-color:rgba(125,30,62,0.2); }
-        body.dark-mode .viz-donut-card { border-color:rgba(184,50,79,0.12); background:rgba(255,255,255,0.03); }
+        body.dark-mode .viz-donut-card { border-color:rgba(184,50,79,0.2); background:#252525; }
         .viz-donut-name { font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); margin-bottom:0.75rem; font-weight:500; }
         .viz-donut-wrap { position:relative; width:80px; height:80px; margin:0 auto 0.75rem; }
         .viz-donut-wrap svg { transform:rotate(-90deg); }
@@ -79,14 +79,12 @@
         .viz-donut-desc { font-size:0.76rem; color:var(--gray); line-height:1.55; }
 
         .viz-foot-wrap { display:flex; flex-direction:column; align-items:center; gap:1.25rem; }
-        .viz-heat-legend { display:flex; align-items:center; gap:0.5rem; font-size:0.74rem; color:var(--gray); }
-        .viz-heat-bar { width:90px; height:7px; border-radius:4px; background:linear-gradient(to right,#fef3c7,#f97316,#991b1b); }
         .viz-pace-note { font-size:0.8rem; color:var(--gray); text-align:center; max-width:320px; line-height:1.55; min-height:2.5em; margin:0; }
 
         .viz-plate-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
         .viz-plate-card { border:1px solid rgba(125,30,62,0.07); border-radius:6px; padding:1.25rem; text-align:center; }
         .viz-plate-card.highlight { border-color:rgba(125,30,62,0.3); }
-        body.dark-mode .viz-plate-card { border-color:rgba(184,50,79,0.12); background:rgba(255,255,255,0.03); }
+        body.dark-mode .viz-plate-card { border-color:rgba(184,50,79,0.2); background:#252525; }
         body.dark-mode .viz-plate-card.highlight { border-color:rgba(184,50,79,0.35); }
         .viz-plate-label { font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); margin-bottom:0.85rem; font-weight:500; }
         .viz-plate-stat { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:300; color:var(--charcoal); line-height:1; margin-bottom:0.2rem; }
@@ -100,7 +98,6 @@
         .note-refs h3 { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; color:var(--gray); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.75rem; }
         .note-refs p { font-size:0.84rem !important; color:var(--gray) !important; margin-bottom:0.4rem !important; line-height:1.6 !important; }
 
-        /* Nav fix for standalone preview */
         nav ul { list-style: none; }
         nav ul li { list-style: none; }
 
@@ -313,13 +310,11 @@
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<button class="dark-mode-toggle" id="darkToggle" aria-label="Toggle dark mode">
-    <svg id="darkIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-    </svg>
-</button>
+<!-- Uses same id as dark-mode.js expects -->
+<button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"></button>
 
 <script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/dark-mode.js"></script>
 <script>
 // ── Stiffness slider ──
 const tempSlider = document.getElementById('tempSlider');
@@ -358,7 +353,6 @@ const ctx        = canvas.getContext('2d');
 const W = 560, H = 160;
 const PAD = 40, SOLE_TOP = 38, SOLE_BOT = 122, R = 18;
 
-// Zones: left=heel, right=toes. x positions as fractions of sole width.
 const ZONES = [
     { label: 'heel', x: 0.12 },
     { label: 'arch', x: 0.35 },
@@ -387,18 +381,16 @@ function heatColor(intensity) {
 }
 
 function drawSole(pace) {
-    const t = (pace - 4) / 16; // 0 at 4 km/h, 1 at 20 km/h
+    const t = (pace - 4) / 16;
     ctx.clearRect(0, 0, W, H);
 
-    // Zone intensities — heel cools, toes heat up as pace rises
     const intensities = [
-        Math.max(0.92 - t * 0.82, 0.04),  // heel
-        0.10 + t * 0.14,                   // arch
-        0.16 + t * 0.62,                   // ball
-        Math.min(0.06 + t * 0.92, 0.96),   // toes
+        Math.max(0.92 - t * 0.82, 0.04),
+        0.10 + t * 0.14,
+        0.16 + t * 0.62,
+        Math.min(0.06 + t * 0.92, 0.96),
     ];
 
-    // ── Draw sole shape with rounded rect ──
     ctx.save();
     ctx.beginPath();
     ctx.moveTo(SOLE_L + R, SOLE_TOP);
@@ -413,11 +405,9 @@ function drawSole(pace) {
     ctx.closePath();
     ctx.clip();
 
-    // Base fill
     ctx.fillStyle = '#f2ece4';
     ctx.fillRect(0, 0, W, H);
 
-    // Heat blobs — one radial gradient per zone
     ZONES.forEach((zone, i) => {
         const cx = SOLE_L + zone.x * SOLE_W;
         const cy = (SOLE_TOP + SOLE_BOT) / 2;
@@ -433,7 +423,6 @@ function drawSole(pace) {
 
     ctx.restore();
 
-    // ── Sole outline ──
     ctx.save();
     ctx.beginPath();
     ctx.moveTo(SOLE_L + R, SOLE_TOP);
@@ -451,12 +440,11 @@ function drawSole(pace) {
     ctx.stroke();
     ctx.restore();
 
-    // ── Zone dividers ──
+    // Zone dividers — solid lines
     ctx.save();
     ctx.strokeStyle = 'rgba(160,140,120,0.2)';
     ctx.lineWidth = 1;
-    ctx.setLineDash([3, 4]);
-    // Between heel/arch, arch/ball, ball/toes
+    ctx.setLineDash([]);
     [0.235, 0.485, 0.74].forEach(frac => {
         const x = SOLE_L + frac * SOLE_W;
         ctx.beginPath();
@@ -466,7 +454,6 @@ function drawSole(pace) {
     });
     ctx.restore();
 
-    // ── Labels above ──
     ctx.save();
     ctx.font = '500 11px "Work Sans", sans-serif';
     ctx.textAlign = 'center';
@@ -474,20 +461,17 @@ function drawSole(pace) {
     ZONES.forEach((zone, i) => {
         const cx = SOLE_L + zone.x * SOLE_W;
         const [r, g, b] = heatColor(intensities[i]);
-        // Darken label color slightly for readability
         const lum = (r * 0.299 + g * 0.587 + b * 0.114);
         ctx.fillStyle = lum > 160 ? '#7a6050' : '#fff';
         ctx.fillText(zone.label, cx, SOLE_TOP - 6);
     });
     ctx.restore();
 
-    // ── Temperature delta annotations below ──
-    // Based on Rebay et al.: ~2°C at heel at slow pace, ~6°C at toes at fast pace
     const deltasAtPace = [
-        2.0 * intensities[0] / 0.92,   // heel
-        1.2 * intensities[1] / 0.24,   // arch
-        3.5 * intensities[2] / 0.78,   // ball
-        6.0 * intensities[3] / 0.96,   // toes
+        2.0 * intensities[0] / 0.92,
+        1.2 * intensities[1] / 0.24,
+        3.5 * intensities[2] / 0.78,
+        6.0 * intensities[3] / 0.96,
     ];
 
     ctx.save();
@@ -518,20 +502,7 @@ function updateSole() {
 paceSlider.addEventListener('input', updateSole);
 updateSole();
 
-// ── Dark mode ──
-const darkToggle = document.getElementById('darkToggle');
-const darkIcon   = document.getElementById('darkIcon');
-const sunSVG  = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-const moonSVG = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-function applyDark(on) {
-    document.body.classList.toggle('dark-mode', on);
-    darkIcon.innerHTML = on ? sunSVG : moonSVG;
-    localStorage.setItem('darkMode', on);
-}
-darkToggle.addEventListener('click', () => applyDark(!document.body.classList.contains('dark-mode')));
-if (localStorage.getItem('darkMode') === 'true') applyDark(true);
-
-// ── Page loader ──
+// Page loader
 window.addEventListener('load', () => {
     setTimeout(() => document.getElementById('pageLoader').classList.add('hidden'), 300);
 });

@@ -41,7 +41,6 @@
             font-weight: 300;
         }
 
-        /* ── dept blocks ── */
         .dept-list {
             margin: 0.75rem 0 4rem;
             max-width: 780px;
@@ -92,7 +91,6 @@
         }
         .dept-block.open .dept-chevron { transform: rotate(90deg); }
 
-        /* ── course rows ── */
         .course-list {
             overflow: hidden;
             max-height: 0;
@@ -137,7 +135,6 @@
             white-space: nowrap;
         }
 
-        /* description panel */
         .course-desc {
             display: none;
             margin: 0.1rem 0 0.4rem 1.4rem;
@@ -159,10 +156,8 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* last row in a section */
         .course-row.last { margin-bottom: 0.75rem; }
 
-        /* dark mode */
         body.dark-mode .dept-block { border-top-color: #2e2e2e; }
         body.dark-mode .dept-block:last-child { border-bottom-color: #2e2e2e; }
         body.dark-mode .course-row:hover { background: rgba(184,50,79,0.04); }
@@ -234,7 +229,6 @@
             position: relative;
         }
         .tl-dot:hover { transform: scale(1.5); }
-        /* tooltip */
         .tl-dot::after {
             content: attr(data-name);
             position: absolute;
@@ -289,12 +283,12 @@
             color: #ccc;
         }
         body.dark-mode .timeline-strip {
-            background: rgba(255,255,255,0.03);
+            background: #1e1e1e;
             border-color: #2e2e2e;
             box-shadow: none;
         }
-        body.dark-mode .timeline-inner::before { background: #2e2e2e; }
-        body.dark-mode .tl-dot { border-color: #1c1c1c; }
+        body.dark-mode .timeline-inner::before { background: #484848; }
+        body.dark-mode .tl-dot { border-color: #1e1e1e; }
         body.dark-mode .tl-label { color: #444; }
         body.dark-mode .tl-label em { color: #383838; }
         body.dark-mode .tl-dot::after { background: #e8e6e3; color: #1a1a1a; }
@@ -460,7 +454,6 @@
 
                 row.addEventListener('click', () => {
                     const wasOpen = desc.classList.contains('open');
-                    // close all others in this dept
                     courseList.querySelectorAll('.course-desc').forEach(d => d.classList.remove('open'));
                     if (!wasOpen) desc.classList.add('open');
                 });
@@ -475,7 +468,6 @@
         });
     }
 
-    // ── timeline strip ──
     const TERMS_LIST = [
         {s:"Fall",   y:"'23"},
         {s:"Win",    y:"'24"},
@@ -488,14 +480,12 @@
         {s:"Spr",    y:"'26"},
     ];
 
-    // Map term string to index
     const TERM_INDEX = {
         "Fall '23":0,"Win '24":1,"Spr '24":2,
         "Fall '24":3,"Win '25":4,"Spr '25":5,
         "Fall '25":6,"Win '26":7,"Spr '26":8,
     };
 
-    // Collect all courses with their dept color and term
     const allCourses = DEPTS.flatMap(d => d.courses.map(c => ({ ...c, color: d.color })));
     const byTerm = Array.from({length: 9}, () => []);
     allCourses.forEach(c => {
@@ -517,7 +507,6 @@
             const dots = document.createElement('div');
             dots.className = 'tl-dots';
 
-            // Pad to max height so label baseline is consistent
             for (let j = 0; j < maxPerTerm; j++) {
                 const dot = document.createElement('div');
                 dot.className = 'tl-dot';
