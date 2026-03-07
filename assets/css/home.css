@@ -169,6 +169,15 @@
     stroke: currentColor;
 }
 
+/* Tint the duolingo img to match wine color, invert to white on hover */
+.duolingo-icon {
+    filter: invert(14%) sepia(60%) saturate(1200%) hue-rotate(305deg) brightness(80%);
+    transition: filter 0.3s ease;
+}
+.duolingo-link:hover .duolingo-icon {
+    filter: brightness(0) invert(1);
+}
+
 .contact-links a:hover svg {
     transform: scale(1.1);
 }
