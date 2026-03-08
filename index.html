@@ -80,61 +80,6 @@
                         Outside of academics and work, I enjoy reading nonfiction and distance running. I compete for my college's varsity cross country and track teams and completed Grandma's Marathon in Duluth in 2024.
                     </p>
 
-                    <!-- Quote Section -->
-                    <div class="quote-container" style="display:none">
-                        <div class="quote-wrapper" id="quoteWrapper">
-
-                            <div class="quote-item active">
-                                <div class="quote-mark-open">"</div>
-                                <p class="quote-text">Nothing in life is to be feared, it is only to be understood.</p>
-                                <p class="quote-author">Marie Curie</p>
-                            </div>
-
-                            <div class="quote-item">
-                                <div class="quote-mark-open">"</div>
-                                <p class="quote-text">Real change, enduring change, happens one step at a time.</p>
-                                <p class="quote-author">Ruth Bader Ginsburg</p>
-                            </div>
-
-                            <div class="quote-item">
-                                <div class="quote-mark-open">"</div>
-                                <p class="quote-text">Nothing works unless you do.</p>
-                                <p class="quote-author">Maya Angelou</p>
-                            </div>
-
-                            <div class="quote-item">
-                                <div class="quote-mark-open">"</div>
-                                <p class="quote-text">Millionaires don't use astrology, billionaires do.</p>
-                                <p class="quote-author">J. P. Morgan</p>
-                            </div>
-
-                            <div class="quote-item">
-                                <div class="quote-mark-open">"</div>
-                                <p class="quote-text">If you don't find a way to make money while you sleep, you will work until you die.</p>
-                                <p class="quote-author">Warren Buffett</p>
-                            </div>
-
-                            <div class="quote-item">
-                                <div class="quote-mark-open">"</div>
-                                <p class="quote-text">The best way to solve a problem is to find a solution.</p>
-                                <p class="quote-author">Greg Heffley</p>
-                            </div>
-
-                            <div class="quote-item">
-                                <div class="quote-mark-open">"</div>
-                                <p class="quote-text">The enemy of my enemy is my friend.</p>
-                                <p class="quote-author">Unknown</p>
-                            </div>
-
-                            <div class="quote-item">
-                                <div class="quote-mark-open">"</div>
-                                <p class="quote-text">What??? NOOOOOOOOOO!!! BOOOOOO</p>
-                                <p class="quote-author">Mindy Kaling</p>
-                            </div>
-
-                        </div>
-                    </div>
-
                     <!-- Contact Links -->
                     <div class="contact-links">
                         <a href="#" id="email-link" aria-label="Email Cynthia">
@@ -166,12 +111,61 @@
                             Duolingo
                         </a>
                     </div>
+
                 </div>
 
                 <div class="hero-right">
                     <img src="assets/images/personal/personal-pic.jpeg" alt="Cynthia A. Niaz" class="profile-photo">
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Quote Section (below the fold) -->
+        <section class="quote-section" id="quoteSection">
+            <div class="quote-container" id="quoteContainer">
+                <div class="quote-wrapper" id="quoteWrapper">
+                    <div class="quote-item active">
+                        <div class="quote-mark-open">"</div>
+                        <p class="quote-text">Nothing in life is to be feared, it is only to be understood.</p>
+                        <p class="quote-author">Marie Curie</p>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-mark-open">"</div>
+                        <p class="quote-text">Real change, enduring change, happens one step at a time.</p>
+                        <p class="quote-author">Ruth Bader Ginsburg</p>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-mark-open">"</div>
+                        <p class="quote-text">Nothing works unless you do.</p>
+                        <p class="quote-author">Maya Angelou</p>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-mark-open">"</div>
+                        <p class="quote-text">Millionaires don't use astrology, billionaires do.</p>
+                        <p class="quote-author">J. P. Morgan</p>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-mark-open">"</div>
+                        <p class="quote-text">If you don't find a way to make money while you sleep, you will work until you die.</p>
+                        <p class="quote-author">Warren Buffett</p>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-mark-open">"</div>
+                        <p class="quote-text">The best way to solve a problem is to find a solution.</p>
+                        <p class="quote-author">Greg Heffley</p>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-mark-open">"</div>
+                        <p class="quote-text">The enemy of my enemy is my friend.</p>
+                        <p class="quote-author">Unknown</p>
+                    </div>
+                    <div class="quote-item">
+                        <div class="quote-mark-open">"</div>
+                        <p class="quote-text">What??? NOOOOOOOOOO!!! BOOOOOO</p>
+                        <p class="quote-author">Mindy Kaling</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -191,5 +185,22 @@
     <script src="assets/js/dark-mode.js"></script>
     <script src="assets/js/home.js"></script>
     <script src="assets/js/quotes.js"></script>
+    <script>
+        // Fade in quote section when scrolled into view
+        document.addEventListener('DOMContentLoaded', function() {
+            var qs = document.getElementById('quoteSection');
+            if (!qs) return;
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        qs.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            observer.observe(qs);
+        });
+    </script>
 </body>
 </html>
