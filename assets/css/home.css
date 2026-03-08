@@ -127,7 +127,7 @@
 .contact-links {
     display: flex;
     gap: 1rem;
-    margin-top: 1.25rem;
+    margin-top: 2rem;
     flex-wrap: wrap;
 }
 
