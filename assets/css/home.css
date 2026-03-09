@@ -449,7 +449,8 @@
     }
 
     .quote-section {
-        padding: 4rem 1rem 1rem;
+        padding: 1.5rem 1rem 1rem;
+        margin-top: 0;
     }
 
     .quote-container {
@@ -484,7 +485,8 @@
     }
 
     .quote-section {
-        padding: 3.5rem 1rem 0.5rem;
+        padding: 1rem 1rem 0.5rem;
+        margin-top: 0;
     }
 
     .quote-container {
