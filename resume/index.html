@@ -362,29 +362,47 @@
         .download-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.65rem 1.4rem;
-            background: transparent;
+            gap: 0.4rem;
+            padding: 0;
+            background: none;
+            border: none;
+            box-shadow: none;
             color: var(--wine);
             text-decoration: none;
-            border-radius: 6px;
-            border: 1px solid var(--wine);
             font-family: 'Work Sans', sans-serif;
             font-weight: 500;
-            font-size: 0.88rem;
-            transition: all 0.25s ease;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--wine);
+            transition: width 0.25s ease;
         }
 
         .download-btn:hover {
-            background: var(--wine);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(125, 30, 62, 0.2);
+            color: var(--wine-dark);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .download-btn:hover::after {
+            width: 100%;
         }
 
         .download-btn svg {
             width: 16px;
             height: 16px;
+            stroke: currentColor;
+            fill: none;
             transition: transform 0.25s ease;
         }
 
@@ -418,24 +436,14 @@
 
         body.dark-mode .download-btn {
             color: var(--wine-light);
-            border-color: var(--wine-light);
-            background: transparent;
+        }
+
+        body.dark-mode .download-btn::after {
+            background: var(--wine-light);
         }
 
         body.dark-mode .download-btn svg {
-            color: var(--wine-light);
             stroke: var(--wine-light);
-        }
-
-        body.dark-mode .download-btn:hover {
-            background: var(--wine);
-            color: #f5f0eb;
-            border-color: var(--wine);
-        }
-
-        body.dark-mode .download-btn:hover svg {
-            color: #f5f0eb;
-            stroke: #f5f0eb;
         }
 
         /* ---- Responsive ---- */
