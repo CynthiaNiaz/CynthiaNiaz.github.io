@@ -417,13 +417,25 @@
         }
 
         body.dark-mode .download-btn {
-            color: var(--wine);
-            border-color: var(--wine);
+            color: var(--wine-light);
+            border-color: var(--wine-light);
+            background: transparent;
+        }
+
+        body.dark-mode .download-btn svg {
+            color: var(--wine-light);
+            stroke: var(--wine-light);
         }
 
         body.dark-mode .download-btn:hover {
             background: var(--wine);
             color: #f5f0eb;
+            border-color: var(--wine);
+        }
+
+        body.dark-mode .download-btn:hover svg {
+            color: #f5f0eb;
+            stroke: #f5f0eb;
         }
 
         /* ---- Responsive ---- */
@@ -505,7 +517,8 @@
                     <div class="rp-label">Education</div>
                     <div class="edu-name">Carleton College</div>
                     <div class="edu-sub">B.A. in Physics</div>
-                    <div class="edu-date">2023 – 2027 · Northfield, MN</div>
+                    <div class="edu-date">2023 – 2027</div>
+                    <div class="edu-date" style="color: var(--gray); margin-top: 1px;">Northfield, MN</div>
                     <div class="edu-coursework">
                         <a href="/coursework" title="View full coursework map">Thermodynamics · E&M · Mechanics · Electronics · ODE · Linear Algebra · Data Structures · Software Design · Robotics</a>
                     </div>

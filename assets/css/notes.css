@@ -2,27 +2,34 @@
    NOTES PAGE
    ============================================ */
 
-.page-intro {
-    padding: 7rem 0 0.5rem;
-    animation: fadeIn 0.8s ease-out;
+.notes-wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 4rem 2rem 5rem;
 }
 
-.page-intro h1 {
+/* ---- Page header ---- */
+
+.notes-header {
+    background: white;
+    border-radius: 8px 8px 0 0;
+    padding: 1.5rem 1.75rem 1.25rem;
+    border-bottom: 1.5px solid var(--wine);
+    margin-bottom: 1.5rem;
+}
+
+.notes-header h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem;
+    font-size: 3rem;
+    font-weight: 400;
     color: var(--wine);
-    font-weight: 600;
     letter-spacing: -0.5px;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+    line-height: 1.1;
 }
 
-.page-description {
-    font-size: 1.05rem;
-    color: var(--gray);
+body.dark-mode .notes-header {
+    background: #231f1c;
 }
-
-section { padding: 1rem 0 2rem; }
 
 /* ---- Grid ---- */
 
@@ -32,7 +39,7 @@ section { padding: 1rem 0 2rem; }
     gap: 1rem;
 }
 
-/* ---- Card ---- */
+/* ---- Card — sticky note style ---- */
 
 .note-card {
     aspect-ratio: 1;
@@ -40,20 +47,14 @@ section { padding: 1rem 0 2rem; }
     flex-direction: column;
     justify-content: space-between;
     padding: 1.75rem 1.75rem 1.5rem;
-    background: linear-gradient(145deg, rgba(255,255,255,0.7), rgba(125,30,62,0.015));
+    background: white;
     border: 1px solid rgba(125, 30, 62, 0.06);
-    border-left: 3px solid rgba(125, 30, 62, 0.15);
+    border-left: 3px solid rgba(125, 30, 62, 0.2);
     border-radius: 8px;
     text-decoration: none;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    opacity: 0;
-    transform: translateY(12px);
-}
-
-.note-card.visible {
-    opacity: 1;
-    transform: translateY(0);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease;
 }
 
 .note-card:hover {
@@ -62,9 +63,22 @@ section { padding: 1rem 0 2rem; }
     transform: translateY(-3px);
 }
 
-.note-card:active { transform: translateY(0); }
+.note-card:active {
+    transform: translateY(0);
+}
 
-/* ---- Featured ---- */
+body.dark-mode .note-card {
+    background: #231f1c;
+    border-color: rgba(196, 61, 92, 0.08);
+    border-left-color: rgba(196, 61, 92, 0.25);
+}
+
+body.dark-mode .note-card:hover {
+    border-left-color: var(--wine);
+    box-shadow: 0 6px 24px rgba(196, 61, 92, 0.1);
+}
+
+/* ---- Featured card ---- */
 
 .note-card.featured {
     grid-column: span 2;
@@ -76,8 +90,13 @@ section { padding: 1rem 0 2rem; }
 }
 
 .note-card.featured .note-preview {
-    font-size: 0.98rem;
     -webkit-line-clamp: 4;
+}
+
+.note-card.featured .note-number {
+    font-size: 6rem;
+    bottom: 1rem;
+    right: 2rem;
 }
 
 /* ---- Card content ---- */
@@ -103,9 +122,9 @@ section { padding: 1rem 0 2rem; }
 }
 
 .note-date {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: var(--gray);
-    opacity: 0.8;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .note-title {
@@ -118,7 +137,9 @@ section { padding: 1rem 0 2rem; }
     transition: color 0.2s ease;
 }
 
-.note-card:hover .note-title { color: var(--wine-dark); }
+.note-card:hover .note-title {
+    color: var(--wine-dark);
+}
 
 .note-bottom {
     display: flex;
@@ -127,7 +148,8 @@ section { padding: 1rem 0 2rem; }
 }
 
 .note-preview {
-    font-size: 0.9rem;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.85rem;
     color: var(--gray);
     line-height: 1.65;
     display: -webkit-box;
@@ -146,7 +168,9 @@ section { padding: 1rem 0 2rem; }
     letter-spacing: 0.3px;
 }
 
-.note-card:hover .note-read { transform: translateX(5px); }
+.note-card:hover .note-read {
+    transform: translateX(5px);
+}
 
 /* ---- Number accent ---- */
 
@@ -158,25 +182,14 @@ section { padding: 1rem 0 2rem; }
     font-size: 4rem;
     font-weight: 600;
     color: var(--wine);
-    opacity: 0.04;
+    opacity: 0.05;
     line-height: 1;
     pointer-events: none;
     transition: opacity 0.3s ease;
 }
 
-.note-card:hover .note-number { opacity: 0.08; }
-
-.note-card.featured .note-number {
-    font-size: 6rem;
-    bottom: 1rem;
-    right: 2rem;
-}
-
-/* ---- Coming soon (for future use) ---- */
-
-.note-card.coming-soon {
-    opacity: 0.3;
-    pointer-events: none;
+.note-card:hover .note-number {
+    opacity: 0.1;
 }
 
 /* ---- Responsive ---- */
@@ -193,9 +206,11 @@ section { padding: 1rem 0 2rem; }
 }
 
 @media (max-width: 768px) {
-    .page-intro { padding: 8rem 0 0.5rem; }
-    .page-intro h1 { font-size: 2.3rem; }
-    .page-description { font-size: 1rem; }
+    .notes-wrap {
+        padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .notes-header h1 { font-size: 2.3rem; }
 
     .notes-grid {
         grid-template-columns: 1fr;
@@ -215,7 +230,6 @@ section { padding: 1rem 0 2rem; }
 }
 
 @media (max-width: 480px) {
-    .page-intro { padding: 7rem 0 0.25rem; }
-    .page-intro h1 { font-size: 1.9rem; }
+    .notes-header h1 { font-size: 1.9rem; }
     .note-card { padding: 1rem 1rem 0.85rem; }
 }

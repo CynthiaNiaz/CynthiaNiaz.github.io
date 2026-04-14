@@ -160,43 +160,62 @@
 /* Contact Links */
 .contact-links {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
     flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light-gray);
 }
 
 .contact-links a {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: white;
+    gap: 0.4rem;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
     color: var(--wine);
     text-decoration: none;
-    border-radius: 6px;
-    border: 1px solid var(--wine);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 4px rgba(125, 30, 62, 0.1);
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.contact-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--wine);
+    transition: width 0.25s ease;
 }
 
 .contact-links a:hover {
-    background: var(--wine);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(125, 30, 62, 0.25);
+    color: var(--wine-dark);
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.contact-links a:hover::after {
+    width: 100%;
 }
 
 .contact-links a:active {
-    transform: translateY(0);
+    transform: none;
 }
 
 .contact-links svg {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     fill: currentColor;
-    transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
 .contact-links svg.chess-icon {
@@ -204,17 +223,24 @@
     stroke: currentColor;
 }
 
-/* Tint the duolingo img to match wine color, invert to white on hover */
 .duolingo-icon {
-    filter: invert(14%) sepia(60%) saturate(1200%) hue-rotate(305deg) brightness(80%);
-    transition: filter 0.3s ease;
-}
-.duolingo-link:hover .duolingo-icon {
-    filter: brightness(0) invert(1);
+    filter: none;
 }
 
-.contact-links a:hover svg {
-    transform: scale(1.1);
+body.dark-mode .contact-links a {
+    color: var(--wine-light);
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode .contact-links a:hover {
+    color: var(--wine-light);
+    background: none !important;
+}
+
+body.dark-mode .contact-links {
+    border-top-color: var(--light-gray);
 }
 
 /* Profile Photo */
@@ -391,6 +417,7 @@
 
     .contact-links {
         justify-content: center;
+        gap: 0.5rem 1.25rem;
     }
 
     .quote-section {
@@ -429,15 +456,9 @@
     }
 
     .contact-links {
-        flex-direction: column;
-        gap: 1rem;
+        flex-direction: row;
+        gap: 0.5rem 1rem;
         align-items: center;
-    }
-
-    .contact-links a {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
     }
 
     .profile-photo {
@@ -477,11 +498,6 @@
 
     .profile-photo {
         max-width: 260px;
-    }
-
-    .contact-links a {
-        padding: 0.65rem 1.25rem;
-        font-size: 0.95rem;
     }
 
     .quote-section {

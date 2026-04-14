@@ -6,24 +6,22 @@
     max-width: 780px;
     margin: 0 auto;
     padding: 4rem 2rem 5rem;
-    background: white;
-    box-shadow: 0 0 0 100vw white;
-    position: relative;
-    z-index: 2;
 }
 
-body.dark-mode .projects-wrap {
-    background: #1c1917;
-    box-shadow: 0 0 0 100vw #1c1917;
+/* White panels on cream textured background — same approach as resume */
+.proj-header {
+    background: white;
+    border-radius: 8px 8px 0 0;
+    padding: 1.5rem 1.75rem 1.25rem;
+    border-bottom: 1.5px solid var(--wine);
+    margin-bottom: 1.5rem;
+}
+
+body.dark-mode .proj-header {
+    background: #231f1c;
 }
 
 /* ---- Page header ---- */
-
-.proj-header {
-    padding-bottom: 1.25rem;
-    border-bottom: 1.5px solid var(--wine);
-    margin-bottom: 2.5rem;
-}
 
 .proj-header h1 {
     font-family: 'Cormorant Garamond', serif;
@@ -36,16 +34,28 @@ body.dark-mode .projects-wrap {
 
 /* ---- Entry list ---- */
 
+.proj-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .proj-entry {
     display: grid;
     grid-template-columns: 72px 1fr;
     gap: 0 1.5rem;
-    padding: 2rem 0;
-    border-bottom: 0.5px solid var(--light-gray);
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem 1.5rem 1.25rem;
+    transition: box-shadow 0.3s ease;
 }
 
-.proj-entry:last-child {
-    border-bottom: none;
+.proj-entry:hover {
+    box-shadow: 0 4px 20px rgba(125, 30, 62, 0.07);
+}
+
+body.dark-mode .proj-entry {
+    background: #231f1c;
 }
 
 /* ---- Number ---- */
@@ -151,51 +161,82 @@ body.dark-mode .tag:hover {
 
 .proj-links {
     display: flex;
-    gap: 0.55rem;
     flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--light-gray);
 }
 
 .proj-link {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.45rem 1rem;
-    background: transparent;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
     color: var(--wine);
     text-decoration: none;
-    border-radius: 6px;
-    border: 1px solid var(--wine);
     font-family: 'Work Sans', sans-serif;
     font-weight: 500;
-    font-size: 0.8rem;
-    transition: all 0.25s ease;
+    font-size: 0.88rem;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.proj-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--wine);
+    transition: width 0.25s ease;
 }
 
 .proj-link:hover {
-    background: var(--wine);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(125, 30, 62, 0.2);
+    color: var(--wine-dark);
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.proj-link:hover::after {
+    width: 100%;
 }
 
 .proj-link:active {
-    transform: translateY(0);
+    transform: none;
 }
 
 .proj-link svg {
-    width: 13px;
-    height: 13px;
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
     flex-shrink: 0;
 }
 
+.proj-link svg[fill="currentColor"] {
+    fill: currentColor;
+    stroke: none;
+}
+
 body.dark-mode .proj-link {
-    color: var(--wine);
-    border-color: var(--wine);
+    color: var(--wine-light);
+}
+
+body.dark-mode .proj-link::after {
+    background: var(--wine-light);
 }
 
 body.dark-mode .proj-link:hover {
-    background: var(--wine);
-    color: #f5f0eb;
+    color: var(--wine-light);
+}
+
+body.dark-mode .proj-links {
+    border-top-color: var(--light-gray);
 }
 
 /* ---- Responsive ---- */
@@ -210,16 +251,11 @@ body.dark-mode .proj-link:hover {
     .proj-entry {
         grid-template-columns: 48px 1fr;
         gap: 0 1rem;
-        padding: 1.5rem 0;
+        padding: 1.25rem;
     }
 
     .proj-number { font-size: 2.5rem; }
     .proj-title { font-size: 1.2rem; }
-
-    .proj-link {
-        width: 100%;
-        justify-content: center;
-    }
 }
 
 @media (max-width: 480px) {
@@ -228,6 +264,7 @@ body.dark-mode .proj-link:hover {
     .proj-entry {
         grid-template-columns: 40px 1fr;
         gap: 0 0.75rem;
+        padding: 1rem;
     }
 
     .proj-number { font-size: 2rem; }
