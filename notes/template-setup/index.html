@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <link rel="icon" href="/assets/icons/letter-c.png" type="image/png">
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKLL2XEDKL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,35 +9,31 @@
       gtag('js', new Date());
       gtag('config', 'G-YKLL2XEDKL');
     </script>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="How to Use This Site as a Template | Cynthia Niaz">
-    <meta property="og:description" content="Junior physics major at Carleton College with a background in computer science and economics.">
+    <meta property="og:description" content="A walkthrough of how I built this portfolio and how you can fork it, customize it, and make it your own.">
     <meta property="og:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
-    <meta property="og:url" content="https://cynthianiaz.github.io/notes/template-setup.html">
+    <meta property="og:url" content="https://cynthianiaz.com/notes/template-setup">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
     <title>How to Use This Site as a Template | Cynthia Niaz</title>
-    
-    <!-- Favicons -->
+
     <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16x16.png">
-    
-    <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets -->
+
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="stylesheet" href="../../assets/css/note-page.css">
 </head>
 <body>
 
-    <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-content">
             <div class="loader-spinner"></div>
@@ -46,10 +41,8 @@
         </div>
     </div>
 
-    <!-- Scroll Progress Indicator -->
     <div class="scroll-progress"></div>
 
-    <!-- Navigation -->
     <nav>
         <div class="nav-content">
             <a href="/" class="nav-logo">Cynthia Niaz</a>
@@ -62,14 +55,13 @@
         </div>
     </nav>
 
-    <!-- Article Content -->
     <div class="container">
         <article>
             <header class="note-header">
-                <a href="/notes" class="back-link">&larr; Notes</a>
+                <a href="/notes" class="back-link">← Notes</a>
                 <div class="note-meta">
                     <span class="note-tag">Guide</span>
-                    <span class="note-date">February 2026</span>
+                    <span class="note-date">Updated April 2026</span>
                 </div>
                 <h1>How to Use This Site as a Template</h1>
             </header>
@@ -77,7 +69,7 @@
             <div class="note-body">
 
                 <p>
-                    I published this site as a template so anyone can use it as a starting point for their own portfolio. It's built with plain HTML, CSS, and JavaScript &mdash; no frameworks, no build tools, no dependencies. It deploys for free on GitHub Pages.
+                    I published this site as a template so anyone can use it as a starting point for their own portfolio. It's built with plain HTML, CSS, and JavaScript — no frameworks, no build tools, no dependencies. It deploys for free on GitHub Pages.
                 </p>
 
                 <p>
@@ -87,11 +79,11 @@
                 <h2>What you get</h2>
 
                 <p>
-                    Four pages &mdash; Home, Resume, Projects, and Notes &mdash; all fully styled and responsive. The home page has a quote carousel, email obfuscation, and a parallax effect. The resume page supports company logos, sub-entries, and a skills section. The projects page uses the same card layout. The notes section has a grid with featured and square cards, plus an article template for individual posts.
+                    Four pages — Home, Resume, Projects, and Notes — all fully styled and responsive. The home page has a quote carousel, email obfuscation, and a parallax effect. The resume page uses a two-column editorial layout with a sticky sidebar for education, skills, and activities. The projects page uses a numbered list layout. The notes section has a grid with a featured card and square cards, plus an article template for individual posts.
                 </p>
 
                 <p>
-                    Everything comes with placeholder content so you can see the structure immediately and just swap in your own text.
+                    Dark mode is included out of the box. Everything comes with placeholder content so you can see the structure immediately and swap in your own text.
                 </p>
 
                 <h2>Getting started</h2>
@@ -106,36 +98,36 @@
 
                 <h2>File structure</h2>
 
-                <p>Here's how the template is organized:</p>
-
                 <pre><code>├── index.html              ← Home page (stays at root)
 ├── 404.html                ← Error page
 ├── resume/
-│   └── index.html          ← cynthianiaz.github.io/resume
+│   └── index.html          ← yourusername.github.io/resume
 ├── projects/
-│   └── index.html          ← cynthianiaz.github.io/projects
+│   └── index.html          ← yourusername.github.io/projects
 ├── notes/
-│   ├── index.html          ← cynthianiaz.github.io/notes
+│   ├── index.html          ← yourusername.github.io/notes
 │   ├── example-note/
-│   │   └── index.html      ← cynthianiaz.github.io/notes/example-note
+│   │   └── index.html      ← yourusername.github.io/notes/example-note
 │   └── another-note/
 │       └── index.html
 └── assets/
     ├── css/
-    │   ├── main.css        ← Shared styles (nav, footer, variables)
+    │   ├── main.css        ← Shared styles (nav, footer, variables, dark mode)
     │   ├── home.css        ← Home page only
     │   ├── resume.css      ← Resume page only
+    │   ├── resume-print.css← Print styles for resume
     │   ├── projects.css    ← Projects page only
     │   ├── notes.css       ← Notes index only
     │   ├── note-page.css   ← Individual note layout
     │   └── 404.css         ← Error page only
     ├── js/
     │   ├── main.js         ← Shared (scroll, nav, animations)
+    │   ├── dark-mode.js    ← Dark mode toggle
     │   ├── home.js         ← Email obfuscation, parallax
     │   └── quotes.js       ← Quote rotation
     ├── documents/          ← PDFs (resume, papers)
     └── images/
-        ├── logos/          ← Company logos
+        ├── logos/          ← Placeholder logo
         └── personal/       ← Profile photo</code></pre>
 
                 <p>
@@ -143,7 +135,7 @@
                 </p>
 
                 <p>
-                    Each page has its own CSS file. <code>main.css</code> handles everything shared &mdash; the nav bar, footer, colors, and base typography. If you want to change the look of just the resume page, you only touch <code>resume.css</code>.
+                    Each page has its own CSS file. <code>main.css</code> handles everything shared — the nav bar, footer, colors, dark mode, and base typography. If you want to change the look of just one page, you only touch that page's CSS file.
                 </p>
 
                 <p>
@@ -169,31 +161,25 @@
 }</code></pre>
 
                 <p>
-                    Change <code>--wine</code> to whatever accent color you want and the whole site updates. The light and dark variants are used for hover states and subtle backgrounds, so adjust those to match.
+                    Change <code>--wine</code> to whatever accent color you want and the whole site updates. The light and dark variants are used for hover states, so adjust those to match.
                 </p>
 
                 <h3>Fonts</h3>
 
                 <p>
-                    The template uses two Google Fonts: <strong>Cormorant Garamond</strong> for headings and <strong>Work Sans</strong> for body text. To change them, pick your fonts on <a href="https://fonts.google.com" target="_blank">Google Fonts</a>, replace the import URL in each HTML file's <code>&lt;head&gt;</code>, and update the <code>font-family</code> references in the CSS.
+                    The template uses two Google Fonts: Cormorant Garamond for headings and Work Sans for body text. To change them, pick your fonts on <a href="https://fonts.google.com" target="_blank">Google Fonts</a>, replace the import URL in each HTML file's <code>&lt;head&gt;</code>, and update the <code>font-family</code> references in the CSS.
                 </p>
 
                 <h3>Content</h3>
 
                 <p>
-                    Everything is in the HTML files &mdash; there's no CMS or markdown processing. To update the resume, open <code>resume/index.html</code> and edit the entries directly. Same for projects. Each entry follows a consistent structure with classes like <code>.entry</code>, <code>.entry-title</code>, <code>.entry-subtitle</code>, so adding new ones is just copying an existing block and changing the text.
+                    Everything is in the HTML files — there's no CMS or markdown processing. To update the resume, open <code>resume/index.html</code> and edit the entries directly. Same for projects. Each entry follows a consistent structure with classes like <code>.exp-entry</code>, <code>.exp-org</code>, <code>.exp-role</code>, so adding new ones is just copying an existing block and changing the text.
                 </p>
 
                 <h3>Profile photo</h3>
 
                 <p>
-                    The template comes with a placeholder image. Drop your own photo in <code>assets/images/personal/</code> and update the <code>&lt;img&gt;</code> src in <code>index.html</code>.
-                </p>
-
-                <h3>Company logos</h3>
-
-                <p>
-                    The resume page shows logos next to each experience entry. Replace the placeholder SVGs in <code>assets/images/logos/</code> with your own. Transparent PNGs work best, and they'll be scaled to fit a 56&times;56px container.
+                    Drop your photo in <code>assets/images/personal/</code> and update the <code>&lt;img&gt;</code> src in <code>index.html</code>. The photo is displayed as a square crop, so a roughly square image works best.
                 </p>
 
                 <h3>Email</h3>
@@ -202,20 +188,26 @@
                     Open <code>assets/js/home.js</code> and change the <code>user</code> and <code>domain</code> variables to your email address. It's split into two parts in JavaScript so bots can't scrape it from the HTML.
                 </p>
 
+                <h3>Dark mode</h3>
+
+                <p>
+                    Dark mode is handled by <code>assets/js/dark-mode.js</code> and the dark mode styles at the bottom of <code>main.css</code>. The toggle button is included on every page — it saves the user's preference to <code>localStorage</code> so it persists across visits. You don't need to change anything for it to work.
+                </p>
+
                 <h2>Adding a note</h2>
 
                 <p>
-                    To add a new note, create a new folder inside <code>notes/</code> and add an <code>index.html</code> inside it. For example, <code>notes/my-new-note/index.html</code> will be live at <code>/notes/my-new-note</code>. Copy an existing note file as your starting point — it already has the right asset paths (<code>../../assets/</code>) and nav links set up.
+                    To add a new note, create a new folder inside <code>notes/</code> and add an <code>index.html</code> inside it. For example, <code>notes/my-new-note/index.html</code> will be live at <code>/notes/my-new-note</code>. Copy the example note file as your starting point — it already has the right asset paths (<code>../../assets/</code>) and nav links set up.
                 </p>
 
                 <p>
-                    Then add a card for it on <code>notes/index.html</code>. Each card is an <code>&lt;a&gt;</code> tag with class <code>note-card</code> inside the <code>.notes-grid</code>, with the <code>href</code> set to <code>/notes/my-new-note</code>. The first card can use the <code>featured</code> class to span two columns. Regular cards are square.
+                    Then add a card for it in <code>notes/index.html</code> inside <code>.notes-grid</code>. The first card uses the <code>featured</code> class to span two columns. Regular cards are square. The grid looks best with a featured card plus three regular cards, or a featured card plus one regular card — anything that fills the row.
                 </p>
 
                 <h2>Deploying</h2>
 
                 <p>
-                    If you named your repo <code>yourusername.github.io</code>, it will deploy automatically. If you used a different name, go to Settings &rarr; Pages, set the source to "Deploy from a branch," and select <code>main</code>. Your site will be live within a few minutes.
+                    If you named your repo <code>yourusername.github.io</code>, it will deploy automatically. If you used a different name, go to Settings → Pages, set the source to "Deploy from a branch," and select <code>main</code>. Your site will be live within a few minutes.
                 </p>
 
                 <p>
@@ -225,15 +217,15 @@
                 <h2>Things to know</h2>
 
                 <p>
-                    There's no build step. You edit the files and push &mdash; that's the whole workflow. No npm, no bundlers, no compilers. You should be able to come back to this six months later and still understand how everything works.
+                    There's no build step. You edit the files and push — that's the whole workflow. No npm, no bundlers, no compilers. You should be able to come back to this six months later and still understand how everything works.
                 </p>
 
                 <p>
-                    To test locally, don't just open the HTML files directly in your browser &mdash; clicking links won't work because clean URLs require a server to resolve them. Instead, run <code>python3 -m http.server 8000</code> from your repo root and open <code>http://localhost:8000</code>. Everything will work exactly as it does on GitHub Pages.
+                    To test locally, don't open the HTML files directly in your browser — clicking links won't work because clean URLs require a server. Instead, run <code>python3 -m http.server 8000</code> from your repo root and open <code>http://localhost:8000</code>. Everything will work exactly as it does on GitHub Pages.
                 </p>
 
                 <p>
-                    The JavaScript is minimal. <code>main.js</code> handles the scroll progress bar, back-to-top button, and intersection observer for fade-in animations. <code>home.js</code> does the email obfuscation and a subtle parallax effect. <code>quotes.js</code> rotates the quotes on the home page.
+                    The JavaScript is minimal. <code>main.js</code> handles the scroll progress bar, back-to-top button, and intersection observer for fade-in animations. <code>dark-mode.js</code> handles the theme toggle and persistence. <code>home.js</code> does the email obfuscation and a subtle parallax effect on the hero section. <code>quotes.js</code> rotates the quotes on the home page.
                 </p>
 
                 <p>
@@ -244,17 +236,13 @@
         </article>
 
         <footer>
-            <p>&copy; 2026 Cynthia Anna Niaz</p>
+            <p>© 2026 Cynthia Anna Niaz</p>
         </footer>
     </div>
 
-    <!-- Dark Mode Toggle -->
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
-
-    <!-- Scripts -->
     <script src="../../assets/js/main.js"></script>
     <script src="../../assets/js/dark-mode.js"></script>
 </body>
