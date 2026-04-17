@@ -394,7 +394,10 @@ body.dark-mode .exp-sub {
 }
 
 body.dark-mode .download-btn {
-    color: var(--wine-light);
+    color: var(--wine-light) !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 body.dark-mode .download-btn::after {
