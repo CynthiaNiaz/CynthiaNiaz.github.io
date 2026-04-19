@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/assets/icons/letter-c.png" type="image/png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKLL2XEDKL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YKLL2XEDKL');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Site Archive | Cynthia Niaz">
+    <meta property="og:description" content="Every past version of this site, playable in the browser.">
+    <meta property="og:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
+    <meta property="og:url" content="https://cynthianiaz.com/notes/archive">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
+    <title>Site Archive | Cynthia Niaz</title>
+
+    <link rel="icon" type="image/x-icon" href="../../assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/icons/favicon-16x16.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/note-page.css">
+
+    <style>
+        /* Archive viewer styles */
+        .archive-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin: 2rem 0 1rem;
+        }
+
+        .archive-button {
+            padding: 0.55rem 1.4rem;
+            border: 1px solid var(--wine);
+            background: transparent;
+            color: var(--wine);
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.02em;
+            border-radius: 3px;
+        }
+
+        .archive-button:hover {
+            background: var(--wine-light);
+            color: #faf8f5;
+            border-color: var(--wine-light);
+        }
+
+        .archive-button.active {
+            background: var(--wine);
+            color: #faf8f5;
+        }
+
+        body.dark-mode .archive-button {
+            color: var(--wine-light);
+            border-color: var(--wine-light);
+        }
+
+        body.dark-mode .archive-button:hover,
+        body.dark-mode .archive-button.active {
+            background: var(--wine);
+            color: #f5f0eb;
+            border-color: var(--wine);
+        }
+
+        .archive-description {
+            max-width: 640px;
+            margin: 0 auto 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--gray);
+            text-align: center;
+            min-height: 3em;
+            line-height: 1.5;
+        }
+
+        .archive-frame-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+            border: 1px solid var(--light-gray);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            background: var(--cream);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        body.dark-mode .archive-frame-wrapper {
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+            border-color: var(--light-gray);
+        }
+
+        .archive-frame-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.65rem 1rem;
+            background: #f0ede8;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 0.85rem;
+        }
+
+        body.dark-mode .archive-frame-header {
+            background: #2a2420;
+        }
+
+        .archive-dots {
+            display: flex;
+            gap: 0.35rem;
+        }
+
+        .archive-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #d9d5cf;
+        }
+
+        body.dark-mode .archive-dot {
+            background: #3a332f;
+        }
+
+        .archive-url {
+            flex: 1;
+            font-family: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
+            font-size: 0.78rem;
+            color: var(--charcoal);
+            background: var(--cream);
+            padding: 0.3rem 0.9rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            text-align: center;
+        }
+
+        body.dark-mode .archive-url {
+            background: #1c1917;
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+
+        .archive-open-link {
+            font-size: 0.82rem;
+            color: var(--wine);
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .archive-open-link:hover {
+            text-decoration: underline;
+        }
+
+        body.dark-mode .archive-open-link {
+            color: var(--wine-light);
+        }
+
+        .archive-frame {
+            width: 100%;
+            height: 78vh;
+            min-height: 600px;
+            border: none;
+            display: block;
+            background: var(--cream);
+        }
+
+        .archive-direct-links {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.88rem;
+            margin-top: 2rem;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .archive-direct-links code {
+            font-family: 'SF Mono', 'Fira Code', Menlo, Consolas, monospace;
+            font-size: 0.85em;
+            background: rgba(125, 30, 62, 0.05);
+            color: var(--wine-dark);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+        }
+
+        body.dark-mode .archive-direct-links code {
+            background: rgba(196, 61, 92, 0.12);
+            color: var(--wine-light);
+        }
+
+        @media (max-width: 768px) {
+            .archive-frame {
+                height: 65vh;
+                min-height: 480px;
+            }
+
+            .archive-controls {
+                gap: 0.4rem;
+            }
+
+            .archive-button {
+                padding: 0.45rem 0.95rem;
+                font-size: 0.85rem;
+            }
+
+            .archive-url {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.6rem;
+            }
+
+            .archive-frame-header {
+                padding: 0.5rem 0.75rem;
+                gap: 0.5rem;
+            }
+
+            .archive-open-link {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .archive-dots {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Loading</div>
+        </div>
+    </div>
+
+    <div class="scroll-progress"></div>
+
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="nav-logo">Cynthia Niaz</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/resume">Resume</a>
+                <a href="/projects">Projects</a>
+                <a href="/notes" class="active">Notes</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <article>
+            <header class="note-header">
+                <a href="/notes" class="back-link">← Notes</a>
+                <div class="note-meta">
+                    <span class="note-tag">Archive</span>
+                    <span class="note-date">Updated April 2026</span>
+                </div>
+                <h1>Site Archive</h1>
+            </header>
+
+            <div class="note-body">
+
+                <p>
+                    I keep shipping changes to this site, and most of them disappear into git history. This page keeps the past versions reachable — click through each one to see how the site has evolved.
+                </p>
+
+                <p>
+                    Each version below is fully interactive. You can click around, read the old notes, see what the resume used to look like, and poke at features that no longer exist. All of them used to be the live site.
+                </p>
+
+                <div class="archive-controls">
+                    <button class="archive-button active" data-version="v1" data-date="January 18, 2026" data-description="The original site, right before I tore it apart and rebuilt it. Flat file structure, single-column resume, no Notes section yet.">January 2026</button>
+                    <button class="archive-button" data-version="v2" data-date="February 8, 2026" data-description="The first version with a Notes section. This is when the site got its four-page structure.">February 2026</button>
+                    <button class="archive-button" data-version="v3" data-date="April 14, 2026" data-description="The two-column resume redesign with a sticky sidebar. Rolled out this week.">April 2026</button>
+                </div>
+
+                <p class="archive-description" id="archive-description">
+                    The original site, right before I tore it apart and rebuilt it. Flat file structure, single-column resume, no Notes section yet.
+                </p>
+
+                <div class="archive-frame-wrapper">
+                    <div class="archive-frame-header">
+                        <div class="archive-dots">
+                            <span class="archive-dot"></span>
+                            <span class="archive-dot"></span>
+                            <span class="archive-dot"></span>
+                        </div>
+                        <span class="archive-url" id="archive-url">cynthianiaz.com · January 18, 2026</span>
+                        <a href="/archive/v1/" target="_blank" rel="noopener" class="archive-open-link" id="archive-open">Open ↗</a>
+                    </div>
+                    <iframe class="archive-frame" id="archive-frame" src="/archive/v1/" title="Archived version of the site"></iframe>
+                </div>
+
+                <p class="archive-direct-links">
+                    Each version also lives at <code>/archive/v1</code>, <code>/archive/v2</code>, and <code>/archive/v3</code> if you want to link to one directly.
+                </p>
+
+            </div>
+        </article>
+
+        <footer>
+            <p>© 2026 Cynthia Anna Niaz</p>
+        </footer>
+    </div>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/dark-mode.js"></script>
+    <script>
+        const buttons = document.querySelectorAll('.archive-button');
+        const frame = document.getElementById('archive-frame');
+        const url = document.getElementById('archive-url');
+        const openLink = document.getElementById('archive-open');
+        const description = document.getElementById('archive-description');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const v = btn.dataset.version;
+                const date = btn.dataset.date;
+                const desc = btn.dataset.description;
+
+                frame.src = `/archive/${v}/`;
+                url.textContent = `cynthianiaz.com · ${date}`;
+                openLink.href = `/archive/${v}/`;
+                description.textContent = desc;
+            });
+        });
+
+        // Keyboard navigation: left/right arrows
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            const activeIndex = Array.from(buttons).findIndex(b => b.classList.contains('active'));
+            if (e.key === 'ArrowRight' && activeIndex < buttons.length - 1) {
+                buttons[activeIndex + 1].click();
+            } else if (e.key === 'ArrowLeft' && activeIndex > 0) {
+                buttons[activeIndex - 1].click();
+            }
+        });
+    </script>
+</body>
+</html>
