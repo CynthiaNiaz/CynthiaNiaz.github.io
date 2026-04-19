@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/archive/v3/">
+    <link rel="icon" href="/assets/icons/letter-c.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Coursework | Cynthia Niaz">
+    <meta property="og:description" content="Courses taken at Carleton College, organized by department.">
+    <meta property="og:image" content="https://cynthianiaz.com/assets/images/personal/personal-pic.jpeg">
+    <meta property="og:url" content="https://cynthianiaz.com/coursework">
+    <meta property="og:type" content="website">
+    <title>Coursework | Cynthia Niaz</title>
+
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16x16.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/main.css">
+
+    <style>
+        .page-intro {
+            padding: 7rem 0 0.5rem;
+            animation: fadeIn 1s ease-out;
+        }
+        .page-intro h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: var(--wine);
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+        .page-intro p {
+            margin-top: 0.4rem;
+            font-size: 0.95rem;
+            color: var(--gray);
+            font-weight: 300;
+        }
+
+        .dept-list {
+            margin: 0.75rem 0 4rem;
+            max-width: 780px;
+        }
+
+        .dept-block { border-top: 1px solid var(--light-gray); }
+        .dept-block:last-child { border-bottom: 1px solid var(--light-gray); }
+
+        .dept-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.1rem 0;
+            cursor: pointer;
+            user-select: none;
+            transition: opacity 0.2s;
+        }
+        .dept-header:hover { opacity: 0.75; }
+
+        .dept-pip {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .dept-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            line-height: 1;
+        }
+
+        .dept-count {
+            font-size: 0.78rem;
+            color: var(--gray);
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        .dept-chevron {
+            margin-left: auto;
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+        .dept-block.open .dept-chevron { transform: rotate(90deg); }
+
+        .course-list {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s ease;
+        }
+        .dept-block.open .course-list { max-height: 2000px; }
+
+        .course-row {
+            display: grid;
+            grid-template-columns: 82px 1fr 80px;
+            gap: 0 1.5rem;
+            padding: 0.55rem 0 0.55rem 1.4rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s;
+            align-items: start;
+        }
+        .course-row:hover { background: rgba(125,30,62,0.03); }
+
+        .course-code {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gray);
+            padding-top: 0.1rem;
+            white-space: nowrap;
+        }
+
+        .course-name {
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .course-term {
+            font-size: 0.75rem;
+            color: #bbb;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            text-align: right;
+            padding-top: 0.1rem;
+            white-space: nowrap;
+        }
+
+        .course-desc {
+            display: none;
+            margin: 0.1rem 0 0.4rem 1.4rem;
+            padding: 0.7rem 1rem;
+            background: rgba(125,30,62,0.03);
+            border-left: 2px solid rgba(125,30,62,0.15);
+            border-radius: 0 4px 4px 0;
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .course-desc.open {
+            display: block;
+            animation: descIn 0.18s ease;
+        }
+        @keyframes descIn {
+            from { opacity: 0; transform: translateY(-3px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .course-row.last { margin-bottom: 0.75rem; }
+
+        body.dark-mode .dept-block { border-top-color: #2e2e2e; }
+        body.dark-mode .dept-block:last-child { border-bottom-color: #2e2e2e; }
+        body.dark-mode .course-row:hover { background: rgba(184,50,79,0.04); }
+        body.dark-mode .course-desc {
+            background: rgba(184,50,79,0.04);
+            border-left-color: rgba(184,50,79,0.2);
+        }
+        body.dark-mode .dept-chevron { color: #444; }
+
+        @media (max-width: 768px) {
+            .page-intro { padding: 8rem 0 0.5rem; }
+            .page-intro h1 { font-size: 2.2rem; }
+            .course-row { grid-template-columns: 70px 1fr 64px; gap: 0 0.75rem; }
+            .course-name { font-size: 0.88rem; }
+        }
+        @media (max-width: 480px) {
+            .course-row { grid-template-columns: 64px 1fr; }
+            .course-term { display: none; }
+        }
+
+        /* ── timeline strip ── */
+        .timeline-strip {
+            margin: 1.75rem 0 0;
+            max-width: 780px;
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem 1rem;
+            box-shadow: 0 1px 8px rgba(125,30,62,0.04);
+            overflow: visible;
+        }
+        .timeline-inner {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            position: relative;
+        }
+        .timeline-inner::before {
+            content: '';
+            position: absolute;
+            top: 13px;
+            left: 0; right: 0;
+            height: 1px;
+            background: var(--light-gray);
+            z-index: 0;
+        }
+        .tl-term {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            overflow: visible;
+        }
+        .tl-dots {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            margin-bottom: 6px;
+            overflow: visible;
+        }
+        .tl-dot {
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            border: 2px solid white;
+            flex-shrink: 0;
+            transition: transform 0.15s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        .tl-dot:hover { transform: scale(1.5); }
+        .tl-dot::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: calc(100% + 7px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--charcoal);
+            color: white;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 400;
+            white-space: nowrap;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            z-index: 100;
+        }
+        .tl-dot::before {
+            content: '';
+            position: absolute;
+            bottom: calc(100% + 3px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid transparent;
+            border-top-color: var(--charcoal);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            z-index: 100;
+        }
+        .tl-dot:hover::after,
+        .tl-dot:hover::before { opacity: 1; }
+        .tl-dot.empty {
+            background: transparent !important;
+            border-color: transparent !important;
+            pointer-events: none;
+        }
+        .tl-label {
+            font-size: 0.58rem;
+            color: #bbb;
+            text-align: center;
+            line-height: 1.3;
+            white-space: nowrap;
+        }
+        .tl-label em {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.62rem;
+            color: #ccc;
+        }
+        body.dark-mode .timeline-strip {
+            background: #1e1e1e;
+            border-color: #2e2e2e;
+            box-shadow: none;
+        }
+        body.dark-mode .timeline-inner::before { background: #484848; }
+        body.dark-mode .tl-dot { border-color: #1e1e1e; }
+        body.dark-mode .tl-label { color: #444; }
+        body.dark-mode .tl-label em { color: #383838; }
+        body.dark-mode .tl-dot::after { background: #e8e6e3; color: #1a1a1a; }
+        body.dark-mode .tl-dot::before { border-top-color: #e8e6e3; }
+        @media (max-width: 560px) {
+            .tl-label em { display: none; }
+            .tl-dot { width: 7px; height: 7px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Loading</div>
+        </div>
+    </div>
+
+    <div class="scroll-progress"></div>
+
+    <nav>
+        <div class="nav-content">
+            <a href="/" class="nav-logo">Cynthia Niaz</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/resume">Resume</a>
+                <a href="/projects">Projects</a>
+                <a href="/notes">Notes</a>
+                <a href="/coursework" class="active">Coursework</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-intro">
+            <h1>Coursework</h1>
+            <p>Courses taken at Carleton College, 2023–2027. Click any course for a description.</p>
+        </div>
+
+        <div class="timeline-strip" id="timelineStrip"></div>
+        <div class="dept-list" id="deptList"></div>
+
+        <footer><p>© 2026 Cynthia Anna Niaz</p></footer>
+    </div>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"></button>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dark-mode.js"></script>
+
+    <script>
+    const DEPTS = [
+        {
+            name: "Physics",
+            color: "#7d1e3e",
+            courses: [
+                { code:"PHYS 143", name:"Physical Systems: Mechanics and Relativity",         term:"Win '24", desc:"An introduction to classical mechanics and special relativity, covering Newton's laws, conservation principles, oscillations, and the foundations of relativistic motion." },
+                { code:"PHYS 123", name:"What Physicists Do",                                  term:"Spr '24", desc:"A program of five lectures by invited speakers giving perspective on the kinds of work done by people with a physics background, from industry, government, business, and research and educational institutions." },
+                { code:"PHYS 228", name:"Atomic and Nuclear Physics",                          term:"Fall '24", desc:"Quantum mechanics of atoms and nuclei, including wave-particle duality, the Schrödinger equation, atomic structure, radioactive decay, and nuclear reactions." },
+                { code:"PHYS 231", name:"Analytical and Computational Mechanics",              term:"Win '25", desc:"Advanced classical mechanics using Lagrangian and Hamiltonian formulations, with computational modeling in MATLAB applied to complex dynamical systems." },
+                { code:"PHYS 235", name:"Electricity and Magnetism",                           term:"Spr '25", desc:"Electrostatics, magnetostatics, and electrodynamics culminating in Maxwell's equations, electromagnetic waves, and the foundations of optics." },
+                { code:"PHYS 343", name:"Electronics",                                         term:"Fall '25", desc:"Analog and digital circuit design, including resistor networks, capacitors, op-amps, filters, oscillators, and introductory signal processing." },
+                { code:"PHYS 346", name:"Thermodynamics and Statistical Mechanics",            term:"Fall '25", desc:"Classical thermodynamics, entropy, and equilibrium, unified with statistical mechanics through partition functions, Boltzmann distributions, and phase transitions." },
+                { code:"PHYS 342", name:"Contemporary and Experimental Physics",               term:"Spr '26", desc:"Modern experimental methods and current research areas in physics, including laboratory techniques, data analysis, and exposure to active fields such as condensed matter and astrophysics." },
+            ]
+        },
+        {
+            name: "Mathematics",
+            color: "#4a6741",
+            courses: [
+                { code:"MATH 120", name:"Calculus 2",                                          term:"Fall '23", desc:"Techniques and applications of integration, sequences and series, polar coordinates, and an introduction to differential equations." },
+                { code:"MATH 210", name:"Calculus 3",                                          term:"Win '24", desc:"Multivariable calculus covering partial derivatives, multiple integrals, vector fields, line and surface integrals, and the theorems of Green, Stokes, and Gauss." },
+                { code:"MATH 232", name:"Linear Algebra",                                      term:"Spr '24", desc:"Vector spaces, linear transformations, matrices, determinants, eigenvalues and eigenvectors, and applications to systems of equations and data analysis." },
+                { code:"MATH 236", name:"Mathematical Structures",                             term:"Fall '24", desc:"An introduction to abstract mathematics through logic, proof techniques, set theory, relations, functions, and foundational structures in algebra and combinatorics." },
+                { code:"MATH 241", name:"Ordinary Differential Equations",                     term:"Win '26", desc:"Analytical and qualitative methods for solving ordinary differential equations, including first- and second-order equations, systems, phase plane analysis, and applications to physics and engineering." },
+            ]
+        },
+        {
+            name: "Computer Science",
+            color: "#2c5f6e",
+            courses: [
+                { code:"CS 100",  name:"Ethics of Technology",                                 term:"Fall '23", desc:"Philosophical and social frameworks for analyzing the ethical implications of computing, surveillance, algorithmic decision-making, and the design of technology." },
+                { code:"CS 111",  name:"Introduction to Computer Science",                     term:"Fall '23", desc:"Fundamentals of programming and computational thinking using Python, covering data types, control flow, functions, recursion, and basic algorithms." },
+                { code:"CS 201",  name:"Data Structures",                                      term:"Spr '25", desc:"Design and analysis of fundamental data structures including linked lists, stacks, queues, trees, heaps, hash tables, and graphs, with attention to time and space complexity." },
+                { code:"CS 257",  name:"Software Design",                                      term:"Fall '25", desc:"Principles of software engineering including modular design, object-oriented programming, design patterns, testing, and the development of larger-scale software systems." },
+                { code:"CS 327",  name:"Introduction to Robotics",                             term:"Spr '26", desc:"Foundations of robotics including kinematics, sensors, actuators, control systems, and path planning, with hands-on implementation in Python." },
+            ]
+        },
+        {
+            name: "Chemistry",
+            color: "#8a5a1a",
+            courses: [
+                { code:"CHEM 123", name:"Principles of Chemistry I",                           term:"Spr '24", desc:"Atomic structure, chemical bonding, stoichiometry, thermochemistry, and the periodic table, with an emphasis on quantitative reasoning and laboratory technique." },
+            ]
+        },
+        {
+            name: "Social Sciences",
+            color: "#5a3d6b",
+            courses: [
+                { code:"ECON 276", name:"Money and Banking",                                    term:"Win '25", desc:"The economics of money, financial institutions, and monetary policy, including commercial banking, central banking, credit markets, and the role of money in macroeconomic fluctuations." },
+                { code:"GWSS 110", name:"Introduction to Gender, Women's, and Sexuality Studies", term:"Win '24", desc:"An interdisciplinary introduction to feminist theory, gender analysis, and the study of sexuality, examining how these categories shape social, political, and cultural life." },
+                { code:"GWSS 200", name:"Gender, Sexuality, and the Pursuit of Knowledge",      term:"Spr '24", desc:"Feminist and queer epistemologies examining how gender and sexuality inform the production of knowledge across disciplines, including science, philosophy, and the social sciences." },
+                { code:"GWSS 212", name:"Foundations of LGBTQ Studies",                        term:"Win '25", desc:"Historical and theoretical foundations of LGBTQ studies, tracing the emergence of sexual and gender identity categories and the development of queer politics and scholarship." },
+                { code:"SOAN 283", name:"Immigration, Citizenship, and Belonging",             term:"Win '26", desc:"Sociological and anthropological perspectives on immigration, examining legal frameworks, identity formation, labor, and the social construction of citizenship and belonging." },
+            ]
+        },
+        {
+            name: "Humanities",
+            color: "#7a5c2e",
+            courses: [
+                { code:"RELG 110", name:"Understanding Religion",                              term:"Spr '25", desc:"Comparative and methodological approaches to the study of religion, examining belief, ritual, sacred texts, and religious institutions across cultural contexts." },
+                { code:"PHIL 111", name:"Bullshit: How to Spot it and Protect Yourself",       term:"Spr '26", desc:"An introduction to critical thinking and informal logic, with a focus on identifying misleading reasoning, propaganda, pseudoscience, and epistemic manipulation in everyday life." },
+                { code:"ARTH 245", name:"Modern Architecture",                                 term:"Win '26", desc:"A survey of architecture from the late nineteenth century through the twentieth century, exploring modernism, functionalism, urbanism, and the relationship between built form and ideology." },
+            ]
+        },
+        {
+            name: "Arts & Language",
+            color: "#7a5068",
+            courses: [
+                { code:"FREN 204", name:"Intermediate French II",                              term:"Fall '24", desc:"Continued development of French language skills through grammar, composition, and literary and cultural texts, with emphasis on written and oral proficiency." },
+                { code:"MUSC 150", name:"Piano",                                               term:"Spr '24–Win '26", desc:"Applied piano instruction covering technique, music reading, and repertoire across classical and contemporary styles, developed over multiple terms of individual study." },
+            ]
+        },
+    ];
+
+    function build() {
+        const list = document.getElementById('deptList');
+        list.innerHTML = '';
+
+        DEPTS.forEach((dept, di) => {
+            const block = document.createElement('div');
+            block.className = 'dept-block' + (di === 0 ? ' open' : '');
+
+            const header = document.createElement('div');
+            header.className = 'dept-header';
+            header.innerHTML = `
+                <span class="dept-pip" style="background:${dept.color}"></span>
+                <span class="dept-name">${dept.name}</span>
+                <span class="dept-count">${dept.courses.length} course${dept.courses.length !== 1 ? 's' : ''}</span>
+                <span class="dept-chevron">›</span>
+            `;
+            header.addEventListener('click', () => block.classList.toggle('open'));
+
+            const courseList = document.createElement('div');
+            courseList.className = 'course-list';
+
+            dept.courses.forEach((c, ci) => {
+                const isLast = ci === dept.courses.length - 1;
+
+                const row = document.createElement('div');
+                row.className = 'course-row' + (isLast ? ' last' : '');
+                row.innerHTML = `
+                    <span class="course-code" style="color:${dept.color}">${c.code}</span>
+                    <span class="course-name">${c.name}</span>
+                    <span class="course-term">${c.term}</span>
+                `;
+
+                const desc = document.createElement('div');
+                desc.className = 'course-desc';
+                desc.textContent = c.desc;
+
+                row.addEventListener('click', () => {
+                    const wasOpen = desc.classList.contains('open');
+                    courseList.querySelectorAll('.course-desc').forEach(d => d.classList.remove('open'));
+                    if (!wasOpen) desc.classList.add('open');
+                });
+
+                courseList.appendChild(row);
+                courseList.appendChild(desc);
+            });
+
+            block.appendChild(header);
+            block.appendChild(courseList);
+            list.appendChild(block);
+        });
+    }
+
+    const TERMS_LIST = [
+        {s:"Fall",   y:"'23"},
+        {s:"Win",    y:"'24"},
+        {s:"Spr",    y:"'24"},
+        {s:"Fall",   y:"'24"},
+        {s:"Win",    y:"'25"},
+        {s:"Spr",    y:"'25"},
+        {s:"Fall",   y:"'25"},
+        {s:"Win",    y:"'26"},
+        {s:"Spr",    y:"'26"},
+    ];
+
+    const TERM_INDEX = {
+        "Fall '23":0,"Win '24":1,"Spr '24":2,
+        "Fall '24":3,"Win '25":4,"Spr '25":5,
+        "Fall '25":6,"Win '26":7,"Spr '26":8,
+    };
+
+    const allCourses = DEPTS.flatMap(d => d.courses.map(c => ({ ...c, color: d.color })));
+    const byTerm = Array.from({length: 9}, () => []);
+    allCourses.forEach(c => {
+        const idx = TERM_INDEX[c.term];
+        if (idx !== undefined) byTerm[idx].push(c);
+    });
+    const maxPerTerm = Math.max(...byTerm.map(t => t.length));
+
+    function buildTimeline() {
+        const strip = document.getElementById('timelineStrip');
+        strip.innerHTML = '';
+        const inner = document.createElement('div');
+        inner.className = 'timeline-inner';
+
+        TERMS_LIST.forEach((term, i) => {
+            const col = document.createElement('div');
+            col.className = 'tl-term';
+
+            const dots = document.createElement('div');
+            dots.className = 'tl-dots';
+
+            for (let j = 0; j < maxPerTerm; j++) {
+                const dot = document.createElement('div');
+                dot.className = 'tl-dot';
+                const course = byTerm[i][j];
+                if (course) {
+                    dot.style.background = course.color;
+                    dot.setAttribute('data-name', course.name);
+                } else {
+                    dot.classList.add('empty');
+                }
+                dots.appendChild(dot);
+            }
+
+            const label = document.createElement('div');
+            label.className = 'tl-label';
+            label.innerHTML = `${term.s}<em>${term.y}</em>`;
+
+            col.appendChild(dots);
+            col.appendChild(label);
+            inner.appendChild(col);
+        });
+
+        strip.appendChild(inner);
+    }
+
+    buildTimeline();
+    build();
+    </script>
+</body>
+</html>

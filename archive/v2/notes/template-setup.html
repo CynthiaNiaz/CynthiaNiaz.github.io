@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/assets/icons/letter-c.png" type="image/png">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKLL2XEDKL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YKLL2XEDKL');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use This Site as a Template | Cynthia Niaz</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16x16.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/note-page.css">
+</head>
+<body>
+
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Loading</div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="../index.html" class="nav-logo">Cynthia Niaz</a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../resume.html">Resume</a>
+                <a href="../projects.html">Projects</a>
+                <a href="../notes.html" class="active">Notes</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <div class="container">
+        <article>
+            <header class="note-header">
+                <a href="../notes.html" class="back-link">&larr; Notes</a>
+                <div class="note-meta">
+                    <span class="note-tag">Guide</span>
+                    <span class="note-date">February 2026</span>
+                </div>
+                <h1>How to Use This Site as a Template</h1>
+            </header>
+
+            <div class="note-body">
+
+                <p>
+                    I published this site as a template so anyone can use it as a starting point for their own portfolio. It's built with plain HTML, CSS, and JavaScript &mdash; no frameworks, no build tools, no dependencies. It deploys for free on GitHub Pages.
+                </p>
+
+                <p>
+                    The template is on <a href="https://github.com/CynthiaNiaz/portfolio-template" target="_blank">GitHub</a>. Click "Use this template" to create your own copy, or fork it and follow along.
+                </p>
+
+                <h2>What you get</h2>
+
+                <p>
+                    Four pages &mdash; Home, Resume, Projects, and Notes &mdash; all fully styled and responsive. The home page has a quote carousel, email obfuscation, and a parallax effect. The resume page supports company logos, sub-entries, and a skills section. The projects page uses the same card layout. The notes section has a grid with featured and square cards, plus an article template for individual posts.
+                </p>
+
+                <p>
+                    Everything comes with placeholder content so you can see the structure immediately and just swap in your own text.
+                </p>
+
+                <h2>Getting started</h2>
+
+                <p>
+                    Go to the <a href="https://github.com/CynthiaNiaz/portfolio-template" target="_blank">template repo</a> and click the green "Use this template" button. Name your new repo <code>yourusername.github.io</code> and it will automatically deploy to GitHub Pages.
+                </p>
+
+                <p>
+                    Clone it to your machine, open the files in any text editor, and start replacing the placeholder content with your own.
+                </p>
+
+                <h2>File structure</h2>
+
+                <p>Here's how the template is organized:</p>
+
+                <pre><code>&#9500;&#9472;&#9472; index.html              &#8592; Home page
+&#9500;&#9472;&#9472; resume.html             &#8592; Resume page
+&#9500;&#9472;&#9472; projects.html           &#8592; Projects page
+&#9500;&#9472;&#9472; notes.html              &#8592; Notes index
+&#9500;&#9472;&#9472; notes/                  &#8592; Individual note pages
+&#9474;   &#9492;&#9472;&#9472; example-note.html
+&#9500;&#9472;&#9472; 404.html                &#8592; Error page
+&#9492;&#9472;&#9472; assets/
+    &#9500;&#9472;&#9472; css/
+    &#9474;   &#9500;&#9472;&#9472; main.css        &#8592; Shared styles (nav, footer, variables)
+    &#9474;   &#9500;&#9472;&#9472; home.css        &#8592; Home page only
+    &#9474;   &#9500;&#9472;&#9472; resume.css      &#8592; Resume page only
+    &#9474;   &#9500;&#9472;&#9472; projects.css    &#8592; Projects page only
+    &#9474;   &#9500;&#9472;&#9472; notes.css       &#8592; Notes index only
+    &#9474;   &#9500;&#9472;&#9472; note-page.css   &#8592; Individual note layout
+    &#9474;   &#9492;&#9472;&#9472; 404.css         &#8592; Error page only
+    &#9500;&#9472;&#9472; js/
+    &#9474;   &#9500;&#9472;&#9472; main.js         &#8592; Shared (scroll, nav, animations)
+    &#9474;   &#9500;&#9472;&#9472; home.js         &#8592; Email obfuscation, parallax
+    &#9474;   &#9492;&#9472;&#9472; quotes.js       &#8592; Quote rotation
+    &#9500;&#9472;&#9472; documents/              &#8592; PDFs (resume, papers)
+    &#9492;&#9472;&#9472; images/
+        &#9500;&#9472;&#9472; logos/              &#8592; Company logos
+        &#9492;&#9472;&#9472; personal/           &#8592; Profile photo</code></pre>
+
+                <p>
+                    Each page has its own CSS file. <code>main.css</code> handles everything shared &mdash; the nav bar, footer, colors, and base typography. If you want to change the look of just the resume page, you only touch <code>resume.css</code>.
+                </p>
+
+                <h2>Customization</h2>
+
+                <h3>Colors</h3>
+
+                <p>
+                    Open <code>assets/css/main.css</code> and find the <code>:root</code> block at the top. All the colors live here as CSS variables:
+                </p>
+
+                <pre><code>:root {
+    --wine: #7d1e3e;
+    --wine-light: #9d3a5a;
+    --wine-dark: #5a1529;
+    --cream: #faf8f5;
+    --charcoal: #2a2a2a;
+    --gray: #6a6a6a;
+    --light-gray: #e8e6e3;
+}</code></pre>
+
+                <p>
+                    Change <code>--wine</code> to whatever accent color you want and the whole site updates. The light and dark variants are used for hover states and subtle backgrounds, so adjust those to match.
+                </p>
+
+                <h3>Fonts</h3>
+
+                <p>
+                    The template uses two Google Fonts: <strong>Cormorant Garamond</strong> for headings and <strong>Work Sans</strong> for body text. To change them, pick your fonts on <a href="https://fonts.google.com" target="_blank">Google Fonts</a>, replace the import URL in each HTML file's <code>&lt;head&gt;</code>, and update the <code>font-family</code> references in the CSS.
+                </p>
+
+                <h3>Content</h3>
+
+                <p>
+                    Everything is in the HTML files &mdash; there's no CMS or markdown processing. To update the resume, open <code>resume.html</code> and edit the entries directly. Same for projects. Each entry follows a consistent structure with classes like <code>.entry</code>, <code>.entry-title</code>, <code>.entry-subtitle</code>, so adding new ones is just copying an existing block and changing the text.
+                </p>
+
+                <h3>Profile photo</h3>
+
+                <p>
+                    The template comes with a placeholder image. Drop your own photo in <code>assets/images/personal/</code> and update the <code>&lt;img&gt;</code> src in <code>index.html</code>.
+                </p>
+
+                <h3>Company logos</h3>
+
+                <p>
+                    The resume page shows logos next to each experience entry. Replace the placeholder SVGs in <code>assets/images/logos/</code> with your own. Transparent PNGs work best, and they'll be scaled to fit a 56&times;56px container.
+                </p>
+
+                <h3>Email</h3>
+
+                <p>
+                    Open <code>assets/js/home.js</code> and change the <code>user</code> and <code>domain</code> variables to your email address. It's split into two parts in JavaScript so bots can't scrape it from the HTML.
+                </p>
+
+                <h2>Adding a note</h2>
+
+                <p>
+                    To add a new note, copy <code>notes/example-note.html</code>, rename it, and replace the content. The file uses <code>../</code> relative paths for assets since it's in a subfolder.
+                </p>
+
+                <p>
+                    Then add a card for it on <code>notes.html</code>. Each card is an <code>&lt;a&gt;</code> tag with class <code>note-card</code> inside the <code>.notes-grid</code>. The first card can use the <code>featured</code> class to span two columns. Regular cards are square.
+                </p>
+
+                <h2>Deploying</h2>
+
+                <p>
+                    If you named your repo <code>yourusername.github.io</code>, it will deploy automatically. If you used a different name, go to Settings &rarr; Pages, set the source to "Deploy from a branch," and select <code>main</code>. Your site will be live within a few minutes.
+                </p>
+
+                <p>
+                    For a custom domain, add a <code>CNAME</code> file to the root of the repo with your domain name and configure DNS with your provider. GitHub has <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site" target="_blank">good documentation</a> on this.
+                </p>
+
+                <h2>Things to know</h2>
+
+                <p>
+                    There's no build step. You edit the files and push &mdash; that's the whole workflow. No npm, no bundlers, no compilers. You should be able to come back to this six months later and still understand how everything works.
+                </p>
+
+                <p>
+                    The JavaScript is minimal. <code>main.js</code> handles the scroll progress bar, back-to-top button, and intersection observer for fade-in animations. <code>home.js</code> does the email obfuscation and a subtle parallax effect. <code>quotes.js</code> rotates the quotes on the home page.
+                </p>
+
+                <p>
+                    If you use this template, I'd appreciate a link back in your footer or README, but it's not required. Good luck with your site.
+                </p>
+
+            </div>
+        </article>
+
+        <footer>
+            <p>&copy; 2026 Cynthia Anna Niaz</p>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

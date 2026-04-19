@@ -1,0 +1,361 @@
+/* ============================================
+   RESUME PAGE
+   ============================================ */
+
+.page-intro {
+    padding: 7rem 0 0.5rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.page-intro h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    color: var(--wine);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+/* ---- Sections ---- */
+
+section {
+    padding: 2rem 0;
+}
+
+h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--wine);
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: all 0.5s ease;
+}
+
+h2.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---- Entry cards ---- */
+
+.entry {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem 1.5rem;
+    margin-bottom: 0.75rem;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(125, 30, 62, 0.05);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    opacity: 0;
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+.entry:hover {
+    box-shadow: 0 4px 20px rgba(125, 30, 62, 0.06);
+    border-color: rgba(125, 30, 62, 0.1);
+}
+
+.entry:nth-child(1) { animation-delay: 0.04s; }
+.entry:nth-child(2) { animation-delay: 0.08s; }
+.entry:nth-child(3) { animation-delay: 0.12s; }
+.entry:nth-child(4) { animation-delay: 0.16s; }
+.entry:nth-child(5) { animation-delay: 0.20s; }
+.entry:nth-child(6) { animation-delay: 0.24s; }
+.entry:nth-child(7) { animation-delay: 0.28s; }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Logo ---- */
+
+.entry-logo {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.entry-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* ---- Content ---- */
+
+.entry-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.1rem;
+}
+
+.entry-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    color: var(--wine);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+}
+
+.entry-meta {
+    flex-shrink: 0;
+    min-width: 175px;
+    text-align: right;
+}
+
+.entry-date {
+    font-size: 0.88rem;
+    color: var(--gray);
+    white-space: nowrap;
+}
+
+.entry-subrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.entry-subtitle {
+    font-size: 1rem;
+    color: var(--charcoal);
+    line-height: 1.4;
+}
+
+.entry-location {
+    font-size: 0.85rem;
+    color: var(--gray);
+    opacity: 0.75;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 175px;
+    text-align: right;
+}
+
+.entry-description {
+    font-size: 1rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+}
+
+/* ---- Detail sections (inside education card) ---- */
+
+.detail-section {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+h4.detail-label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--wine);
+    margin: 0 0 0.3rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.detail-text {
+    font-size: 1rem;
+    color: var(--charcoal);
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* Sub-entries (campus roles) */
+
+.sub-entry {
+    padding: 0.4rem 0 0.4rem 0.85rem;
+    border-left: 2px solid rgba(125, 30, 62, 0.1);
+    margin-top: 0.5rem;
+}
+
+.sub-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.15rem;
+}
+
+h5.sub-entry-title {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sub-entry-date {
+    font-size: 0.82rem;
+    color: var(--gray);
+    white-space: nowrap;
+}
+
+.sub-entry-text {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ---- Skills ---- */
+
+.skills-list {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(125, 30, 62, 0.05);
+    border-radius: 8px;
+    padding: 0.25rem 1.5rem;
+}
+
+.skill-row {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    align-items: baseline;
+    opacity: 0;
+    animation: slideUp 0.35s ease-out forwards;
+}
+
+.skill-row:last-child { border-bottom: none; }
+.skill-row:nth-child(1) { animation-delay: 0.04s; }
+.skill-row:nth-child(2) { animation-delay: 0.08s; }
+.skill-row:nth-child(3) { animation-delay: 0.12s; }
+.skill-row:nth-child(4) { animation-delay: 0.16s; }
+.skill-row:nth-child(5) { animation-delay: 0.20s; }
+
+.skill-label {
+    flex-shrink: 0;
+    width: 125px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--wine);
+}
+
+.skill-items {
+    font-size: 1rem;
+    color: var(--charcoal);
+    line-height: 1.7;
+}
+
+/* ---- Download button (bottom) ---- */
+
+.download-section {
+    text-align: center;
+    padding: 1.5rem 0 0;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: var(--wine);
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid var(--wine);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(125, 30, 62, 0.1);
+}
+
+.download-btn:hover {
+    background: var(--wine);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(125, 30, 62, 0.25);
+}
+
+.download-btn:active { transform: translateY(0); }
+
+.download-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.download-btn:hover svg {
+    transform: translateY(2px);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 768px) {
+    .page-intro { padding: 8rem 0 0.5rem; }
+    .page-intro h1 { font-size: 2.3rem; }
+    h2 { font-size: 1.5rem; }
+
+    .entry {
+        flex-direction: column;
+        gap: 0.6rem;
+        padding: 1.25rem;
+    }
+
+    .entry-logo { width: 48px; height: 48px; }
+    .entry-title { font-size: 1.25rem; }
+
+    .entry-header,
+    .sub-entry-header {
+        flex-direction: column;
+        gap: 0.05rem;
+    }
+
+    .entry-subrow {
+        flex-direction: column;
+        gap: 0.05rem;
+    }
+
+    .entry-meta,
+    .entry-location {
+        min-width: 0;
+        text-align: left;
+    }
+
+    .skill-row {
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+
+    .skill-label { width: auto; }
+    .skills-list { padding: 0.25rem 1.25rem; }
+}
+
+@media (max-width: 480px) {
+    .page-intro { padding: 7rem 0 0.25rem; }
+    .page-intro h1 { font-size: 1.9rem; }
+    .entry { padding: 1rem; }
+    .entry-logo { width: 42px; height: 42px; }
+    .entry-title { font-size: 1.15rem; }
+
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,221 @@
+/* ============================================
+   NOTES PAGE
+   ============================================ */
+
+.page-intro {
+    padding: 7rem 0 0.5rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.page-intro h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    color: var(--wine);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.page-description {
+    font-size: 1.05rem;
+    color: var(--gray);
+}
+
+section { padding: 1rem 0 2rem; }
+
+/* ---- Grid ---- */
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* ---- Card ---- */
+
+.note-card {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: linear-gradient(145deg, rgba(255,255,255,0.7), rgba(125,30,62,0.015));
+    border: 1px solid rgba(125, 30, 62, 0.06);
+    border-left: 3px solid rgba(125, 30, 62, 0.15);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.note-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.note-card:hover {
+    border-left-color: var(--wine);
+    box-shadow: 0 6px 24px rgba(125, 30, 62, 0.08);
+    transform: translateY(-3px);
+}
+
+.note-card:active { transform: translateY(0); }
+
+/* ---- Featured ---- */
+
+.note-card.featured {
+    grid-column: span 2;
+    aspect-ratio: 2 / 1;
+}
+
+.note-card.featured .note-title {
+    font-size: 1.85rem;
+}
+
+.note-card.featured .note-preview {
+    font-size: 0.98rem;
+    -webkit-line-clamp: 4;
+}
+
+/* ---- Card content ---- */
+
+.note-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.note-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.note-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--wine-light);
+    letter-spacing: 0.2px;
+}
+
+.note-date {
+    font-size: 0.82rem;
+    color: var(--gray);
+    opacity: 0.8;
+}
+
+.note-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--wine);
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    transition: color 0.2s ease;
+}
+
+.note-card:hover .note-title { color: var(--wine-dark); }
+
+.note-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.note-preview {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.65;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.note-read {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--wine);
+    transition: transform 0.25s ease;
+    display: inline-block;
+    letter-spacing: 0.3px;
+}
+
+.note-card:hover .note-read { transform: translateX(5px); }
+
+/* ---- Number accent ---- */
+
+.note-number {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--wine);
+    opacity: 0.04;
+    line-height: 1;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.note-card:hover .note-number { opacity: 0.08; }
+
+.note-card.featured .note-number {
+    font-size: 6rem;
+    bottom: 1rem;
+    right: 2rem;
+}
+
+/* ---- Coming soon (for future use) ---- */
+
+.note-card.coming-soon {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 900px) {
+    .notes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .note-card.featured {
+        grid-column: span 2;
+        aspect-ratio: 2 / 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-intro { padding: 8rem 0 0.5rem; }
+    .page-intro h1 { font-size: 2.3rem; }
+    .page-description { font-size: 1rem; }
+
+    .notes-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .note-card,
+    .note-card.featured {
+        aspect-ratio: auto;
+        grid-column: span 1;
+        padding: 1.25rem 1.25rem 1rem;
+    }
+
+    .note-card.featured .note-title { font-size: 1.35rem; }
+    .note-title { font-size: 1.2rem; }
+    .note-number { display: none; }
+}
+
+@media (max-width: 480px) {
+    .page-intro { padding: 7rem 0 0.25rem; }
+    .page-intro h1 { font-size: 1.9rem; }
+    .note-card { padding: 1rem 1rem 0.85rem; }
+}

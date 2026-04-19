@@ -1,0 +1,452 @@
+/* ============================================
+   HOME PAGE STYLES
+   ============================================ */
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 0 4rem;
+    animation: fadeIn 1s ease-out;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(125, 30, 62, 0.04), transparent 60%);
+    pointer-events: none;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-left h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--wine);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--gray);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.summary {
+    font-size: 1.05rem;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+/* Quote Section */
+.quote-container {
+    margin: 1.5rem 0 1rem;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, rgba(125, 30, 62, 0.03), rgba(125, 30, 62, 0.01));
+    border-left: 3px solid var(--wine);
+    border-radius: 8px;
+    position: relative;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.quote-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.quote-item {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+.quote-item.active {
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+}
+
+.quote-mark-open {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--wine);
+    opacity: 0.3;
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    line-height: 1;
+}
+
+.quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    padding-left: 1.25rem;
+}
+
+.quote-author {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--wine);
+    font-weight: 500;
+    text-align: right;
+    padding-right: 0.5rem;
+}
+
+.quote-author::before {
+    content: '— ';
+}
+
+/* Contact Links */
+.contact-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: var(--wine);
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid var(--wine);
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(125, 30, 62, 0.1);
+}
+
+.contact-links a:hover {
+    background: var(--wine);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(125, 30, 62, 0.25);
+}
+
+.contact-links a:active {
+    transform: translateY(0);
+}
+
+.contact-links svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: all 0.3s ease;
+}
+
+.contact-links a:hover svg {
+    transform: scale(1.1);
+}
+
+/* Profile Photo */
+.hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem;
+}
+
+/* Decorative background elements */
+.hero-right::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    width: 110%;
+    height: 110%;
+    background: linear-gradient(135deg, rgba(125, 30, 62, 0.08), rgba(125, 30, 62, 0.02));
+    border-radius: 20px;
+    z-index: 0;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(5deg);
+    width: 105%;
+    height: 105%;
+    border: 2px solid rgba(125, 30, 62, 0.15);
+    border-radius: 20px;
+    z-index: 0;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-right:hover::before {
+    transform: translate(-50%, -50%) rotate(-8deg) scale(1.02);
+}
+
+.hero-right:hover::after {
+    transform: translate(-50%, -50%) rotate(8deg) scale(1.02);
+}
+
+.profile-photo {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 16px;
+    position: relative;
+    z-index: 1;
+    
+    /* Enhanced shadow system */
+    box-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.05),
+        0 4px 8px rgba(125, 30, 62, 0.08),
+        0 12px 24px rgba(125, 30, 62, 0.12),
+        0 24px 48px rgba(125, 30, 62, 0.08);
+    
+    /* Sophisticated border treatment */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    outline: 1px solid rgba(125, 30, 62, 0.1);
+    outline-offset: -1px;
+    
+    /* Smooth transitions */
+    transition: 
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.3s ease;
+    
+    /* Subtle image enhancement */
+    filter: contrast(1.02) saturate(1.05);
+}
+
+.profile-photo:hover {
+    transform: translateY(-12px) scale(1.02);
+    
+    /* Elevated shadow on hover */
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.06),
+        0 8px 16px rgba(125, 30, 62, 0.12),
+        0 20px 40px rgba(125, 30, 62, 0.16),
+        0 32px 64px rgba(125, 30, 62, 0.12);
+    
+    border-color: rgba(255, 255, 255, 1);
+    filter: contrast(1.03) saturate(1.08);
+}
+
+/* Scroll Down Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1.5s forwards;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scroll-indicator:hover {
+    transform: translateX(-50%) translateY(3px);
+}
+
+.scroll-indicator span {
+    font-size: 0.85rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.scroll-indicator svg {
+    width: 24px;
+    height: 24px;
+    color: var(--wine);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Content Section */
+.content-section {
+    padding: 2rem 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 968px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Photo always first on mobile */
+    .hero-right {
+        order: -1;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-left {
+        text-align: center;
+    }
+
+    .hero-left h1 {
+        font-size: 2.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .profile-photo {
+        max-width: 300px;
+    }
+
+    .contact-links {
+        justify-content: center;
+    }
+
+    .quote-container {
+        padding: 1.5rem;
+        min-height: 100px;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+        padding-left: 1rem;
+    }
+
+    .quote-author {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 8rem 0 3rem;
+        min-height: auto;
+    }
+
+    .hero-left h1 {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .summary {
+        font-size: 1rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .contact-links a {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .profile-photo {
+        max-width: 250px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .quote-container {
+        margin: 2rem 0 1.5rem;
+        padding: 1.25rem;
+        min-height: 90px;
+    }
+
+    .quote-text {
+        font-size: 1.05rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 7rem 0 2.5rem;
+    }
+
+    .hero-left h1 {
+        font-size: 1.9rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .profile-photo {
+        max-width: 220px;
+    }
+
+    .contact-links a {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.95rem;
+    }
+
+    .quote-container {
+        padding: 1rem;
+        min-height: 80px;
+    }
+
+    .quote-text {
+        font-size: 1rem;
+        padding-left: 0.75rem;
+    }
+
+    .quote-mark-open {
+        font-size: 2.5rem;
+        top: -0.25rem;
+        left: -0.25rem;
+    }
+
+    .quote-author {
+        font-size: 0.85rem;
+    }
+}
