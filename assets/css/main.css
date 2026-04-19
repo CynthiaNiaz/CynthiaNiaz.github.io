@@ -396,7 +396,7 @@ body.dark-mode::before {
 }
 
 body.dark-mode nav {
-    background: rgba(22, 19, 17, 0.95);
+    background: rgba(22, 19, 17, 0.95) !important;
     border-bottom-color: var(--light-gray);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
