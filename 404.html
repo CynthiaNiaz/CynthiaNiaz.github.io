@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <link rel="icon" href="/assets/icons/letter-c.png" type="image/png">
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKLL2XEDKL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,7 +9,7 @@
       gtag('js', new Date());
       gtag('config', 'G-YKLL2XEDKL');
     </script>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Cynthia Niaz">
@@ -20,31 +19,30 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
-    <meta property="og:title" content="Cynthia Niaz">
-    <meta property="og:description" content="Junior physics major at Carleton College with a background in computer science and economics.">
-    <meta property="og:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
-    <meta property="og:url" content="https://cynthianiaz.github.io/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
     <title>Page Not Found | Cynthia Niaz</title>
-    
-    <!-- Favicons -->
+
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
-    
-    <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets -->
+
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/404.css">
 </head>
 <body>
-    <!-- Navigation -->
+
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Loading</div>
+        </div>
+    </div>
+
+    <div class="scroll-progress"></div>
+
     <nav>
         <div class="nav-content">
             <a href="/" class="nav-logo">Cynthia Niaz</a>
@@ -57,13 +55,26 @@
         </div>
     </nav>
 
-    <!-- 404 Content -->
     <div class="container">
         <div class="decoration"></div>
         <div class="error-content">
             <div class="error-code">404</div>
             <h1>Page Not Found</h1>
             <p>The page you're looking for doesn't exist or may have been moved. Let's get you back on track.</p>
+
+            <div class="quote-404" id="quote404Wrapper">
+                <div class="quote-404-item active">
+                    <div class="quote-404-mark">"</div>
+                    <p class="quote-404-text">The best way to solve a problem is to find a solution.</p>
+                    <p class="quote-404-author">Greg Heffley</p>
+                </div>
+                <div class="quote-404-item">
+                    <div class="quote-404-mark">"</div>
+                    <p class="quote-404-text">What??? NOOOOOOOOOO!!! BOOOOOO</p>
+                    <p class="quote-404-author">Mindy Kaling</p>
+                </div>
+            </div>
+
             <div class="buttons">
                 <a href="/" class="btn">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,11 +92,23 @@
         </div>
     </div>
 
-    <!-- Dark Mode Toggle -->
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-    <!-- Scripts -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/dark-mode.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var wrapper = document.getElementById('quote404Wrapper');
+            if (!wrapper) return;
+            var items = wrapper.querySelectorAll('.quote-404-item');
+            var current = 0;
+            setInterval(function() {
+                items[current].classList.remove('active');
+                current = (current + 1) % items.length;
+                items[current].classList.add('active');
+            }, 4000);
+        });
+    </script>
 </body>
 </html>

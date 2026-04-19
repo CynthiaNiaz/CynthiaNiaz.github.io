@@ -131,3 +131,54 @@ footer { display: none; }
     .error-code { font-size: 5rem; }
     .error-content h1 { font-size: 1.5rem; }
 }
+/* ---- Rotating quotes ---- */
+
+.quote-404 {
+    position: relative;
+    min-height: 80px;
+    margin: 1.5rem auto 2rem;
+    max-width: 380px;
+}
+
+.quote-404-item {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+.quote-404-item.active {
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+}
+
+.quote-404-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--wine);
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: -0.75rem;
+}
+
+.quote-404-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+}
+
+.quote-404-author {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--wine);
+    font-weight: 500;
+}
+
+.quote-404-author::before {
+    content: '— ';
+}
