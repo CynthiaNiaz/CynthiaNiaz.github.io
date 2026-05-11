@@ -277,6 +277,56 @@ body.dark-mode .rp-right {
     line-height: 1.7;
 }
 
+/* Org name linked (used for Volunteering org links) */
+.exp-org a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease, color 0.2s ease;
+}
+
+.exp-org a:hover {
+    color: var(--wine-dark);
+    border-bottom-color: var(--wine);
+}
+
+body.dark-mode .exp-org a:hover {
+    color: var(--wine-light);
+    border-bottom-color: var(--wine-light);
+}
+
+/* Bullet list inside an experience entry */
+.exp-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.83rem;
+    color: var(--charcoal);
+    line-height: 1.7;
+}
+
+.exp-bullets li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.35rem;
+}
+
+.exp-bullets li:last-child {
+    margin-bottom: 0;
+}
+
+.exp-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 6px;
+    height: 1px;
+    background: var(--wine);
+    opacity: 0.6;
+}
+
 .exp-sub {
     margin-top: 0.85rem;
     padding-top: 0.85rem;
