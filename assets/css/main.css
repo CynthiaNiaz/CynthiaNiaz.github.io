@@ -39,6 +39,37 @@ a, button {
     cursor: pointer;
 }
 
+/* Inline prose links — used inside .summary paragraphs and similar */
+.summary a,
+.note-body a,
+p a {
+    color: var(--wine);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(125, 30, 62, 0.3);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.summary a:hover,
+.note-body a:hover,
+p a:hover {
+    color: var(--wine-dark);
+    border-bottom-color: var(--wine);
+}
+
+body.dark-mode .summary a,
+body.dark-mode .note-body a,
+body.dark-mode p a {
+    color: var(--wine-light);
+    border-bottom-color: rgba(196, 61, 92, 0.4);
+}
+
+body.dark-mode .summary a:hover,
+body.dark-mode .note-body a:hover,
+body.dark-mode p a:hover {
+    color: var(--wine);
+    border-bottom-color: var(--wine);
+}
+
 /* Subtle texture overlay */
 body::before {
     content: '';
