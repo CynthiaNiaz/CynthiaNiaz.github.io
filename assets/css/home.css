@@ -161,7 +161,7 @@
 .contact-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
+    gap: 0.75rem 1.25rem;
     margin-top: 2.25rem;
     margin-bottom: 1rem;
     padding-top: 1.5rem;
@@ -183,6 +183,7 @@
     font-weight: 500;
     transition: color 0.2s ease;
     position: relative;
+    white-space: nowrap; /* keep icon + label together when wrapping */
 }
 
 .contact-links a::after {
@@ -250,6 +251,14 @@ body.dark-mode .contact-links {
     align-items: center;
 }
 
+.profile-photo-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    display: inline-block;
+    line-height: 0; /* prevents extra space under the image */
+}
+
 .profile-photo {
     width: 100%;
     max-width: 420px;
@@ -260,11 +269,51 @@ body.dark-mode .contact-links {
     border: 1.5px solid rgba(125, 30, 62, 0.2);
     transition: border-color 0.3s ease;
     filter: contrast(1.02) saturate(1.05);
+    display: block;
 }
 
 .profile-photo:hover {
     border-color: rgba(125, 30, 62, 0.4);
     filter: contrast(1.03) saturate(1.08);
+}
+
+/* Location caption — editorial figure-caption style */
+.location-badge {
+    display: block;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: var(--wine);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    opacity: 0.85;
+}
+
+.location-badge::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 0.5px;
+    background: var(--wine);
+    opacity: 0.4;
+    margin: 0 auto 0.7rem;
+}
+
+.location-badge svg {
+    display: none; /* no icon, the rule above is the flourish */
+}
+
+body.dark-mode .location-badge {
+    color: var(--wine-light);
+    opacity: 0.9;
+}
+
+body.dark-mode .location-badge::before {
+    background: var(--wine-light);
+    opacity: 0.5;
 }
 
 /* Scroll Down Indicator */
@@ -349,9 +398,13 @@ body.dark-mode .contact-links {
         max-width: 350px;
     }
 
+    .profile-photo-wrapper {
+        max-width: 350px;
+    }
+
     .contact-links {
         justify-content: center;
-        gap: 0.5rem 1.25rem;
+        gap: 0.75rem 1.25rem;
     }
 
     .quote-section {
@@ -399,6 +452,10 @@ body.dark-mode .contact-links {
         max-width: 300px;
     }
 
+    .profile-photo-wrapper {
+        max-width: 300px;
+    }
+
     .scroll-indicator {
         display: none;
     }
@@ -431,6 +488,10 @@ body.dark-mode .contact-links {
     }
 
     .profile-photo {
+        max-width: 260px;
+    }
+
+    .profile-photo-wrapper {
         max-width: 260px;
     }
 
