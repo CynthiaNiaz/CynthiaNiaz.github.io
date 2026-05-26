@@ -1,66 +1,68 @@
 /* ============================================
-   NOTES PAGE
+   NOTES PAGE — Direction D
+   Flat cream, 2-up bordered cards, no sticky-note accent.
    ============================================ */
 
 .notes-wrap {
-    max-width: 980px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 4rem 2rem 5rem;
+    padding: 5rem 2rem 4rem;
 }
 
 /* ---- Page header ---- */
 
 .notes-header {
-    background: white;
-    border-radius: 8px 8px 0 0;
-    padding: 1.5rem 1.75rem 1.25rem;
-    border-bottom: 1.5px solid var(--wine);
-    margin-bottom: 1.5rem;
+    padding: 0 0 1.5rem;
+    border-bottom: 1px solid var(--light-gray);
+    margin-bottom: 2.5rem;
+    background: transparent;
+    border-radius: 0;
 }
 
 .notes-header h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 400;
+    font-size: 3.6rem;
+    font-weight: 600;
     color: var(--wine);
-    letter-spacing: -0.5px;
-    line-height: 1.1;
+    letter-spacing: -0.8px;
+    line-height: 1;
 }
 
 body.dark-mode .notes-header {
-    background: #231f1c;
+    background: transparent;
 }
 
-/* ---- Grid ---- */
+/* ---- Grid — 2 up, equal cards ---- */
 
 .notes-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
-/* ---- Card — sticky note style ---- */
+/* ---- Cards — flat cream with full hairline border ---- */
 
 .note-card {
-    aspect-ratio: 1;
+    aspect-ratio: auto;
+    min-height: 230px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1.75rem 1.75rem 1.5rem;
-    background: white;
-    border: 1px solid rgba(125, 30, 62, 0.06);
-    border-left: 3px solid rgba(125, 30, 62, 0.2);
-    border-radius: 8px;
+    padding: 1.85rem 1.85rem 1.5rem;
+    background: var(--cream);
+    border: 1px solid var(--light-gray);
+    border-left: 1px solid var(--light-gray);
+    border-radius: 0;
     text-decoration: none;
     position: relative;
     overflow: hidden;
-    transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .note-card:hover {
-    border-left-color: var(--wine);
-    box-shadow: 0 6px 24px rgba(125, 30, 62, 0.08);
-    transform: translateY(-3px);
+    border-color: rgba(125, 30, 62, 0.2);
+    box-shadow: 0 6px 20px rgba(125, 30, 62, 0.06);
+    transform: translateY(-2px);
 }
 
 .note-card:active {
@@ -69,34 +71,33 @@ body.dark-mode .notes-header {
 
 body.dark-mode .note-card {
     background: #231f1c;
-    border-color: rgba(196, 61, 92, 0.08);
-    border-left-color: rgba(196, 61, 92, 0.25);
+    border-color: var(--light-gray);
 }
 
 body.dark-mode .note-card:hover {
-    border-left-color: var(--wine);
-    box-shadow: 0 6px 24px rgba(196, 61, 92, 0.1);
+    border-color: rgba(196, 61, 92, 0.3);
+    box-shadow: 0 6px 20px rgba(196, 61, 92, 0.08);
 }
 
-/* ---- Featured card ---- */
-
+/* No featured card anymore — every entry is equal weight */
 .note-card.featured {
-    grid-column: span 2;
-    aspect-ratio: 2 / 1;
+    grid-column: span 1;
+    aspect-ratio: auto;
 }
 
 .note-card.featured .note-title {
-    font-size: 1.85rem;
+    font-size: 1.55rem;
 }
 
 .note-card.featured .note-preview {
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: unset;
 }
 
 .note-card.featured .note-number {
-    font-size: 6rem;
-    bottom: 1rem;
-    right: 2rem;
+    font-size: 1.3rem;
+    bottom: auto;
+    right: 1.85rem;
+    top: 1.35rem;
 }
 
 /* ---- Card content ---- */
@@ -104,41 +105,57 @@ body.dark-mode .note-card:hover {
 .note-top {
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
+    gap: 1rem;
 }
 
 .note-header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.85rem;
 }
 
 .note-tag {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.95rem;
-    font-style: italic;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--wine);
+}
+
+body.dark-mode .note-tag {
     color: var(--wine-light);
-    letter-spacing: 0.2px;
 }
 
 .note-date {
-    font-size: 0.78rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.92rem;
     color: var(--gray);
-    font-family: 'Work Sans', sans-serif;
 }
 
 .note-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
+    font-size: 1.55rem;
     font-weight: 600;
-    color: var(--wine);
-    line-height: 1.25;
+    color: var(--charcoal);
+    line-height: 1.2;
     letter-spacing: -0.3px;
     transition: color 0.2s ease;
+    margin-bottom: 0.25rem;
 }
 
 .note-card:hover .note-title {
-    color: var(--wine-dark);
+    color: var(--wine);
+}
+
+body.dark-mode .note-title {
+    color: var(--charcoal);
+}
+
+body.dark-mode .note-card:hover .note-title {
+    color: var(--wine-light);
 }
 
 .note-bottom {
@@ -149,87 +166,105 @@ body.dark-mode .note-card:hover {
 
 .note-preview {
     font-family: 'Work Sans', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.92rem;
     color: var(--gray);
     line-height: 1.65;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin: 0;
 }
 
 .note-read {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    font-weight: 600;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
     color: var(--wine);
-    transition: transform 0.25s ease;
+    transition: transform 0.25s ease, color 0.2s ease;
     display: inline-block;
-    letter-spacing: 0.3px;
+    margin-top: 1rem;
 }
 
 .note-card:hover .note-read {
-    transform: translateX(5px);
+    transform: translateX(4px);
+    color: var(--wine-dark);
 }
 
-/* ---- Number accent ---- */
+body.dark-mode .note-read {
+    color: var(--wine-light);
+}
+
+/* ---- Number accent — top right corner ---- */
 
 .note-number {
     position: absolute;
-    bottom: 1.25rem;
-    right: 1.5rem;
+    top: 1.35rem;
+    right: 1.85rem;
+    bottom: auto;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
+    font-style: italic;
+    font-size: 1.3rem;
     font-weight: 600;
-    color: var(--wine);
-    opacity: 0.05;
+    color: rgba(125, 30, 62, 0.15);
     line-height: 1;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .note-card:hover .note-number {
-    opacity: 0.1;
+    color: rgba(125, 30, 62, 0.3);
+}
+
+body.dark-mode .note-number {
+    color: rgba(196, 61, 92, 0.2);
+}
+
+body.dark-mode .note-card:hover .note-number {
+    color: rgba(196, 61, 92, 0.35);
 }
 
 /* ---- Responsive ---- */
 
-@media (max-width: 900px) {
-    .notes-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .note-card.featured {
-        grid-column: span 2;
-        aspect-ratio: 2 / 1;
-    }
-}
-
 @media (max-width: 768px) {
     .notes-wrap {
-        padding: 2.5rem 1.5rem 4rem;
+        padding: 3rem 1.5rem 3.5rem;
     }
 
-    .notes-header h1 { font-size: 2.3rem; }
+    .notes-header h1 {
+        font-size: 2.6rem;
+    }
 
     .notes-grid {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: 1rem;
     }
 
     .note-card,
     .note-card.featured {
         aspect-ratio: auto;
+        min-height: 0;
         grid-column: span 1;
-        padding: 1.25rem 1.25rem 1rem;
+        padding: 1.5rem 1.5rem 1.25rem;
     }
 
-    .note-card.featured .note-title { font-size: 1.35rem; }
-    .note-title { font-size: 1.2rem; }
-    .note-number { display: none; }
+    .note-card.featured .note-title {
+        font-size: 1.35rem;
+    }
+
+    .note-title {
+        font-size: 1.35rem;
+    }
 }
 
 @media (max-width: 480px) {
-    .notes-header h1 { font-size: 1.9rem; }
-    .note-card { padding: 1rem 1rem 0.85rem; }
+    .notes-header h1 {
+        font-size: 2rem;
+    }
+
+    .note-card {
+        padding: 1.25rem 1.25rem 1rem;
+    }
 }

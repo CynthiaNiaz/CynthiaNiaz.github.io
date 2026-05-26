@@ -1,5 +1,5 @@
 /* ============================================
-   HOME PAGE STYLES
+   HOME PAGE STYLES — Direction D
    ============================================ */
 
 /* Hero Section */
@@ -35,19 +35,21 @@
 
 .hero-left h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 600;
     color: var(--wine);
-    margin-bottom: 0.75rem;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+    line-height: 1.05;
+    letter-spacing: -1px;
 }
 
-.subtitle {
-    font-size: 1.3rem;
-    color: var(--gray);
-    margin-bottom: 2rem;
-    line-height: 1.5;
+/* Wine hairline rule between the name and the body */
+.hero-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--wine);
+    opacity: 0.5;
+    margin-bottom: 1.5rem;
 }
 
 .summary {
@@ -57,13 +59,30 @@
     line-height: 1.8;
 }
 
+/* Editorial drop cap on the first summary paragraph */
+.dropcap {
+    float: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.2rem;
+    line-height: 0.85;
+    color: var(--wine);
+    padding: 0.3rem 0.55rem 0 0;
+    font-weight: 600;
+}
+
+body.dark-mode .dropcap {
+    color: var(--wine-light);
+}
+
 /* Quote Section — elegant below-the-fold element */
 .quote-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
-    padding: 2rem 2rem 1rem;
+    margin-top: 3rem;
+    padding: 3rem 2rem 1rem;
+    border-top: 1px solid var(--light-gray);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -75,31 +94,19 @@
 }
 
 .quote-container {
-    max-width: 500px;
+    max-width: 540px;
     width: 100%;
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 2.5rem 0;
     background: transparent;
     border: none;
     border-radius: 0;
     position: relative;
     min-height: 60px;
-    display: flex !important;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    visibility: visible !important;
+    visibility: visible;
     text-align: center;
-}
-
-/* Decorative line below quote only */
-.quote-container::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    width: 60px;
-    height: 1px;
-    background: var(--wine);
-    opacity: 0.3;
 }
 
 .quote-wrapper {
@@ -125,36 +132,57 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 4rem;
     color: var(--wine);
-    opacity: 0.15;
-    line-height: 1;
+    opacity: 0.18;
+    line-height: 0.6;
     text-align: center;
     display: block;
     position: static;
-    margin-bottom: -1rem;
+    margin-bottom: 0.5rem;
 }
 
 .quote-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-style: italic;
     color: var(--charcoal);
-    line-height: 1.7;
-    margin-bottom: 0.75rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
     padding: 0;
     text-align: center;
 }
 
 .quote-author {
     font-family: 'Work Sans', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: var(--wine);
     font-weight: 500;
     text-align: center;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
 }
 
 .quote-author::before {
     content: '— ';
+}
+
+/* Pagination dots beneath the rotating quote */
+.quote-dots {
+    display: flex;
+    gap: 0.45rem;
+    justify-content: center;
+    margin-top: 1.75rem;
+}
+
+.quote-dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--light-gray);
+    transition: background 0.4s ease;
+}
+
+.quote-dots span.on {
+    background: var(--wine);
 }
 
 /* Contact Links */
@@ -183,7 +211,7 @@
     font-weight: 500;
     transition: color 0.2s ease;
     position: relative;
-    white-space: nowrap; /* keep icon + label together when wrapping */
+    white-space: nowrap;
 }
 
 .contact-links a::after {
@@ -244,6 +272,10 @@ body.dark-mode .contact-links {
     border-top-color: var(--light-gray);
 }
 
+body.dark-mode .quote-section {
+    border-top-color: var(--light-gray);
+}
+
 /* Profile Photo */
 .hero-right {
     display: flex;
@@ -254,14 +286,14 @@ body.dark-mode .contact-links {
 .profile-photo-wrapper {
     position: relative;
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
     display: inline-block;
-    line-height: 0; /* prevents extra space under the image */
+    line-height: 0;
 }
 
 .profile-photo {
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
     height: auto;
     aspect-ratio: 1;
     object-fit: cover;
@@ -275,89 +307,6 @@ body.dark-mode .contact-links {
 .profile-photo:hover {
     border-color: rgba(125, 30, 62, 0.4);
     filter: contrast(1.03) saturate(1.08);
-}
-
-/* Location caption — editorial figure-caption style */
-.location-badge {
-    display: block;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    color: var(--wine);
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    font-weight: 400;
-    letter-spacing: 0.4px;
-    opacity: 0.85;
-}
-
-.location-badge::before {
-    content: '';
-    display: block;
-    width: 36px;
-    height: 0.5px;
-    background: var(--wine);
-    opacity: 0.4;
-    margin: 0 auto 0.7rem;
-}
-
-.location-badge svg {
-    display: none; /* no icon, the rule above is the flourish */
-}
-
-body.dark-mode .location-badge {
-    color: var(--wine-light);
-    opacity: 0.9;
-}
-
-body.dark-mode .location-badge::before {
-    background: var(--wine-light);
-    opacity: 0.5;
-}
-
-/* Scroll Down Indicator */
-.scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    opacity: 0;
-    animation: fadeIn 1s ease-out 1.5s forwards;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.scroll-indicator:hover {
-    transform: translateX(-50%) translateY(3px);
-}
-
-.scroll-indicator span {
-    font-size: 0.85rem;
-    color: var(--gray);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 500;
-}
-
-.scroll-indicator svg {
-    width: 24px;
-    height: 24px;
-    color: var(--wine);
-    animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
 }
 
 /* Content Section */
@@ -386,12 +335,25 @@ body.dark-mode .location-badge::before {
         text-align: center;
     }
 
-    .hero-left h1 {
-        font-size: 2.8rem;
+    /* Centered column on mobile: float the dropcap left within the
+       first line of the (now centered) paragraph so the "I" stays
+       attached to "'m a junior..." instead of orphaning above it. */
+    .hero-left .summary:first-of-type {
+        text-align: left;
     }
 
-    .subtitle {
-        font-size: 1.2rem;
+    .dropcap {
+        font-size: 3rem;
+        padding: 0.35rem 0.4rem 0 0;
+    }
+
+    .hero-rule {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-left h1 {
+        font-size: 3rem;
     }
 
     .profile-photo {
@@ -412,15 +374,15 @@ body.dark-mode .location-badge::before {
     }
 
     .quote-container {
-        padding: 1.75rem 1.5rem;
+        padding: 1.25rem 1.5rem 0;
     }
 
     .quote-text {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
     }
 
     .quote-author {
-        font-size: 0.8rem;
+        font-size: 0.74rem;
     }
 }
 
@@ -431,15 +393,15 @@ body.dark-mode .location-badge::before {
     }
 
     .hero-left h1 {
-        font-size: 2.2rem;
-    }
-
-    .subtitle {
-        font-size: 1.1rem;
+        font-size: 2.4rem;
     }
 
     .summary {
         font-size: 1rem;
+    }
+
+    .dropcap {
+        font-size: 2.8rem;
     }
 
     .contact-links {
@@ -456,21 +418,17 @@ body.dark-mode .location-badge::before {
         max-width: 300px;
     }
 
-    .scroll-indicator {
-        display: none;
-    }
-
     .quote-section {
-        padding: 1.5rem 1rem 1rem;
-        margin-top: 0;
+        padding: 2rem 1rem 1rem;
+        margin-top: 1.5rem;
     }
 
     .quote-container {
-        padding: 1.5rem 1.25rem;
+        padding: 1rem 1.25rem 0;
     }
 
     .quote-text {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -480,11 +438,7 @@ body.dark-mode .location-badge::before {
     }
 
     .hero-left h1 {
-        font-size: 1.9rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
+        font-size: 2rem;
     }
 
     .profile-photo {
@@ -496,12 +450,12 @@ body.dark-mode .location-badge::before {
     }
 
     .quote-section {
-        padding: 1rem 1rem 0.5rem;
-        margin-top: 0;
+        padding: 1.5rem 1rem 0.5rem;
+        margin-top: 1rem;
     }
 
     .quote-container {
-        padding: 1.25rem 1rem;
+        padding: 0.75rem 1rem 0;
     }
 
     .quote-text {
@@ -513,6 +467,6 @@ body.dark-mode .location-badge::before {
     }
 
     .quote-author {
-        font-size: 0.78rem;
+        font-size: 0.72rem;
     }
 }

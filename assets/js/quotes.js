@@ -1,23 +1,34 @@
-// Quote rotation functionality
-document.addEventListener('DOMContentLoaded', function() {
+// Quote rotation functionality — with pagination dots
+document.addEventListener('DOMContentLoaded', function () {
     const quoteWrapper = document.getElementById('quoteWrapper');
     if (!quoteWrapper) return;
-    
+
     const quotes = quoteWrapper.querySelectorAll('.quote-item');
+    const dotsHost = document.getElementById('quoteDots');
     let currentIndex = 0;
-    
-    // Rotate quotes every 8 seconds
-    function rotateQuotes() {
-        // Remove active class from current quote
-        quotes[currentIndex].classList.remove('active');
-        
-        // Move to next quote (loop back to 0 if at end)
-        currentIndex = (currentIndex + 1) % quotes.length;
-        
-        // Add active class to new quote
-        quotes[currentIndex].classList.add('active');
+
+    // Build pagination dots, one per quote
+    let dots = [];
+    if (dotsHost) {
+        dotsHost.innerHTML = '';
+        quotes.forEach(function (_, i) {
+            const d = document.createElement('span');
+            if (i === 0) d.classList.add('on');
+            dotsHost.appendChild(d);
+        });
+        dots = dotsHost.querySelectorAll('span');
     }
-    
-    // Start rotation
+
+    function rotateQuotes() {
+        quotes[currentIndex].classList.remove('active');
+        if (dots[currentIndex]) dots[currentIndex].classList.remove('on');
+
+        currentIndex = (currentIndex + 1) % quotes.length;
+
+        quotes[currentIndex].classList.add('active');
+        if (dots[currentIndex]) dots[currentIndex].classList.add('on');
+    }
+
+    // Rotate quotes every 8 seconds
     setInterval(rotateQuotes, 8000);
 });
