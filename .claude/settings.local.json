@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(sed -i '' 's/Junior physics major/Senior physics major/g' 404.html index.html projects/index.html resume/index.html notes/reading-list/index.html notes/index.html)",
-      "Bash(sed -i '' 's/junior physics major/senior physics major/g' index.html)"
-    ]
-  }
-}
