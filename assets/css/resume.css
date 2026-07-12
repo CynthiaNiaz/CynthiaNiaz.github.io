@@ -13,7 +13,7 @@ body {
     padding: 5rem 2rem 4rem;
 }
 
-/* ---- Header — italic eyebrow + big Cormorant H1 ---- */
+/* ---- Header — italic eyebrow + big Cormorant Garamond H1 ---- */
 
 .rp-header,
 .rp-left,
@@ -38,23 +38,21 @@ body.dark-mode .rp-right {
 
 .rp-header-meta {
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    font-weight: 400;
+    font-size: 1.05rem;
+    font-style: normal;
+    font-weight: 600;
     color: var(--wine);
     letter-spacing: 0;
+    text-transform: none;
     display: flex;
     align-items: center;
     gap: 0.85rem;
 }
 
 .rp-header-meta::before {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: var(--wine);
+    display: none;
 }
 
 .rp-header h1 {
@@ -85,54 +83,56 @@ body.dark-mode .rp-right {
     padding: 0;
 }
 
-/* ---- Section labels — italic Cormorant wine with leading hairline ---- */
+/* ---- Section labels — italic Cormorant Garamond wine with leading hairline ---- */
 
 .rp-label {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    font-weight: 400;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
     letter-spacing: 0;
     text-transform: none;
     color: var(--wine);
     margin-bottom: 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid rgba(125, 30, 62, 0.18);
+    padding: 0.85rem 1.1rem;
+    background: var(--cream);
+    border: 1px solid var(--light-gray);
+    border-radius: 0;
     display: flex;
     align-items: baseline;
     gap: 0.65rem;
 }
 
 .rp-label::before {
-    content: '';
-    flex: 0 0 14px;
-    height: 1px;
-    background: var(--wine);
-    transform: translateY(-3px);
+    display: none;
 }
 
 .rp-label-right {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    font-weight: 400;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
     letter-spacing: 0;
     text-transform: none;
     color: var(--wine);
     margin-bottom: 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid rgba(125, 30, 62, 0.18);
+    padding: 0.85rem 1.1rem;
+    background: var(--cream);
+    border: 1px solid var(--light-gray);
+    border-radius: 0;
     display: flex;
     align-items: baseline;
     gap: 0.65rem;
 }
 
+body.dark-mode .rp-label,
+body.dark-mode .rp-label-right {
+    background: #231f1c;
+    border-color: var(--light-gray);
+}
+
 .rp-label-right::before {
-    content: '';
-    flex: 0 0 14px;
-    height: 1px;
-    background: var(--wine);
-    transform: translateY(-3px);
+    display: none;
 }
 
 body.dark-mode .rp-label,
@@ -149,7 +149,35 @@ body.dark-mode .rp-label-right::before {
 /* ---- Left column ---- */
 
 .rp-section-left {
-    margin-bottom: 2.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.rp-section-left:last-child {
+    margin-bottom: 0;
+}
+
+.rp-section-body {
+    padding: 1.5rem 1.65rem;
+    background: var(--cream);
+    border: 1px solid var(--light-gray);
+    border-radius: 0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.rp-section-body:hover {
+    border-color: rgba(125, 30, 62, 0.2);
+    box-shadow: 0 6px 20px rgba(125, 30, 62, 0.06);
+    transform: translateY(-2px);
+}
+
+body.dark-mode .rp-section-body {
+    background: #231f1c;
+    border-color: var(--light-gray);
+}
+
+body.dark-mode .rp-section-body:hover {
+    border-color: rgba(196, 61, 92, 0.3);
+    box-shadow: 0 6px 20px rgba(196, 61, 92, 0.08);
 }
 
 .edu-name {
@@ -166,23 +194,24 @@ body.dark-mode .edu-name {
 
 .edu-sub {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-style: normal;
     font-size: 1.05rem;
+    font-weight: 400;
     color: var(--gray);
-    margin-top: 2px;
-    margin-bottom: 0.35rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.4rem;
 }
 
 .edu-date {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.85rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
     color: var(--gray);
     margin-top: 0;
 }
 
 .edu-coursework {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.92rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
     color: var(--charcoal);
     margin-top: 0.6rem;
     line-height: 1.7;
@@ -212,9 +241,9 @@ body.dark-mode .edu-name {
 
 .skill-name {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1rem;
-    font-weight: 400;
+    font-style: normal;
+    font-size: 1.05rem;
+    font-weight: 600;
     color: var(--wine);
     margin-bottom: 3px;
 }
@@ -224,8 +253,8 @@ body.dark-mode .skill-name {
 }
 
 .skill-items {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.88rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.98rem;
     color: var(--charcoal);
     line-height: 1.65;
 }
@@ -233,8 +262,8 @@ body.dark-mode .skill-name {
 /* Languages */
 
 .lang-row {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.92rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
     color: var(--charcoal);
     display: flex;
     justify-content: space-between;
@@ -248,9 +277,10 @@ body.dark-mode .skill-name {
 
 .lang-row span:last-child {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-style: normal;
+    font-weight: 400;
     color: var(--gray);
-    font-size: 0.92rem;
+    font-size: 0.98rem;
 }
 
 .lang-name {
@@ -261,8 +291,8 @@ body.dark-mode .skill-name {
 /* Activities (Campus involvement) */
 
 .activity-row {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.95rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.03rem;
     padding: 0.55rem 0;
     border-bottom: 1px dotted var(--light-gray);
     display: flex;
@@ -299,8 +329,9 @@ body.dark-mode .activity-title a:hover {
 
 .activity-date {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.88rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.03rem;
     color: var(--gray);
     flex-shrink: 0;
 }
@@ -312,22 +343,40 @@ body.dark-mode .activity-title a:hover {
 }
 
 .exp-entry {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--light-gray);
+    margin-bottom: 1rem;
+    padding: 1.5rem 1.65rem;
+    background: var(--cream);
+    border: 1px solid var(--light-gray);
+    border-radius: 0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .exp-entry:last-child {
-    border-bottom: none;
     margin-bottom: 0;
-    padding-bottom: 0;
+}
+
+.exp-entry:hover {
+    border-color: rgba(125, 30, 62, 0.2);
+    box-shadow: 0 6px 20px rgba(125, 30, 62, 0.06);
+    transform: translateY(-2px);
 }
 
 .exp-header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
+    gap: 0.25rem 1rem;
     margin-bottom: 0.25rem;
+}
+
+.exp-role-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.15rem 1rem;
+    margin-bottom: 0.6rem;
 }
 
 .exp-org {
@@ -337,22 +386,31 @@ body.dark-mode .activity-title a:hover {
     color: var(--charcoal);
     line-height: 1.2;
     letter-spacing: -0.2px;
+    transition: color 0.2s ease;
+}
+
+.exp-entry:hover .exp-org {
+    color: var(--wine);
 }
 
 body.dark-mode .exp-org {
     color: var(--charcoal);
 }
 
+body.dark-mode .exp-entry:hover .exp-org {
+    color: var(--wine-light);
+}
+
 .exp-date {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     font-size: 0.78rem;
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--wine);
     white-space: nowrap;
-    margin-left: 1rem;
     flex-shrink: 0;
+    line-height: 1.2;
 }
 
 body.dark-mode .exp-date {
@@ -361,20 +419,26 @@ body.dark-mode .exp-date {
 
 .exp-role {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.05rem;
+    font-style: normal;
+    font-size: 1.1rem;
+    font-weight: 400;
     color: var(--gray);
-    margin-bottom: 0.6rem;
-    margin-top: 0;
+    margin: 0;
 }
 
 .exp-loc {
-    display: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: normal;
+    font-size: 1.03rem;
+    color: var(--gray);
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-align: right;
 }
 
 .exp-desc {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.93rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
     color: var(--charcoal);
     line-height: 1.75;
     margin-top: 0.7rem;
@@ -411,8 +475,8 @@ body.dark-mode .exp-sub {
 }
 
 .sub-role {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.96rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
     font-weight: 500;
     color: var(--charcoal);
     display: flex;
@@ -422,18 +486,18 @@ body.dark-mode .exp-sub {
 }
 
 .sub-date {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-family: 'EB Garamond', serif;
+    font-style: normal;
     font-weight: 400;
     color: var(--gray);
-    font-size: 0.88rem;
+    font-size: 0.78rem;
     flex-shrink: 0;
     margin-left: 0.75rem;
 }
 
 .sub-desc {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.93rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
     color: var(--charcoal);
     line-height: 1.75;
 }
@@ -457,7 +521,7 @@ body.dark-mode .exp-sub {
     box-shadow: none;
     color: var(--wine);
     text-decoration: none;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     font-weight: 500;
     font-size: 0.9rem;
     transition: color 0.2s ease;
@@ -500,20 +564,29 @@ body.dark-mode .exp-sub {
 
 .resume-updated {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.95rem;
+    font-style: normal;
+    font-size: 0.98rem;
+    font-weight: 400;
     color: var(--gray);
-    opacity: 0.85;
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
 }
 
 /* Dark mode */
 
-body.dark-mode .exp-entry,
 body.dark-mode .activity-row,
 body.dark-mode .lang-row,
 body.dark-mode .download-section {
     border-color: var(--light-gray);
+}
+
+body.dark-mode .exp-entry {
+    background: #231f1c;
+    border-color: var(--light-gray);
+}
+
+body.dark-mode .exp-entry:hover {
+    border-color: rgba(196, 61, 92, 0.3);
+    box-shadow: 0 6px 20px rgba(196, 61, 92, 0.08);
 }
 
 body.dark-mode .download-btn {
@@ -542,24 +615,43 @@ body.dark-mode .download-btn svg {
         font-size: 2.6rem;
     }
 
+    /* Collapse to one column and flatten both columns into a single flow
+       so we can reorder sections across them. */
     .rp-body {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .rp-left,
+    .rp-right {
+        display: contents;
+    }
+
+    /* Order on small screens: Education, Campus Involvement, Experience,
+       Volunteering, then Skills and Languages last. */
+    .rp-section-left:nth-of-type(1) { order: 1; }   /* Education */
+    .rp-section-left:nth-of-type(2) { order: 2; }   /* Campus Involvement */
+    .rp-section-right:nth-of-type(1) { order: 3; }  /* Experience */
+    .rp-section-right:nth-of-type(2) { order: 4; }  /* Volunteering */
+    .rp-section-left:nth-of-type(3) { order: 5; }   /* Skills */
+    .rp-section-left:nth-of-type(4) { order: 6; }   /* Languages */
+
+    /* Even spacing between the now-flattened sections */
+    .rp-section-left,
+    .rp-section-right {
+        margin-bottom: 1.5rem;
+    }
+
+    .rp-section-left:nth-of-type(4) {
+        margin-bottom: 0;
     }
 }
 
 @media (max-width: 480px) {
     .rp-header h1 {
         font-size: 2rem;
-    }
-
-    .exp-header {
-        flex-direction: column;
-        gap: 2px;
-    }
-
-    .exp-date {
-        margin-left: 0;
     }
 
     .sub-role {

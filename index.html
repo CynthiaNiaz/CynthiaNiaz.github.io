@@ -31,11 +31,11 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/main.css?v=11">
+    <link rel="stylesheet" href="assets/css/home.css?v=11">
 </head>
 
 <body>
@@ -168,7 +168,11 @@
                         <p class="quote-author">Mindy Kaling</p>
                     </div>
                 </div>
-                <div class="quote-dots" id="quoteDots" aria-hidden="true"></div>
+                <div class="quote-controls">
+                    <button class="quote-arrow" id="quotePrev" aria-label="Previous quote" type="button">&#8249;</button>
+                    <div class="quote-dots" id="quoteDots" aria-hidden="true"></div>
+                    <button class="quote-arrow" id="quoteNext" aria-label="Next quote" type="button">&#8250;</button>
+                </div>
             </div>
         </section>
 
@@ -184,10 +188,10 @@
     <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
     <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/dark-mode.js"></script>
-    <script src="assets/js/home.js"></script>
-    <script src="assets/js/quotes.js"></script>
+    <script src="assets/js/main.js?v=11"></script>
+    <script src="assets/js/dark-mode.js?v=11"></script>
+    <script src="assets/js/home.js?v=11"></script>
+    <script src="assets/js/quotes.js?v=11"></script>
     <script>
         // Fade in quote section when scrolled into view
         document.addEventListener('DOMContentLoaded', function() {

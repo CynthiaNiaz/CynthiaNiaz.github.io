@@ -26,7 +26,7 @@ html {
 }
 
 body {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     background: linear-gradient(135deg, var(--cream) 0%, #f5f2ed 100%);
     color: var(--charcoal);
     line-height: 1.7;
@@ -37,6 +37,11 @@ body {
 
 a, button {
     cursor: pointer;
+}
+
+/* Form controls don't inherit fonts by default — force the site font */
+button, input, select, textarea {
+    font-family: inherit;
 }
 
 /* Inline prose links — used inside .summary paragraphs and similar */
@@ -70,32 +75,7 @@ body.dark-mode p a:hover {
     border-bottom-color: var(--wine);
 }
 
-/* Subtle texture overlay */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(0, 0, 0, 0.01) 2px,
-            rgba(0, 0, 0, 0.01) 4px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(0, 0, 0, 0.01) 2px,
-            rgba(0, 0, 0, 0.01) 4px
-        );
-    pointer-events: none;
-    z-index: 1;
-}
+/* Texture overlay removed — flat background */
 
 .container {
     position: relative;
@@ -132,7 +112,7 @@ nav {
 
 .nav-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 600;
     color: var(--wine);
     text-decoration: none;
@@ -154,7 +134,8 @@ nav {
 .nav-links a {
     color: var(--charcoal);
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 500;
+    font-size: 1.12rem;
     transition: all 0.3s ease;
     position: relative;
     padding: 0.25rem 0;
@@ -392,38 +373,19 @@ footer {
    ============================================ */
 
 body.dark-mode {
-    /* Wine tones stay recognisable but are slightly warmer/brighter */
-    --wine: #c43d5c;
-    --wine-light: #d9566f;
-    --wine-dark: #a82d4a;
+    /* Warmer, softer rose-wine — less hot magenta than before */
+    --wine: #d07782;
+    --wine-light: #e59aa2;
+    --wine-dark: #b85f6b;
 
     /* Backgrounds: warm dark rather than cold black */
-    --cream: #1c1917;          /* warm near-black, mirrors the light cream tone */
-    --charcoal: #ede9e4;       /* light text, same warmth as light-mode charcoal */
-    --gray: #9a958e;           /* muted warm mid-tone */
-    --light-gray: #2c2825;     /* warm dark border/divider, mirrors light-gray */
+    --cream: #1a1715;          /* warm near-black, mirrors the light cream tone */
+    --charcoal: #ece7e1;       /* light text, same warmth as light-mode charcoal */
+    --gray: #9c968e;           /* muted warm mid-tone */
+    --light-gray: #2b2724;     /* warm dark border/divider, mirrors light-gray */
 
-    background: linear-gradient(135deg, #1c1917 0%, #141210 100%);
-    color: #ede9e4;
-}
-
-/* Match the light-mode texture — same opacity, just lightened strands */
-body.dark-mode::before {
-    background-image: 
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 255, 255, 0.015) 2px,
-            rgba(255, 255, 255, 0.015) 4px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 255, 255, 0.015) 2px,
-            rgba(255, 255, 255, 0.015) 4px
-        );
+    background: linear-gradient(135deg, #1a1715 0%, #12100e 100%);
+    color: #ece7e1;
 }
 
 body.dark-mode nav {

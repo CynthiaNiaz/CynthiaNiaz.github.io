@@ -53,7 +53,7 @@
 }
 
 .summary {
-    font-size: 1.05rem;
+    font-size: 1.2rem;
     color: var(--charcoal);
     margin-bottom: 1rem;
     line-height: 1.8;
@@ -141,18 +141,18 @@ body.dark-mode .dropcap {
 }
 
 .quote-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-style: italic;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.45rem;
+    font-style: normal;
     color: var(--charcoal);
-    line-height: 1.55;
+    line-height: 1.6;
     margin-bottom: 1rem;
     padding: 0;
     text-align: center;
 }
 
 .quote-author {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     font-size: 0.78rem;
     color: var(--wine);
     font-weight: 500;
@@ -165,12 +165,41 @@ body.dark-mode .dropcap {
     content: '— ';
 }
 
+/* Controls row: prev arrow · dots · next arrow */
+.quote-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+    margin-top: 1.75rem;
+}
+
+.quote-arrow {
+    background: none;
+    border: none;
+    color: var(--wine);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 0 0.2rem;
+    opacity: 0.55;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.quote-arrow:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+body.dark-mode .quote-arrow {
+    color: var(--wine-light);
+}
+
 /* Pagination dots beneath the rotating quote */
 .quote-dots {
     display: flex;
     gap: 0.45rem;
     justify-content: center;
-    margin-top: 1.75rem;
 }
 
 .quote-dots span {
@@ -179,6 +208,7 @@ body.dark-mode .dropcap {
     border-radius: 50%;
     background: var(--light-gray);
     transition: background 0.4s ease;
+    cursor: pointer;
 }
 
 .quote-dots span.on {
@@ -206,8 +236,8 @@ body.dark-mode .dropcap {
     box-shadow: none;
     color: var(--wine);
     text-decoration: none;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.9rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
     font-weight: 500;
     transition: color 0.2s ease;
     position: relative;

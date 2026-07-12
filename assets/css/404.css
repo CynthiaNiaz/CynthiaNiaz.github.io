@@ -78,7 +78,7 @@
 }
 
 .quote-404-author {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     font-size: 0.8rem;
     color: var(--wine);
     font-weight: 500;
@@ -109,7 +109,7 @@
     box-shadow: none;
     color: var(--wine);
     text-decoration: none;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     font-weight: 500;
     font-size: 0.9rem;
     cursor: pointer;

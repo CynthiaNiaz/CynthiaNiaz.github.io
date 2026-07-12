@@ -115,11 +115,11 @@ body.dark-mode .note-card:hover {
 }
 
 .note-tag {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     font-size: 0.7rem;
     font-style: normal;
-    font-weight: 500;
-    letter-spacing: 0.25em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--wine);
 }
@@ -129,9 +129,11 @@ body.dark-mode .note-tag {
 }
 
 .note-date {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.92rem;
+    font-family: 'EB Garamond', serif;
+    font-style: normal;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
     color: var(--gray);
 }
 
@@ -165,8 +167,8 @@ body.dark-mode .note-card:hover .note-title {
 }
 
 .note-preview {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.92rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
     color: var(--gray);
     line-height: 1.65;
     display: -webkit-box;
@@ -177,10 +179,10 @@ body.dark-mode .note-card:hover .note-title {
 }
 
 .note-read {
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'EB Garamond', serif;
     font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.22em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--wine);
     transition: transform 0.25s ease, color 0.2s ease;
