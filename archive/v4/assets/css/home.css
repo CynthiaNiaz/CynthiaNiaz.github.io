@@ -1,0 +1,472 @@
+/* ============================================
+   HOME PAGE STYLES — Direction D
+   ============================================ */
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 0 4rem;
+    animation: fadeIn 1s ease-out;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(125, 30, 62, 0.04), transparent 60%);
+    pointer-events: none;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-left h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--wine);
+    margin-bottom: 1rem;
+    line-height: 1.05;
+    letter-spacing: -1px;
+}
+
+/* Wine hairline rule between the name and the body */
+.hero-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--wine);
+    opacity: 0.5;
+    margin-bottom: 1.5rem;
+}
+
+.summary {
+    font-size: 1.05rem;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+/* Editorial drop cap on the first summary paragraph */
+.dropcap {
+    float: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.2rem;
+    line-height: 0.85;
+    color: var(--wine);
+    padding: 0.3rem 0.55rem 0 0;
+    font-weight: 600;
+}
+
+body.dark-mode .dropcap {
+    color: var(--wine-light);
+}
+
+/* Quote Section — elegant below-the-fold element */
+.quote-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    padding: 3rem 2rem 1rem;
+    border-top: 1px solid var(--light-gray);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quote-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quote-container {
+    max-width: 540px;
+    width: 100%;
+    padding: 1.5rem 2.5rem 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    position: relative;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    visibility: visible;
+    text-align: center;
+}
+
+.quote-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.quote-item {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+.quote-item.active {
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+}
+
+.quote-mark-open {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: var(--wine);
+    opacity: 0.18;
+    line-height: 0.6;
+    text-align: center;
+    display: block;
+    position: static;
+    margin-bottom: 0.5rem;
+}
+
+.quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    padding: 0;
+    text-align: center;
+}
+
+.quote-author {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--wine);
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+}
+
+.quote-author::before {
+    content: '— ';
+}
+
+/* Pagination dots beneath the rotating quote */
+.quote-dots {
+    display: flex;
+    gap: 0.45rem;
+    justify-content: center;
+    margin-top: 1.75rem;
+}
+
+.quote-dots span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--light-gray);
+    transition: background 0.4s ease;
+}
+
+.quote-dots span.on {
+    background: var(--wine);
+}
+
+/* Contact Links */
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--light-gray);
+}
+
+.contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: var(--wine);
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+    white-space: nowrap;
+}
+
+.contact-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--wine);
+    transition: width 0.25s ease;
+}
+
+.contact-links a:hover {
+    color: var(--wine-dark);
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.contact-links a:hover::after {
+    width: 100%;
+}
+
+.contact-links a:active {
+    transform: none;
+}
+
+.contact-links svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.contact-links svg.chess-icon {
+    fill: none;
+    stroke: currentColor;
+}
+
+.duolingo-icon {
+    filter: none;
+}
+
+body.dark-mode .contact-links a {
+    color: var(--wine-light);
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode .contact-links a:hover {
+    color: var(--wine-light);
+    background: none !important;
+}
+
+body.dark-mode .contact-links {
+    border-top-color: var(--light-gray);
+}
+
+body.dark-mode .quote-section {
+    border-top-color: var(--light-gray);
+}
+
+/* Profile Photo */
+.hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-photo-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    display: inline-block;
+    line-height: 0;
+}
+
+.profile-photo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1.5px solid rgba(125, 30, 62, 0.2);
+    transition: border-color 0.3s ease;
+    filter: contrast(1.02) saturate(1.05);
+    display: block;
+}
+
+.profile-photo:hover {
+    border-color: rgba(125, 30, 62, 0.4);
+    filter: contrast(1.03) saturate(1.08);
+}
+
+/* Content Section */
+.content-section {
+    padding: 2rem 0;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 968px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Photo always first on mobile */
+    .hero-right {
+        order: -1;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-left {
+        text-align: center;
+    }
+
+    /* Centered column on mobile: float the dropcap left within the
+       first line of the (now centered) paragraph so the "I" stays
+       attached to "'m a junior..." instead of orphaning above it. */
+    .hero-left .summary:first-of-type {
+        text-align: left;
+    }
+
+    .dropcap {
+        font-size: 3rem;
+        padding: 0.35rem 0.4rem 0 0;
+    }
+
+    .hero-rule {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-left h1 {
+        font-size: 3rem;
+    }
+
+    .profile-photo {
+        max-width: 350px;
+    }
+
+    .profile-photo-wrapper {
+        max-width: 350px;
+    }
+
+    .contact-links {
+        justify-content: center;
+        gap: 0.75rem 1.25rem;
+    }
+
+    .quote-section {
+        padding: 2.5rem 1.5rem 1rem;
+    }
+
+    .quote-container {
+        padding: 1.25rem 1.5rem 0;
+    }
+
+    .quote-text {
+        font-size: 1.15rem;
+    }
+
+    .quote-author {
+        font-size: 0.74rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 8rem 0 4rem;
+        min-height: auto;
+    }
+
+    .hero-left h1 {
+        font-size: 2.4rem;
+    }
+
+    .summary {
+        font-size: 1rem;
+    }
+
+    .dropcap {
+        font-size: 2.8rem;
+    }
+
+    .contact-links {
+        flex-direction: row;
+        gap: 0.5rem 1rem;
+        align-items: center;
+    }
+
+    .profile-photo {
+        max-width: 300px;
+    }
+
+    .profile-photo-wrapper {
+        max-width: 300px;
+    }
+
+    .quote-section {
+        padding: 2rem 1rem 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .quote-container {
+        padding: 1rem 1.25rem 0;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 7rem 0 3.5rem;
+    }
+
+    .hero-left h1 {
+        font-size: 2rem;
+    }
+
+    .profile-photo {
+        max-width: 260px;
+    }
+
+    .profile-photo-wrapper {
+        max-width: 260px;
+    }
+
+    .quote-section {
+        padding: 1.5rem 1rem 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .quote-container {
+        padding: 0.75rem 1rem 0;
+    }
+
+    .quote-text {
+        font-size: 1rem;
+    }
+
+    .quote-mark-open {
+        font-size: 3rem;
+    }
+
+    .quote-author {
+        font-size: 0.72rem;
+    }
+}

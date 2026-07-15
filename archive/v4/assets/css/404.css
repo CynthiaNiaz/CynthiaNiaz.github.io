@@ -1,0 +1,177 @@
+/* ============================================
+   404 PAGE
+   ============================================ */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.error-content {
+    animation: fadeIn 0.8s ease-out;
+    max-width: 500px;
+}
+
+.error-code {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem;
+    font-weight: 600;
+    color: var(--wine);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    opacity: 0.15;
+}
+
+.error-content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--wine);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.3px;
+}
+
+.error-content > p {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+/* ---- Quotes ---- */
+
+.quote-404 {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+.quote-404-item {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+}
+
+.quote-404-item.active {
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+}
+
+.quote-404-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
+
+.quote-404-author {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--wine);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.quote-404-author::before {
+    content: '— ';
+}
+
+/* ---- Buttons ---- */
+
+.buttons {
+    display: flex;
+    gap: 0.5rem 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: var(--wine);
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--wine);
+    transition: width 0.25s ease;
+}
+
+.btn:hover {
+    color: var(--wine-dark);
+    background: none;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn:hover::after {
+    width: 100%;
+}
+
+.btn:active { transform: none; }
+
+.btn-secondary { color: var(--gray); }
+.btn-secondary::after { background: var(--gray); }
+.btn-secondary:hover { color: var(--charcoal); background: none; border: none; box-shadow: none; }
+
+body.dark-mode .btn {
+    color: var(--wine-light) !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode .btn::after { background: var(--wine-light); }
+body.dark-mode .btn-secondary { color: var(--gray); }
+
+/* Hide decoration div */
+.decoration { display: none; }
+
+/* Hide footer */
+footer { display: none; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .error-code { font-size: 6rem; }
+    .error-content h1 { font-size: 1.8rem; }
+}
+
+@media (max-width: 480px) {
+    .error-code { font-size: 5rem; }
+    .error-content h1 { font-size: 1.5rem; }
+}

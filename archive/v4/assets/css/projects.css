@@ -1,0 +1,265 @@
+/* ============================================
+   PROJECTS PAGE — Direction D
+   Flat cream, hairline dividers, italic Cormorant accents.
+   ============================================ */
+
+.projects-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+}
+
+/* ---- Page header ---- */
+
+.proj-header {
+    padding: 0 0 1.5rem;
+    border-bottom: 1px solid var(--light-gray);
+    margin-bottom: 0;
+}
+
+.proj-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.6rem;
+    font-weight: 600;
+    color: var(--wine);
+    letter-spacing: -0.8px;
+    line-height: 1;
+}
+
+/* ---- Entry rows ---- */
+
+.proj-entry {
+    display: grid;
+    grid-template-columns: 64px 1fr 200px;
+    gap: 2.25rem;
+    align-items: start;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--light-gray);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+.proj-entry:last-of-type {
+    border-bottom: none;
+}
+
+.proj-entry:hover {
+    box-shadow: none;
+    background: transparent;
+}
+
+/* ---- Number — italic Cormorant wine ---- */
+
+.proj-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--wine);
+    line-height: 1;
+    padding-top: 4px;
+    user-select: none;
+}
+
+.proj-entry:hover .proj-number {
+    color: var(--wine);
+}
+
+body.dark-mode .proj-number {
+    color: var(--wine-light);
+}
+
+/* ---- Content ---- */
+
+.proj-content {
+    padding-top: 0;
+}
+
+.proj-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    line-height: 1.2;
+    letter-spacing: -0.4px;
+    margin-bottom: 0.35rem;
+}
+
+body.dark-mode .proj-title {
+    color: var(--charcoal);
+}
+
+.proj-type {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--wine);
+    margin-bottom: 1rem;
+}
+
+body.dark-mode .proj-type {
+    color: var(--wine-light);
+}
+
+.proj-desc {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+    margin-bottom: 1.1rem;
+}
+
+/* ---- Right side column (date + links) ---- */
+
+.proj-side {
+    text-align: right;
+    padding-top: 0.4rem;
+}
+
+.proj-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--gray);
+    margin-bottom: 1.25rem;
+}
+
+.proj-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: flex-end;
+    padding-top: 0;
+    border-top: none;
+}
+
+.proj-link {
+    display: inline-block;
+    color: var(--wine);
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid rgba(125, 30, 62, 0.18);
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.proj-link::after {
+    content: none;
+}
+
+.proj-link:hover {
+    color: var(--wine-dark);
+    border-bottom-color: var(--wine);
+}
+
+body.dark-mode .proj-link {
+    color: var(--wine-light);
+    border-bottom-color: rgba(196, 61, 92, 0.25);
+}
+
+body.dark-mode .proj-link:hover {
+    color: var(--wine);
+    border-bottom-color: var(--wine);
+}
+
+/* ---- Tags — small wine-tinted chips ---- */
+
+.proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 0;
+}
+
+.tag {
+    padding: 0.25rem 0.65rem;
+    background: rgba(125, 30, 62, 0.06);
+    color: var(--wine);
+    border-radius: 2px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.2s ease;
+}
+
+.tag:hover {
+    background: rgba(125, 30, 62, 0.12);
+}
+
+body.dark-mode .tag {
+    background: rgba(196, 61, 92, 0.14);
+    color: var(--wine-light);
+}
+
+body.dark-mode .tag:hover {
+    background: rgba(196, 61, 92, 0.22);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 900px) {
+    .projects-wrap {
+        padding: 3rem 1.5rem 3.5rem;
+    }
+
+    .proj-header h1 {
+        font-size: 2.6rem;
+    }
+
+    .proj-entry {
+        grid-template-columns: 44px 1fr;
+        gap: 1rem;
+        padding: 2rem 0;
+    }
+
+    .proj-number {
+        font-size: 1.9rem;
+    }
+
+    .proj-title {
+        font-size: 1.5rem;
+    }
+
+    .proj-side {
+        grid-column: 1 / -1;
+        text-align: left;
+        padding-top: 1rem;
+    }
+
+    .proj-links {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .proj-header h1 {
+        font-size: 2rem;
+    }
+
+    .proj-entry {
+        grid-template-columns: 36px 1fr;
+        gap: 0.75rem;
+        padding: 1.5rem 0;
+    }
+
+    .proj-number {
+        font-size: 1.6rem;
+    }
+
+    .proj-title {
+        font-size: 1.3rem;
+    }
+}

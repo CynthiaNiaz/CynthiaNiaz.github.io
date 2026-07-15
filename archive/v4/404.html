@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/archive/v4/">
+    <link rel="icon" href="assets/icons/letter-c.png" type="image/png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKLL2XEDKL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-YKLL2XEDKL');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Cynthia Niaz">
+    <meta property="og:description" content="Senior physics major at Carleton College with a background in computer science and economics.">
+    <meta property="og:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
+    <meta property="og:url" content="https://cynthianiaz.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://cynthianiaz.github.io/assets/images/personal/personal-pic.jpeg">
+    <title>Page Not Found | Cynthia Niaz</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/404.css">
+</head>
+<body>
+
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Loading</div>
+        </div>
+    </div>
+
+    <div class="scroll-progress"></div>
+
+    <nav>
+        <div class="nav-content">
+            <a href="./" class="nav-logo">Cynthia Niaz</a>
+            <div class="nav-links">
+                <a href="./">Home</a>
+                <a href="resume/">Resume</a>
+                <a href="projects/">Projects</a>
+                <a href="notes/">Notes</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="decoration"></div>
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1>Page Not Found</h1>
+            <p>The page you're looking for doesn't exist or may have been moved. Let's get you back on track.</p>
+
+            <div class="quote-404">
+                <div class="quote-404-item active">
+                    <p class="quote-404-text">The best way to solve a problem is to find a solution.</p>
+                    <p class="quote-404-author">Greg Heffley</p>
+                </div>
+                <div class="quote-404-item">
+                    <p class="quote-404-text">What??? NOOOOOOOOOO!!! BOOOOOO</p>
+                    <p class="quote-404-author">Mindy Kaling</p>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <a href="./" class="btn">Go Home</a>
+                <button onclick="history.back()" class="btn btn-secondary">Go Back</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dark-mode.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var items = document.querySelectorAll('.quote-404-item');
+            if (!items.length) return;
+            var current = 0;
+            setInterval(function() {
+                items[current].classList.remove('active');
+                current = (current + 1) % items.length;
+                items[current].classList.add('active');
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
