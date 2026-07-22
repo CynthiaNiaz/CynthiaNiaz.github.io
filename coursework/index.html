@@ -85,7 +85,7 @@
         }
         .timeline-inner {
             display: grid;
-            grid-template-columns: repeat(9, 1fr);
+            grid-template-columns: repeat(10, 1fr);
             position: relative;
         }
         .timeline-inner::before {
@@ -425,6 +425,7 @@
                 { code:"CS 201",  name:"Data Structures",                                      term:"Spr '25", desc:"Design and analysis of fundamental data structures including linked lists, stacks, queues, trees, heaps, hash tables, and graphs, with attention to time and space complexity." },
                 { code:"CS 257",  name:"Software Design",                                      term:"Fall '25", desc:"Principles of software engineering including modular design, object-oriented programming, design patterns, testing, and the development of larger-scale software systems." },
                 { code:"CS 327",  name:"Introduction to Robotics",                             term:"Spr '26", desc:"Foundations of robotics including kinematics, sensors, actuators, control systems, and path planning, with hands-on implementation in Python." },
+                { code:"CS 348",  name:"Parallel & Distributed Computing",                      term:"Fall '26", desc:"Principles and practice of parallel and distributed systems, including concurrency, synchronization, message passing, shared-memory models, and the design of scalable, fault-tolerant computations." },
             ]
         },
         {
@@ -443,6 +444,7 @@
                 { code:"GWSS 200", name:"Gender, Sexuality, and the Pursuit of Knowledge",      term:"Spr '24", desc:"Feminist and queer epistemologies examining how gender and sexuality inform the production of knowledge across disciplines, including science, philosophy, and the social sciences." },
                 { code:"GWSS 212", name:"Foundations of LGBTQ Studies",                        term:"Win '25", desc:"Historical and theoretical foundations of LGBTQ studies, tracing the emergence of sexual and gender identity categories and the development of queer politics and scholarship." },
                 { code:"SOAN 283", name:"Immigration, Citizenship, and Belonging",             term:"Win '26", desc:"Sociological and anthropological perspectives on immigration, examining legal frameworks, identity formation, labor, and the social construction of citizenship and belonging." },
+                { code:"SOAN 272", name:"Sociology of Race and Ethnicity",                     term:"Fall '26", desc:"Sociological analysis of race and ethnicity, examining how these categories are socially constructed and how they shape inequality, identity, institutions, and social movements." },
             ]
         },
         {
@@ -452,6 +454,7 @@
                 { code:"RELG 110", name:"Understanding Religion",                              term:"Spr '25", desc:"Comparative and methodological approaches to the study of religion, examining belief, ritual, sacred texts, and religious institutions across cultural contexts." },
                 { code:"PHIL 111", name:"Bullshit: How to Spot it and Protect Yourself",       term:"Spr '26", desc:"An introduction to critical thinking and informal logic, with a focus on identifying misleading reasoning, propaganda, pseudoscience, and epistemic manipulation in everyday life." },
                 { code:"ARTH 245", name:"Modern Architecture",                                 term:"Win '26", desc:"A survey of architecture from the late nineteenth century through the twentieth century, exploring modernism, functionalism, urbanism, and the relationship between built form and ideology." },
+                { code:"HIST 165", name:"A Cultural History of the Middle East",                term:"Fall '26", desc:"A survey of the cultural, religious, and political history of the Middle East, tracing the development of societies, empires, and traditions and their encounters across the region and beyond." },
             ]
         },
         {
@@ -526,16 +529,18 @@
         {s:"Fall",   y:"'25"},
         {s:"Win",    y:"'26"},
         {s:"Spr",    y:"'26"},
+        {s:"Fall",   y:"'26"},
     ];
 
     const TERM_INDEX = {
         "Fall '23":0,"Win '24":1,"Spr '24":2,
         "Fall '24":3,"Win '25":4,"Spr '25":5,
         "Fall '25":6,"Win '26":7,"Spr '26":8,
+        "Fall '26":9,
     };
 
     const allCourses = DEPTS.flatMap(d => d.courses.map(c => ({ ...c, color: d.color })));
-    const byTerm = Array.from({length: 9}, () => []);
+    const byTerm = Array.from({length: 10}, () => []);
     allCourses.forEach(c => {
         const idx = TERM_INDEX[c.term];
         if (idx !== undefined) byTerm[idx].push(c);
